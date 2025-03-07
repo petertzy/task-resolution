@@ -78,14 +78,7 @@
                 
                 const text = await response.text();
 
-                // 判断文件内容是否包含HTML标签
-                if (isHTML(text)) {
-                    // 如果是HTML格式，直接显示
-                    //document.getElementById('displayContent').innerHTML = text;
-                    document.getElementById('displayContent').innerHTML = `<pre>${text}</pre>`;
-                } else {
-                    document.getElementById('displayContent').innerHTML = `<pre>${text}</pre>`;
-                }
+                document.getElementById('displayContent').innerHTML = `<pre>${text}</pre>`;
 
             } catch (error) {
                 console.error("加載失敗:", error);
