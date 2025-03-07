@@ -58,7 +58,7 @@
             background-color: #D2B4DE;
         }
         .sidebar li.active {
-            background-color: #e0bff9; /* Highlight color for active item */
+            background-color: #e0bff9; /* Highligt color for active item */
         }
 
         .content {
@@ -187,38 +187,46 @@
                     "5. Bitte erstellen Sie eine Präsentation, die erklärt, welche Änderungen am Code vorgenommen werden müssen, um es zu einer PWA zu machen.",
                     "6. Kann der Stil der PWA geändert werden oder wird sie genau wie die mobile Version der Website aussehen?",
                     "7. Was passiert, wenn der Benutzer auf einen Link klickt, um ein Abonnement zu kaufen?",
-                    "8. Was passiert, wenn der Benutzer einen Link von Signal öffnet? Öffnet sich die PWA oder der normale Webbrowser?",
-                    "9. Was passiert, wenn der Benutzer einen Link von Telegram öffnet? Öffnet sich die PWA oder der In-App-Browser?",
-                    "10. Was passiert, wenn der Benutzer einen Link von einem normalen Browser öffnet, wie z.B. Google-Suche? Öffnet sich die PWA oder der normale Webbrowser?",
-                    "11. Was ist mit dem Tracking? Können wir feststellen, dass der Benutzer die PWA verwendet? Denn wir möchten definitiv wissen, wie viel Traffic von der PWA kommt.",
-                    "12. Wie ist die Navigation? Ich meine, wenn Sie auf einen Artikel klicken? Ist es wie im Browser, dass die Seite leer ist? Oder bleibt der Header und nur der Inhalt wird ersetzt? Können wir die nativen Wischgesten verwenden, um zurückzugehen?",
-                    "13. Wird es das Login für ein paar Tage speichern, auch wenn die PWA nicht verwendet wird?",
-                    "14. iOS unterstützt keine Vollbildansicht? Wie sehen EpochTV-Videos aus?"
+                    "8. Wenn der Benutzer auf einen Link von Signal klickt, wird die PWA oder der normale Webbrowser geöffnet?",
+                    "9. Wenn der Benutzer auf einen Link von Telegram klickt, wird die PWA oder der In-App-Browser geöffnet?",
+                    "10. Wenn der Benutzer auf einen Link von einem regulären Browser klickt, wie Google-Suche, wird die PWA geöffnet oder der normale Webbrowser?",
+                    "11. Was ist mit dem Tracking? Können wir feststellen, ob der Benutzer die PWA verwendet? Denn wir wollen definitiv wissen, wie viel Verkehr von der PWA kommt.",
+                    "12. Wie ist die Navigation? Ich meine, wenn man auf einen Artikel klickt? Ist es wie ein Browser und die Seite ist leer? Oder bleibt die Kopfzeile und nur der Inhalt wird ersetzt? Können wir native Wischgesten verwenden, um zurückzugehen?",
+                    "13. Bleibt man für ein paar Tage eingeloggt, auch wenn die PWA nicht verwendet wurde?",
+                    "14. iOS hat keine Vollbildunterstützung? Wie werden die EpochTV-Videos aussehen?"
                 ]
             };
-            
+
+            const currentTitles = titles[languageFolder === 'contentsCN' ? 'zh' : languageFolder === 'contentsDE' ? 'de' : 'en'];
+
             links.forEach((link, index) => {
-                link.textContent = titles[languageFolder === 'contentsCN' ? 'zh' : languageFolder === 'contentsDE' ? 'de' : 'en'][index];
+                link.textContent = currentTitles[index];
             });
         }
 
-        function showContent(file, clickedElement) {
-            // Make the clicked item active
-            document.querySelectorAll('.sidebar li').forEach((item) => {
-                item.classList.remove('active');
-            });
-            clickedElement.classList.add('active');
-            
-            fetch(`${languageFolder}/${file}`)
-                .then(response => response.text())
-                .then(text => {
-                    const contentDiv = document.getElementById('displayContent');
-                    contentDiv.innerHTML = marked(text); // Use marked to parse markdown content
-                    
-                    // Scroll the content to the top of the page
-                    contentDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                });
+        async function showContent(file, element) {
+            try {
+                const activeItem = document.querySelector('.sidebar li.active');
+                if (activeItem) activeItem.classList.remove('active');
+
+                element.classList.add('active');
+
+                console.log(`Attempting to load file: ${file}`);
+                const response = await fetch(`https://raw.githubusercontent.com/petertzy/task-resolution/main/${languageFolder}/${file}`);
+                if (!response.ok) throw new Error(`File not found (HTTP ${response.status})`);
+                
+                const text = await response.text();
+                document.getElementById('displayContent').innerHTML = `<pre>${text}</pre>`;
+            } catch (error) {
+                console.error("Load failed:", error);
+                document.getElementById('displayContent').innerHTML = 
+                    `<p style="color: red;">Failed to load content. Please ensure the file exists and the local server is running.</p>`;
+            }
         }
+
+        window.onload = function() {
+            updateLanguage();
+        };
     </script>
 </body>
 </html>
