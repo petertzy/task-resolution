@@ -1,84 +1,104 @@
-<div data-message-author-role="assistant" data-message-id="abbb8cb9-666b-4e29-888f-b5585165d833" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light"><p data-start="0" data-end="38">In PWA mode, when users click the link to subscribe, the behavior is influenced by the following factors:</p>
-<h3 data-start="40" data-end="56">1. Where does the purchase link point to?</h3>
-<ul data-start="57" data-end="652">
-<li data-start="57" data-end="261">
-<p data-start="59" data-end="261"><strong data-start="59" data-end="101">If it redirects to an external payment page (e.g., PayPal, Stripe, Apple Pay)</strong><br data-start="101" data-end="104">
-The PWA will open the payment page in the browser like a normal website. If the PWA runs in <code data-start="142" data-end="154">standalone</code> mode (without an address bar), some payment pages may not automatically open a new window but directly replace the current PWA interface.<br data-start="200" data-end="203">
-Some mobile browsers (e.g., iOS Safari) may force the payment page to open in the default browser instead of handling it within the PWA.</p>
+<div data-message-author-role="assistant" data-message-id="f6b6fc4d-daa2-46a1-9c93-7a30be3841ca" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light"><p data-start="0" data-end="116">In PWA mode, when users click a link to make a subscription purchase, the behavior is influenced by several factors:</p>
+<h3 data-start="118" data-end="163">1. Where does the purchase link point to?</h3>
+<ul data-start="165" data-end="1307">
+<li data-start="165" data-end="652">
+<p data-start="167" data-end="255"><strong data-start="167" data-end="255">If the link redirects to an external payment page (e.g., PayPal, Stripe, Apple Pay):</strong></p>
+<ul data-start="258" data-end="652">
+<li data-start="258" data-end="523">The PWA behaves like a regular website and opens the payment page in the browser. If the PWA is running in standalone mode (without the address bar), some payment pages may not automatically open in a new window and may directly replace the current PWA interface.</li>
+<li data-start="526" data-end="652">Some mobile browsers (like iOS Safari) may force the payment page to open in the default browser rather than within the PWA.</li>
+</ul>
 </li>
-<li data-start="265" data-end="377">
-<p data-start="267" data-end="377"><strong data-start="267" data-end="302">If it calls WebView (e.g., Stripe Checkout)</strong><br data-start="302" data-end="305">
-Payment can still be completed, and the experience is similar to a normal webpage. However, some payment providers (like App Store subscriptions) may require in-app purchases through native apps, and the PWA may not complete the subscription.</p>
+<li data-start="654" data-end="993">
+<p data-start="656" data-end="708"><strong data-start="656" data-end="708">If it invokes a WebView (e.g., Stripe Checkout):</strong></p>
+<ul data-start="711" data-end="993">
+<li data-start="711" data-end="993">Payments can still be completed, and the experience will be similar to a regular webpage. However, some payment providers (such as App Store subscriptions) may require purchases to be made through a native in-app purchase, and the PWA may not be able to complete the subscription.</li>
+</ul>
 </li>
-<li data-start="379" data-end="652">
-<p data-start="381" data-end="540"><strong data-start="381" data-end="426">If it's a Deep Link to an App (e.g., redirect to PayPal / WeChat Pay)</strong><br data-start="426" data-end="429">
-Some payment services (e.g., WeChat Pay, Alipay) will detect the PWA and force the payment link to open in the default browser.<br data-start="476" data-end="479">
-To avoid the PWA being "stuck," you can manually open the payment page in a new window.<br data-start="513" data-end="516">
-📌 <strong data-start="521" data-end="527">Example</strong>: Open the payment page in a new tab</p>
-<pre class="!overflow-visible" data-start="543" data-end="620"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-variable language_">window</span>.<span class="hljs-title function_">open</span>(<span class="hljs-string">'https://your-payment-link.com'</span>, <span class="hljs-string">'_blank'</span>);
-</span></code></div></pre>
-<p data-start="623" data-end="652">This way, the payment page will open in a new window without replacing the PWA itself.</p>
+<li data-start="995" data-end="1307">
+<p data-start="997" data-end="1078"><strong data-start="997" data-end="1078">If it’s a Deep Link that opens an app (e.g., redirects to PayPal/WeChat Pay):</strong></p>
+<ul data-start="1081" data-end="1307">
+<li data-start="1081" data-end="1210">Some payment services (like WeChat Pay or Alipay) may detect the PWA and force the payment link to open in the default browser.</li>
+<li data-start="1213" data-end="1307">To avoid the PWA from being "stuck," you can manually open the payment page in a new window.</li>
+</ul>
 </li>
 </ul>
-<h3 data-start="654" data-end="687">2. Is the PWA running on an iOS / Android device?</h3>
-<ul data-start="688" data-end="1264">
-<li data-start="688" data-end="929">
-<p data-start="690" data-end="929"><strong data-start="690" data-end="706">iOS (Safari)</strong><br data-start="706" data-end="709">
-PWAs on iOS do not support the Service Worker Web Payment API, so Apple Pay or iOS in-app purchases cannot be used. Many payment gateways automatically redirect to Safari, instead of completing the payment within the PWA.<br data-start="825" data-end="828">
-Subscription-based apps (e.g., Netflix, Spotify) typically prompt users in iOS PWAs to "complete the purchase in Safari," as Apple prohibits web apps from bypassing App Store in-app purchases.</p>
+<p data-start="1309" data-end="1355">📌 <strong data-start="1312" data-end="1355">Example: Open payment page in a new tab</strong></p>
+<pre class="!overflow-visible" data-start="1356" data-end="1429"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-variable language_">window</span>.<span class="hljs-title function_">open</span>(<span class="hljs-string">'https://your-payment-link.com'</span>, <span class="hljs-string">'_blank'</span>);
+</span></code></div></pre>
+<p data-start="1430" data-end="1516">This way, the payment page will open in a new window, without covering the PWA itself.</p>
+<hr data-start="1518" data-end="1521">
+<h3 data-start="1523" data-end="1577">2. Is the PWA running on an iOS or Android device?</h3>
+<ul data-start="1579" data-end="2409">
+<li data-start="1579" data-end="2054">
+<p data-start="1581" data-end="1598"><strong data-start="1581" data-end="1598">iOS (Safari):</strong></p>
+<ul data-start="1601" data-end="2054">
+<li data-start="1601" data-end="1845">PWAs on iOS do not support the Service Worker Web Payment API, meaning you cannot use Apple Pay or in-app purchases on iOS. Many payment gateways will automatically redirect to the Safari browser instead of completing payments within the PWA.</li>
+<li data-start="1848" data-end="2054">Subscription-based apps (e.g., Netflix, Spotify) typically prompt users to "complete the purchase in Safari" within the iOS PWA, because Apple prohibits Web Apps from bypassing App Store in-app purchases.</li>
+</ul>
 </li>
-<li data-start="931" data-end="1264">
-<p data-start="933" data-end="1160"><strong data-start="933" data-end="953">Android (Chrome)</strong><br data-start="953" data-end="956">
-PWAs on Android devices generally work well with Google Pay, Stripe Checkout, or other web payment methods. Some Android devices may allow PWAs to complete payments in Chrome Custom Tabs or the default browser. If the payment is completed and a return to the PWA is required, you can use <code data-start="1101" data-end="1114">postMessage</code> to let the PWA listen for the payment result.<br data-start="1128" data-end="1131">
-📌 <strong data-start="1136" data-end="1142">Example</strong>: Detect if running on an iOS PWA</p>
-<pre class="!overflow-visible" data-start="1163" data-end="1264"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">if</span> (<span class="hljs-variable language_">window</span>.<span class="hljs-property">navigator</span>.<span class="hljs-property">standalone</span>) {
-<span class="hljs-title function_">alert</span>(<span class="hljs-string">"Please use Safari to open the purchase link to ensure the payment is successful!"</span>);
+<li data-start="2056" data-end="2409">
+<p data-start="2058" data-end="2079"><strong data-start="2058" data-end="2079">Android (Chrome):</strong></p>
+<ul data-start="2082" data-end="2409">
+<li data-start="2082" data-end="2409">PWAs on Android devices typically support Google Pay, Stripe Checkout, or other web payment methods. Some Android devices may let the PWA complete payments in Chrome Custom Tabs or the default browser. If payment completion requires returning to the PWA, you can use postMessage to have the PWA listen for the payment result.</li>
+</ul>
+</li>
+</ul>
+<p data-start="2411" data-end="2455">📌 <strong data-start="2414" data-end="2455">Example: Detect if running on iOS PWA</strong></p>
+<pre class="!overflow-visible" data-start="2456" data-end="2592"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">if</span> (<span class="hljs-variable language_">window</span>.<span class="hljs-property">navigator</span>.<span class="hljs-property">standalone</span>) {
+  <span class="hljs-title function_">alert</span>(<span class="hljs-string">"Please open the purchase link in Safari to ensure successful payment!"</span>);
 }
 </span></code></div></pre>
+<hr data-start="2594" data-end="2597">
+<h3 data-start="2599" data-end="2656">3. How to handle the return after payment completion?</h3>
+<p data-start="2658" data-end="2782">After a purchase, you may want users to return to the PWA rather than staying on the payment page. Here are some approaches:</p>
+<ul data-start="2784" data-end="2945">
+<li data-start="2784" data-end="2945"><strong data-start="2786" data-end="2840">Method 1: Open payment page with <code data-start="2821" data-end="2838">target="_blank"</code></strong>
+<ul data-start="2843" data-end="2945">
+<li data-start="2843" data-end="2945">This will open the payment page in a new window, and the PWA will continue to run in the background.</li>
+</ul>
 </li>
 </ul>
-<h3 data-start="1266" data-end="1286">3. How to handle the return after payment completion?</h3>
-<p data-start="1287" data-end="1330">After a purchase, you may want users to return to the PWA instead of staying on the payment page. Here are several ways to handle it:</p>
-<ul data-start="1332" data-end="2186">
-<li data-start="1332" data-end="1488">
-<p data-start="1334" data-end="1405"><strong data-start="1334" data-end="1370">Method 1: Use <code data-start="1344" data-end="1361">target="_blank"</code> to open the payment page</strong><br data-start="1370" data-end="1373">
-This will open the payment page in a new window, allowing the PWA to continue running in the background.</p>
-<pre class="!overflow-visible" data-start="1408" data-end="1488"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-html"><span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://your-payment-link.com"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>&gt;</span>Purchase Subscription<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<pre class="!overflow-visible" data-start="2947" data-end="3028"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-html"><span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://your-payment-link.com"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>&gt;</span>Subscribe<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 </span></code></div></pre>
+<ul data-start="3030" data-end="3148">
+<li data-start="3030" data-end="3148"><strong data-start="3032" data-end="3065">Method 2: Use Web Payment API</strong>
+<ul data-start="3068" data-end="3148">
+<li data-start="3068" data-end="3148">This is suitable for browsers that support the Web Payment API (e.g., Chrome).</li>
+</ul>
 </li>
-<li data-start="1490" data-end="1920">
-<p data-start="1492" data-end="1563"><strong data-start="1492" data-end="1519">Method 2: Use Web Payment API</strong><br data-start="1519" data-end="1522">
-This method is suitable for browsers that support the Web Payment API (e.g., Chrome).</p>
-<pre class="!overflow-visible" data-start="1566" data-end="1920"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">if</span> (<span class="hljs-variable language_">window</span>.<span class="hljs-property">PaymentRequest</span>) {
-<span class="hljs-keyword">const</span> request = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PaymentRequest</span>([{ <span class="hljs-attr">supportedMethods</span>: <span class="hljs-string">"basic-card"</span> }], { 
-<span class="hljs-attr">total</span>: { <span class="hljs-attr">label</span>: <span class="hljs-string">"Subscription"</span>, <span class="hljs-attr">amount</span>: { <span class="hljs-attr">currency</span>: <span class="hljs-string">"USD"</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">"9.99"</span> } }
-});
+</ul>
+<pre class="!overflow-visible" data-start="3150" data-end="3496"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">if</span> (<span class="hljs-variable language_">window</span>.<span class="hljs-property">PaymentRequest</span>) {
+  <span class="hljs-keyword">const</span> request = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PaymentRequest</span>([{ <span class="hljs-attr">supportedMethods</span>: <span class="hljs-string">"basic-card"</span> }], { 
+    <span class="hljs-attr">total</span>: { <span class="hljs-attr">label</span>: <span class="hljs-string">"Subscription"</span>, <span class="hljs-attr">amount</span>: { <span class="hljs-attr">currency</span>: <span class="hljs-string">"USD"</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">"9.99"</span> } }
+  });
 
-request.<span class="hljs-title function_">show</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> response.<span class="hljs-title function_">complete</span>(<span class="hljs-string">"success"</span>));
+  request.<span class="hljs-title function_">show</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> response.<span class="hljs-title function_">complete</span>(<span class="hljs-string">"success"</span>));
 } <span class="hljs-keyword">else</span> {
-<span class="hljs-variable language_">window</span>.<span class="hljs-title function_">open</span>(<span class="hljs-string">"https://your-payment-link.com"</span>, <span class="hljs-string">"_blank"</span>);
+  <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">open</span>(<span class="hljs-string">"https://your-payment-link.com"</span>, <span class="hljs-string">"_blank"</span>);
 }
 </span></code></div></pre>
+<ul data-start="3498" data-end="3657">
+<li data-start="3498" data-end="3657"><strong data-start="3500" data-end="3556">Method 3: Redirect back to PWA after payment success</strong>
+<ul data-start="3559" data-end="3657">
+<li data-start="3559" data-end="3657">Set the payment page to redirect to the PWA upon success (e.g., <code data-start="3625" data-end="3655">https://your-pwa.com/success</code>):</li>
+</ul>
 </li>
-<li data-start="1922" data-end="2110">
-<p data-start="1924" data-end="2005"><strong data-start="1924" data-end="1946">Method 3: Redirect back to the PWA after successful payment</strong><br data-start="1946" data-end="1949">
-Redirect the payment page back to the PWA after success (e.g., <code data-start="1971" data-end="2001">https://your-pwa.com/success</code>):</p>
-<pre class="!overflow-visible" data-start="2008" data-end="2110"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-html"><span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://your-payment-link.com?return_url=https://your-pwa.com/success"</span>&gt;</span>Purchase<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</ul>
+<pre class="!overflow-visible" data-start="3659" data-end="3764"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-html"><span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://your-payment-link.com?return_url=https://your-pwa.com/success"</span>&gt;</span>Subscribe<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 </span></code></div></pre>
-</li>
-<li data-start="2112" data-end="2186">
-<p data-start="2114" data-end="2186"><strong data-start="2114" data-end="2138">Method 4: Listen for payment completion Webhook</strong><br data-start="2138" data-end="2141">
-After server-side payment validation, you can notify the PWA of the payment status via WebSocket or polling.</p>
+<ul data-start="3766" data-end="3941">
+<li data-start="3766" data-end="3941"><strong data-start="3768" data-end="3823">Method 4: Listen for payment completion via Webhook</strong>
+<ul data-start="3826" data-end="3941">
+<li data-start="3826" data-end="3941">After the server validates the payment, it can notify the PWA of the payment status through WebSocket or polling.</li>
+</ul>
 </li>
 </ul>
-<h3 data-start="2188" data-end="2197">4. Summary</h3>
-<p data-start="2198" data-end="2210">✅ <strong data-start="2200" data-end="2208">Best Practices</strong></p>
-<ul data-start="2211" data-end="2373" data-is-only-node="" data-is-last-node="">
-<li data-start="2211" data-end="2258">Use <code data-start="2216" data-end="2233">target="_blank"</code> to open the payment page to avoid the PWA being covered by the payment page.</li>
-<li data-start="2259" data-end="2293">Provide a "Return to PWA" button to ensure users can smoothly return to the PWA page.</li>
-<li data-start="2294" data-end="2335">Use the Web Payment API on Android for a better payment experience.</li>
-<li data-start="2336" data-end="2373" data-is-last-node="">On iOS, prompt users to open the payment link in Safari to avoid payment failure.</li>
-</ul>
-</div>
-</div>
-</div>
+<hr data-start="3943" data-end="3946">
+<h3 data-start="3948" data-end="3962">4. Summary</h3>
+<p data-start="3964" data-end="3985">✅ <strong data-start="3966" data-end="3985">Best Practices:</strong></p>
+<ul data-start="3987" data-end="4350" data-is-only-node="" data-is-last-node="">
+<li data-start="3987" data-end="4086">Open the payment page using <code data-start="4017" data-end="4034">target="_blank"</code> to avoid the PWA being covered by the payment page.</li>
+<li data-start="4087" data-end="4192">Provide a "Return to PWA" button to ensure users can smoothly return to the PWA after making a payment.</li>
+<li data-start="4193" data-end="4264">Use the Web Payment API on Android to enhance the payment experience.</li>
+<li data-start="4265" data-end="4350" data-is-last-node="">On iOS, prompt users to open the payment link in Safari to prevent payment failure.</li>
+</ul></div></div></div>
