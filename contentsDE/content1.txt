@@ -2,15 +2,11 @@
 <h3 data-start="61" data-end="149">"Der Unterschied zwischen nur der Nutzung eines Browsers und einer echten Anwendung"</h3>
 <p data-start="151" data-end="337">Dieses Thema untersucht die Unterschiede zwischen browserbasierten Anwendungen (Webanwendungen) und nativen Anwendungen (installierten Anwendungen). Hier ist eine detaillierte Erklärung:</p>
 <h3 data-start="339" data-end="380">1. <strong data-start="346" data-end="380">Definitionen und Grundkonzepte</strong></h3>
-<ul data-start="384" data-end="1236">
-<li data-start="384" data-end="799">
-<p data-start="386" data-end="799"><strong data-start="386" data-end="421">Browseranwendung (Webanwendung)</strong>:
-Eine Webanwendung ist eine Anwendung, die über einen Browser zugänglich ist. Diese Anwendungen laufen auf entfernten Servern, und Benutzer interagieren mit ihnen über das Internet. Web-Apps erfordern keine Installation; Benutzer müssen einfach eine URL aufrufen, um sie zu nutzen. Beispiele sind soziale Medien, E-Mail-Clients und Online-Office-Tools (z. B. Google Docs).</p>
-</li>
-<li data-start="807" data-end="1236">
-<p data-start="809" data-end="1236"><strong data-start="809" data-end="848">Native Anwendung (Lokale Anwendung)</strong>:
-Eine native Anwendung ist eine Software, die speziell für ein bestimmtes Betriebssystem (z. B. Windows, macOS, iOS, Android) entwickelt wurde. Sie wird direkt auf dem Gerät des Benutzers installiert. Native Apps nutzen die Funktionen des Betriebssystems und die Hardware-Ressourcen und müssen normalerweise aus einem App-Store heruntergeladen werden (z. B. Google Play, App Store).</p>
-</li>
+<ul data-start="430" data-end="635">
+    <li data-start="430" data-end="538"><strong data-start="432" data-end="441">Webanwendungen</strong>:
+    Webanwendungen sind Anwendungen, die über einen Browser aufgerufen werden. Diese Anwendungen laufen auf entfernten Servern und werden über eine Netzwerkverbindung geladen und betrieben. Benutzer müssen keine Software installieren und können einfach die URL der Anwendung aufrufen, um sie zu verwenden. Webanwendungen umfassen soziale Medien, E-Mail-Clients, Online-Office-Tools (wie Google Docs) usw.</li>
+    <li data-start="542" data-end="635"><strong data-start="544" data-end="552">Native Anwendungen</strong>:
+    Native Anwendungen sind Software, die für spezifische Betriebssysteme (wie Windows, macOS, iOS, Android usw.) entwickelt wurde und direkt auf dem Gerät des Benutzers installiert wird. Sie können die Funktionen des Betriebssystems und die Hardware-Ressourcen nutzen und müssen in der Regel aus einem App-Store (wie Google Play, App Store usw.) heruntergeladen und installiert werden.</li>
 </ul>
 <h3 data-start="1238" data-end="1277">2. <strong data-start="1245" data-end="1277">Leistung und Geschwindigkeit</strong></h3>
 <ul data-start="1281" data-end="2033">
