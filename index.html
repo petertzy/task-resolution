@@ -24,8 +24,8 @@
 
         /* Language selection dropdown styling */
         .language-select {
-            margin-bottom: 20px;
-            padding: 10px;
+            margin-bottom: 2px;
+            padding: 2px;
             font-size: 1.1em;
             cursor: pointer;
             border-radius: 5px;
@@ -48,10 +48,10 @@
         }
         .sidebar li {
             padding: 10px;
-            margin: 10px 0;
+            margin-bottom: 10px;
             background-color: #E8DAEF;
             cursor: pointer;
-            text-align: center;
+            text-align: left;
             border-radius: 5px;
             transition: background 0.3s;
         }
@@ -84,8 +84,8 @@
         <!-- Language selection dropdown at the top -->
         <select class="language-select" id="languageSelect" onchange="updateLanguage()">
             <option value="en">English</option>
-            <option value="zh">Chinese</option>
             <option value="de">German</option>
+            <option value="zh">Chinese</option>
         </select>
 
         <ul>
@@ -107,7 +107,7 @@
         function updateLanguage() {
             const lang = document.getElementById('languageSelect').value;
             if (lang === 'zh') {
-                languageFolder = 'contentsTW'; // Chinese
+                languageFolder = 'contentsCN'; // Chinese
             } else if (lang === 'de') {
                 languageFolder = 'contentsDE'; // German
             } else {
@@ -138,7 +138,7 @@
                 ]
             };
 
-            const currentTitles = titles[languageFolder === 'contentsTW' ? 'zh' : languageFolder === 'contentsDE' ? 'de' : 'en'];
+            const currentTitles = titles[languageFolder === 'contentsCN' ? 'zh' : languageFolder === 'contentsDE' ? 'de' : 'en'];
 
             links.forEach((link, index) => {
                 link.textContent = currentTitles[index];
