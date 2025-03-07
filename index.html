@@ -54,14 +54,27 @@
             margin: 0;
             word-break: break-all;
         }
+        .language-select {
+            margin: 20px;
+            padding: 10px;
+            font-size: 1em;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <div class="sidebar">
+    <!-- Language selection dropdown -->
+    <select class="language-select" id="languageSelect" onchange="updateLanguage()">
+        <option value="en">English</option>
+        <option value="zh">Chinese</option>
+        <option value="de">German</option>
+    </select>
+
+    <div class="sidebar" id="sidebar">
         <ul>
-            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content1.txt')">1. 使用浏览器和拥有一个真正的应用程序之间的区别</li>
-            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content2.txt')">2. 安装：只需将其从浏览器复制到主屏幕 ——> 实际的步骤是什么？</li>
-            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content3.txt')">3. 苹果/谷歌费用：提供数字订阅是免费的，因为我们没有使用应用商店。对于一个正常的应用程序，你需要支付大约30%的收入 ——> 请确认！</li>
+            <li onclick="showContent('content1.txt')">1. Difference between just using a browser and having a real application</li>
+            <li onclick="showContent('content2.txt')">2. Installation: What is the actual process of copying it from the browser to the home screen?</li>
+            <li onclick="showContent('content3.txt')">3. Apple/Google fees: Providing digital subscriptions for free because we don’t use the app store. For a normal app, you need to pay about 30% of the revenue → Please confirm!</li>
         </ul>
     </div>
     
@@ -70,16 +83,60 @@
     </div>
 
     <script>
+        // Default language folder (English)
+        let languageFolder = 'contents';
+
+        // Update the language folder based on selected language
+        function updateLanguage() {
+            const lang = document.getElementById('languageSelect').value;
+            if (lang === 'zh') {
+                languageFolder = 'contentsTW'; // Chinese
+            } else if (lang === 'de') {
+                languageFolder = 'contentsDE'; // German
+            } else {
+                languageFolder = 'contents'; // Default English
+            }
+            updateSidebar();
+        }
+
+        // Update the sidebar links based on selected language
+        function updateSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const links = sidebar.querySelectorAll('li');
+            const titles = {
+                en: [
+                    "1. Difference between just using a browser and having a real application",
+                    "2. Installation: What is the actual process of copying it from the browser to the home screen?",
+                    "3. Apple/Google fees: Providing digital subscriptions for free because we don’t use the app store. For a normal app, you need to pay about 30% of the revenue → Please confirm!"
+                ],
+                zh: [
+                    "1. 使用浏览器和拥有一个真正的应用程序之间的区别",
+                    "2. 安装：只需将其从浏览器复制到主屏幕 ——> 实际的步骤是什么？",
+                    "3. 苹果/谷歌费用：提供数字订阅是免费的，因为我们没有使用应用商店。对于一个正常的应用程序，你需要支付大约30%的收入 ——> 请确认！"
+                ],
+                de: [
+                    "1. Der Unterschied zwischen nur der Nutzung eines Browsers und einer echten Anwendung",
+                    "2. Installation: Was ist der eigentliche Prozess, um es vom Browser auf den Home-Bildschirm zu kopieren?",
+                    "3. Apple/Google-Gebühren: Digitale Abonnements kostenlos anzubieten, da wir den App-Store nicht nutzen. Für eine normale App müssen Sie etwa 30% des Umsatzes zahlen → Bitte bestätigen!"
+                ]
+            };
+
+            const currentTitles = titles[languageFolder === 'contentsTW' ? 'zh' : languageFolder === 'contentsDE' ? 'de' : 'en'];
+
+            links.forEach((link, index) => {
+                link.textContent = currentTitles[index];
+            });
+        }
+
+        // Function to load content
         async function showContent(file) {
             try {
                 console.log(`Attempting to load file: ${file}`);
-                const response = await fetch(file);
+                const response = await fetch(`/${languageFolder}/${file}`);
                 if (!response.ok) throw new Error(`File not found (HTTP ${response.status})`);
                 
                 const text = await response.text();
-
                 document.getElementById('displayContent').innerHTML = `<pre>${text}</pre>`;
-
             } catch (error) {
                 console.error("Load failed:", error);
                 document.getElementById('displayContent').innerHTML = 
@@ -87,11 +144,10 @@
             }
         }
 
-        // Check if the text contains HTML tags
-        function isHTML(str) {
-            const doc = new DOMParser().parseFromString(str, 'text/html');
-            return Array.from(doc.body.childNodes).some(node => node.nodeType === 1); // 1 represents element nodes
-        }
+        // Initialize the page with default language (English)
+        window.onload = function() {
+            updateLanguage();
+        };
     </script>
 </body>
 </html>
