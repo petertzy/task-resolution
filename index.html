@@ -70,12 +70,11 @@
             box-sizing: border-box;
         }
         pre {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            max-width: 100%;
-            overflow-wrap: break-word;
-            margin: 0;
-            word-break: break-all;
+            white-space: pre-wrap; /* Allow wrapping of long text */
+            word-wrap: normal; /* Ensure entire words are wrapped and not broken in the middle */
+            max-width: 100%; /* Ensure text fits within the container */
+            overflow-wrap: break-word; /* Handle overflow of text */
+            margin: 0; /* Remove margins from <pre> */
         }
     </style>
 </head>
