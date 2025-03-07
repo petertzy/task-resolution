@@ -217,6 +217,8 @@
                 
                 const text = await response.text();
                 document.getElementById('displayContent').innerHTML = `<pre>${text}</pre>`;
+                // Scroll the content to the top of the page
+                document.getElementById('displayContent').scrollIntoView({ behavior: 'smooth', block: 'start' });
             } catch (error) {
                 console.error("Load failed:", error);
                 document.getElementById('displayContent').innerHTML = 
