@@ -1,11 +1,129 @@
-## **第一部分：建立 Next.js 項目**
-
-### **步驟 1：安裝 Node.js 和 npm**
-在開始之前，請確保你的電腦已經安裝了 **Node.js**（建議版本 18+）和 **npm** 或 **yarn**。可以使用以下命令檢查：
-
-```sh
-node -v
-npm -v
-```
-
-如果沒有安裝，請前往 [Node.js 官方網站](https://nodejs.org/) 下載並安裝。
+<div data-message-author-role="assistant" data-message-id="826a65e7-1cc1-4f84-82f2-6774a018acce" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light">
+    <hr data-start="26" data-end="29">
+    <h3 data-start="31" data-end="85"><strong data-start="35" data-end="85">如何降低 Apple App Store 和 Google Play Store 的抽成费？</strong></h3>
+    <p data-start="87" data-end="260">如果你不通过 Apple App Store 或 Google Play Store 提供数字订阅，<strong data-start="137" data-end="151">你无需支付任何手续费</strong>，因为这些应用商店不会向你收取费用。<br data-start="169" data-end="172">
+    然而，关于“<strong data-start="178" data-end="198">所有应用都需要支付 30% 抽成</strong>”的说法并不完全正确。实际上，Apple 和 Google 采用了<strong data-start="231" data-end="239">分级费率</strong>，部分开发者可以享受<strong data-start="249" data-end="259">降低的手续费</strong>。</p>
+    <h4 data-start="262" data-end="306"><strong data-start="267" data-end="306">最新 Apple &amp; Google 应用商店抽成政策（截至 2024）</strong></h4>
+    <p data-start="308" data-end="334"><strong data-start="308" data-end="334">✅ Apple App Store（iOS）</strong></p>
+    <ul data-start="335" data-end="454">
+    <li data-start="335" data-end="368"><strong data-start="337" data-end="345">标准抽成</strong>：30%（适用于大部分应用的订阅和应用内购买）</li>
+    <li data-start="369" data-end="454"><strong data-start="371" data-end="379">降低抽成</strong>：15%
+    <ul data-start="388" data-end="454">
+    <li data-start="388" data-end="418">适用于年收入 <strong data-start="397" data-end="411">低于 100 万美元</strong> 的开发者</li>
+    <li data-start="421" data-end="454">适用于<strong data-start="426" data-end="438">订阅超过 1 年</strong> 的用户（第一年仍然是 30%）</li>
+    </ul>
+    </li>
+    </ul>
+    <p data-start="456" data-end="488"><strong data-start="456" data-end="488">✅ Google Play Store（Android）</strong></p>
+    <ul data-start="489" data-end="605">
+    <li data-start="489" data-end="516"><strong data-start="491" data-end="499">标准抽成</strong>：30%（适用于应用内购买和订阅）</li>
+    <li data-start="517" data-end="558"><strong data-start="519" data-end="527">降低抽成</strong>：15%（适用于所有订阅服务，从第一年开始就按 15% 计算）</li>
+    <li data-start="559" data-end="605"><strong data-start="561" data-end="571">替代支付系统</strong>（部分地区）：允许使用第三方支付，手续费可降至 <strong data-start="595" data-end="605">11-26%</strong></li>
+    </ul>
+    <hr data-start="607" data-end="610">
+    <h2 data-start="612" data-end="648"><strong data-start="615" data-end="648">如何合法降低 Apple/Google 应用商店的手续费？</strong></h2>
+    <h3 data-start="650" data-end="679"><strong data-start="654" data-end="679">1️⃣ 申请官方优惠计划（降低至 15%）</strong></h3>
+    <ul data-start="680" data-end="932">
+    <li data-start="680" data-end="883"><strong data-start="682" data-end="701">Apple App Store</strong>：「App Store Small Business Program」
+    <ul data-start="741" data-end="883">
+    <li data-start="741" data-end="769">适用于<strong data-start="746" data-end="763">年收入低于 100 万美元</strong>的开发者</li>
+    <li data-start="772" data-end="805">申请后，Apple 的抽成从 <strong data-start="789" data-end="803">30% 降至 15%</strong></li>
+    <li data-start="808" data-end="883"><a data-start="810" data-end="881" rel="noopener" target="_new" href="https://developer.apple.com/app-store/small-business-program/">官方申请链接</a></li>
+    </ul>
+    </li>
+    <li data-start="884" data-end="932"><strong data-start="886" data-end="907">Google Play Store</strong>：订阅型应用自动享受 15% 费率，无需额外申请。</li>
+    </ul>
+    <p data-start="934" data-end="948"><strong data-start="934" data-end="945">👉 适用对象</strong>：</p>
+    <ul data-start="949" data-end="1030">
+    <li data-start="949" data-end="977"><strong data-start="951" data-end="975">小型开发者（年收入低于 100 万美元）</strong></li>
+    <li data-start="978" data-end="1030"><strong data-start="980" data-end="993">提供订阅服务的应用</strong>（Google Play 直接优惠，Apple 需要订阅满 1 年后降费）</li>
+    </ul>
+    <hr data-start="1032" data-end="1035">
+    <h3 data-start="1037" data-end="1062"><strong data-start="1041" data-end="1062">2️⃣ 使用“外部支付”绕过手续费</strong></h3>
+    <p data-start="1063" data-end="1109">Apple 和 Google 允许部分情况下，<strong data-start="1086" data-end="1099">引导用户去官网支付</strong>，避免高额抽成。</p>
+    <ul data-start="1111" data-end="1319">
+    <li data-start="1111" data-end="1227"><strong data-start="1113" data-end="1122">Apple</strong>：「外部链接权利（External Link Account Entitlement）」
+    <ul data-start="1171" data-end="1227">
+    <li data-start="1171" data-end="1227">例如 Spotify、Netflix 允许用户<strong data-start="1196" data-end="1206">跳转官网购买</strong>，避免使用 Apple 内购（IAP）</li>
+    </ul>
+    </li>
+    <li data-start="1228" data-end="1319"><strong data-start="1230" data-end="1240">Google</strong>：「User Choice Billing」（用户可选择 Google Pay 或第三方支付）
+    <ul data-start="1292" data-end="1319">
+    <li data-start="1292" data-end="1319">部分国家已开放，手续费可降至 <strong data-start="1309" data-end="1319">11-26%</strong></li>
+    </ul>
+    </li>
+    </ul>
+    <p data-start="1321" data-end="1334"><strong data-start="1321" data-end="1332">✅ 具体做法：</strong></p>
+    <ol data-start="1335" data-end="1429">
+    <li data-start="1335" data-end="1371"><strong data-start="1338" data-end="1354">移除 App 内订阅功能</strong>，仅提供“前往官网订阅”按钮。</li>
+    <li data-start="1372" data-end="1429"><strong data-start="1375" data-end="1405">在官网使用 Stripe、PayPal 或信用卡支付</strong>，避免 Apple/Google 直接抽成。</li>
+    </ol>
+    <p data-start="1431" data-end="1441">💡 <strong data-start="1434" data-end="1440">注意</strong>：</p>
+    <ul data-start="1442" data-end="1515">
+    <li data-start="1442" data-end="1480">Apple 对外部支付仍然<strong data-start="1457" data-end="1470">收取 27% 费用</strong>（比 30% 低）。</li>
+    <li data-start="1481" data-end="1515">Google 视国家不同，第三方支付费用 <strong data-start="1504" data-end="1514">11-26%</strong>。</li>
+    </ul>
+    <hr data-start="1517" data-end="1520">
+    <h3 data-start="1522" data-end="1557"><strong data-start="1526" data-end="1557">3️⃣ 直接提供 Web App（PWA）绕开应用商店</strong></h3>
+    <p data-start="1558" data-end="1686">如果你的应用主要是<strong data-start="1567" data-end="1582">订阅或 SaaS 服务</strong>（如 Notion、Spotify、Netflix），你可以开发 <strong data-start="1615" data-end="1654">PWA（Progressive Web App，渐进式 Web 应用）</strong>，让用户直接在浏览器使用，而<strong data-start="1668" data-end="1685">不依赖 App Store</strong>。</p>
+    <p data-start="1688" data-end="1699">✅ <strong data-start="1690" data-end="1697">优势：</strong></p>
+    <ul data-start="1700" data-end="1800">
+    <li data-start="1700" data-end="1744"><strong data-start="1702" data-end="1726">完全不受 Apple/Google 抽成</strong>，所有支付均可直接通过官网完成。</li>
+    <li data-start="1745" data-end="1800"><strong data-start="1747" data-end="1762">适用于 SaaS 业务</strong>（如 Notion、Slack），或不依赖 App Store 的应用。</li>
+    </ul>
+    <p data-start="1802" data-end="1814">💡 <strong data-start="1805" data-end="1812">示例：</strong></p>
+    <ul data-start="1815" data-end="1910">
+    <li data-start="1815" data-end="1860"><strong data-start="1817" data-end="1836">YouTube Premium</strong>：iOS 版不提供订阅，用户需前往官网订阅。</li>
+    <li data-start="1861" data-end="1910"><strong data-start="1863" data-end="1884">Spotify &amp; Netflix</strong>：引导用户去官网购买，而不是在 App 内订阅。</li>
+    </ul>
+    <p data-start="1912" data-end="1926"><strong data-start="1912" data-end="1924">👉 具体步骤：</strong></p>
+    <ol data-start="1927" data-end="2031">
+    <li data-start="1927" data-end="1963"><strong data-start="1930" data-end="1943">开发 PWA 版本</strong>，确保用户可以用浏览器访问完整功能。</li>
+    <li data-start="1964" data-end="1999"><strong data-start="1967" data-end="1980">在官网设置支付系统</strong>，并引导用户在 PWA 购买订阅。</li>
+    <li data-start="2000" data-end="2031"><strong data-start="2003" data-end="2021">通过 Email/短信/通知</strong> 提醒用户续订。</li>
+    </ol>
+    <hr data-start="2033" data-end="2036">
+    <h3 data-start="2038" data-end="2065"><strong data-start="2042" data-end="2065">4️⃣ 根据不同国家/地区优化支付方案</strong></h3>
+    <p data-start="2066" data-end="2104">各国对 Apple/Google 的规定不同，某些地区可以合法绕开高额抽成。</p>
+    <ul data-start="2106" data-end="2207">
+    <li data-start="2106" data-end="2161"><strong data-start="2108" data-end="2118">欧盟（EU）</strong>：因反垄断法，Google 允许<strong data-start="2134" data-end="2145">使用第三方支付</strong>，抽成降至 <strong data-start="2151" data-end="2158">11%</strong>。</li>
+    <li data-start="2162" data-end="2207"><strong data-start="2164" data-end="2176">韩国、印度、日本</strong>：政府要求 Google 必须<strong data-start="2191" data-end="2204">提供第三方支付选项</strong>。</li>
+    </ul>
+    <p data-start="2209" data-end="2222">✅ <strong data-start="2211" data-end="2220">操作建议：</strong></p>
+    <ul data-start="2223" data-end="2343">
+    <li data-start="2223" data-end="2279"><strong data-start="2225" data-end="2233">欧盟市场</strong>：使用 <strong data-start="2237" data-end="2268">Google「User Choice Billing」</strong> 方案，减少费用。</li>
+    <li data-start="2280" data-end="2343"><strong data-start="2282" data-end="2291">韩国、印度</strong>：整合当地支付方式，如 <strong data-start="2303" data-end="2329">KakaoPay（韩国）、Paytm（印度）</strong>，避免 App 内支付抽成。</li>
+    </ul>
+    <hr data-start="2345" data-end="2348">
+    <h3 data-start="2350" data-end="2388"><strong data-start="2354" data-end="2388">5️⃣ 避免使用 Apple/Google 官方订阅 API</strong></h3>
+    <p data-start="2389" data-end="2451">Apple 和 Google 强制开发者使用<strong data-start="2411" data-end="2445">官方订阅 API（In-App Purchase, IAP）</strong>，这意味着：</p>
+    <ul data-start="2452" data-end="2533">
+    <li data-start="2452" data-end="2490"><strong data-start="2454" data-end="2475">不能在 App 内提供外部付款链接</strong>（但可以引导用户去官网）。</li>
+    <li data-start="2491" data-end="2533"><strong data-start="2493" data-end="2530">所有 App 内购买的订阅/虚拟商品都被抽成 30%（或 15%）</strong>。</li>
+    </ul>
+    <p data-start="2535" data-end="2548">✅ <strong data-start="2537" data-end="2546">解决方案：</strong></p>
+    <ol data-start="2549" data-end="2641">
+    <li data-start="2549" data-end="2592"><strong data-start="2552" data-end="2563">SaaS 服务</strong>（如企业内部工具）：仅提供网页版，避免 App 交易。</li>
+    <li data-start="2593" data-end="2641"><strong data-start="2596" data-end="2606">提供长期订阅</strong>：Apple 订阅超过 <strong data-start="2618" data-end="2632">1 年后降至 15%</strong>，可优化收入。</li>
+    </ol>
+    <hr data-start="2643" data-end="2646">
+    <h2 data-start="2648" data-end="2687"><strong data-start="2651" data-end="2687">📌 总结：如何最大限度降低 Apple/Google 的费用？</strong></h2>
+    <table data-start="2688" data-end="3023"><thead data-start="2688" data-end="2716"><tr data-start="2688" data-end="2716"><th data-start="2688" data-end="2693">方案</th><th data-start="2693" data-end="2700">适用平台</th><th data-start="2700" data-end="2707">适用情况</th><th data-start="2707" data-end="2716">预计手续费</th></tr></thead><tbody data-start="2759" data-end="3023"><tr data-start="2759" data-end="2818"><td><strong data-start="2761" data-end="2781">使用 Web App / PWA</strong></td><td>iOS / Android</td><td>适用于所有应用</td><td><strong data-start="2810" data-end="2816">0%</strong></td></tr><tr data-start="2819" data-end="2893"><td><strong data-start="2821" data-end="2838">加入官方 15% 优惠计划</strong></td><td>iOS / Android</td><td>小型开发者（年收入 &lt;100 万美元）或订阅服务</td><td><strong data-start="2884" data-end="2891">15%</strong></td></tr><tr data-start="2894" data-end="2961"><td><strong data-start="2896" data-end="2906">使用外部支付</strong></td><td>iOS / Android</td><td>Spotify/Netflix 等订阅服务</td><td><strong data-start="2949" data-end="2959">11-27%</strong></td></tr><tr data-start="2962" data-end="3023"><td><strong data-start="2964" data-end="2982">地区优化（欧盟/韩国/印度）</strong></td><td>Android</td><td>受当地法律支持的第三方支付</td><td><strong data-start="3011" data-end="3021">11-26%</strong></td></tr></tbody></table>
+    <p data-start="3025" data-end="3057">✅ <strong data-start="3027" data-end="3056">如果你希望完全绕开 Apple/Google 费用</strong>：</p>
+    <ul data-start="3058" data-end="3125">
+    <li data-start="3058" data-end="3095"><strong data-start="3060" data-end="3080">开发 Web App 或 PWA</strong>，让用户直接在浏览器订阅。</li>
+    <li data-start="3096" data-end="3125"><strong data-start="3098" data-end="3111">引导用户去官网支付</strong>，避免 App 内购买。</li>
+    </ul>
+    <p data-start="3127" data-end="3161">✅ <strong data-start="3129" data-end="3160">如果你希望降低抽成，但仍需在 App Store 上架</strong>：</p>
+    <ul data-start="3162" data-end="3238">
+    <li data-start="3162" data-end="3197">申请 <strong data-start="3167" data-end="3179">15% 费率计划</strong>（适用于小型开发者 &amp; 订阅）。</li>
+    <li data-start="3198" data-end="3238"><strong data-start="3200" data-end="3221">在特定国家（如欧盟）使用第三方支付</strong>，手续费降至 <strong data-start="3228" data-end="3235">11%</strong>。</li>
+    </ul>
+    <hr data-start="3240" data-end="3243">
+    <h3 data-start="3245" data-end="3258"><strong data-start="3249" data-end="3258">📢 结论</strong></h3>
+    <ul data-start="3259" data-end="3372">
+    <li data-start="3259" data-end="3297"><strong data-start="3261" data-end="3286">PWA / Web App 是最省钱的方式</strong>，但适用场景有限。</li>
+    <li data-start="3298" data-end="3339"><strong data-start="3300" data-end="3313">引导用户去官网支付</strong> 可有效降低 Apple/Google 的抽成。</li>
+    <li data-start="3340" data-end="3372"><strong data-start="3342" data-end="3354">不同国家政策不同</strong>，合理利用当地法规可减少手续费。</li>
+    </ul>
+    <p data-start="3374" data-end="3449" data-is-last-node="" data-is-only-node="">如果你的目标是<strong data-start="3381" data-end="3422">降低 App Store/Play Store 费用，并让用户更快获取应用</strong>，那么 PWA + 外部支付将是<strong data-start="3438" data-end="3446">最佳策略</strong> ✅。</p></div></div></div>

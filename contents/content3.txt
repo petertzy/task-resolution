@@ -1,11 +1,126 @@
-## **第一部分：建立 Next.js 項目**
-
-### **步驟 1：安裝 Node.js 和 npm**
-在開始之前，請確保你的電腦已經安裝了 **Node.js**（建議版本 18+）和 **npm** 或 **yarn**。可以使用以下命令檢查：
-
-```sh
-node -v
-npm -v
-```
-
-如果沒有安裝，請前往 [Node.js 官方網站](https://nodejs.org/) 下載並安裝。
+<div data-message-author-role="assistant" data-message-id="b7a643df-d246-48ae-a416-8f6e1880a7f6" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light"><h3 data-start="0" data-end="66"><strong data-start="4" data-end="64">How to Reduce Apple App Store and Google Play Store Fees</strong></h3>
+<p data-start="68" data-end="408">If you don’t distribute digital subscriptions through the Apple App Store or Google Play Store, you don’t need to pay any transaction fees. However, the claim that “all apps must pay a 30% commission” is not entirely accurate. Both Apple and Google have <strong data-start="322" data-end="347">tiered fee structures</strong>, allowing some developers to qualify for <strong data-start="389" data-end="405">reduced fees</strong>.</p>
+<h4 data-start="410" data-end="478"><strong data-start="415" data-end="476">Latest Apple &amp; Google App Store Fee Policies (as of 2024)</strong></h4>
+<p data-start="480" data-end="508"><strong data-start="480" data-end="506">Apple App Store (iOS):</strong></p>
+<ul data-start="509" data-end="771">
+<li data-start="509" data-end="592"><strong data-start="511" data-end="528">Standard Fee:</strong> 30% (applies to most app subscriptions and in-app purchases).</li>
+<li data-start="593" data-end="771"><strong data-start="595" data-end="611">Reduced Fee:</strong> 15%
+<ul data-start="620" data-end="771">
+<li data-start="620" data-end="689">Available to developers with <strong data-start="651" data-end="686">annual revenue below $1 million</strong>.</li>
+<li data-start="692" data-end="771">Applies to <strong data-start="705" data-end="743">subscriptions after the first year</strong> (first year remains 30%).</li>
+</ul>
+</li>
+</ul>
+<p data-start="773" data-end="807"><strong data-start="773" data-end="805">Google Play Store (Android):</strong></p>
+<ul data-start="808" data-end="1067">
+<li data-start="808" data-end="875"><strong data-start="810" data-end="827">Standard Fee:</strong> 30% (for in-app purchases and subscriptions).</li>
+<li data-start="876" data-end="960"><strong data-start="878" data-end="894">Reduced Fee:</strong> 15% (applies to all subscription services from the first year).</li>
+<li data-start="961" data-end="1067"><strong data-start="963" data-end="995">Alternative Payment Systems:</strong> Some regions allow third-party payments, lowering fees to <strong data-start="1054" data-end="1064">11-26%</strong>.</li>
+</ul>
+<hr data-start="1069" data-end="1072">
+<h2 data-start="1074" data-end="1118"><strong data-start="1077" data-end="1116">Strategies to Reduce App Store Fees</strong></h2>
+<h3 data-start="1120" data-end="1185"><strong data-start="1124" data-end="1183">1. Apply for Official Discount Programs (Reduce to 15%)</strong></h3>
+<ul data-start="1186" data-end="1595">
+<li data-start="1186" data-end="1477"><strong data-start="1188" data-end="1208">Apple App Store:</strong> <strong data-start="1209" data-end="1245">App Store Small Business Program</strong>
+<ul data-start="1250" data-end="1477">
+<li data-start="1250" data-end="1317">Developers earning <strong data-start="1271" data-end="1304">less than $1 million annually</strong> can apply.</li>
+<li data-start="1320" data-end="1380">Apple’s commission is reduced to <strong data-start="1355" data-end="1377">15% instead of 30%</strong>.</li>
+<li data-start="1383" data-end="1477"><a data-start="1385" data-end="1475" rel="noopener" target="_new" href="https://developer.apple.com/app-store/small-business-program/">Official Application Link</a></li>
+</ul>
+</li>
+<li data-start="1478" data-end="1595"><strong data-start="1480" data-end="1502">Google Play Store:</strong> All subscription-based apps automatically qualify for the <strong data-start="1561" data-end="1572">15% fee</strong> from the first year.</li>
+</ul>
+<p data-start="1597" data-end="1619"><strong data-start="1597" data-end="1617">Who can benefit?</strong></p>
+<ul data-start="1620" data-end="1724">
+<li data-start="1620" data-end="1679">Small developers earning <strong data-start="1647" data-end="1676">under $1 million per year</strong>.</li>
+<li data-start="1680" data-end="1724">Apps offering <strong data-start="1696" data-end="1721">subscription services</strong>.</li>
+</ul>
+<hr data-start="1726" data-end="1729">
+<h3 data-start="1731" data-end="1791"><strong data-start="1735" data-end="1789">2. Use External Payment Methods to Avoid High Fees</strong></h3>
+<p data-start="1792" data-end="1907">Apple and Google allow developers to <strong data-start="1829" data-end="1877">redirect users to their website for payments</strong>, avoiding high commissions.</p>
+<ul data-start="1909" data-end="2197">
+<li data-start="1909" data-end="2058"><strong data-start="1911" data-end="1921">Apple:</strong> <strong data-start="1922" data-end="1959">External Link Account Entitlement</strong>
+<ul data-start="1964" data-end="2058">
+<li data-start="1964" data-end="2058">Used by companies like Spotify and Netflix to direct users to subscribe on their websites.</li>
+</ul>
+</li>
+<li data-start="2059" data-end="2197"><strong data-start="2061" data-end="2072">Google:</strong> <strong data-start="2073" data-end="2096">User Choice Billing</strong>
+<ul data-start="2101" data-end="2197">
+<li data-start="2101" data-end="2197">In certain countries, users can choose between Google Play or third-party payment providers.</li>
+</ul>
+</li>
+</ul>
+<p data-start="2199" data-end="2227"><strong data-start="2199" data-end="2225">How to implement this?</strong></p>
+<ol data-start="2228" data-end="2421">
+<li data-start="2228" data-end="2319"><strong data-start="2231" data-end="2262">Remove in-app subscriptions</strong> and replace them with a “Subscribe on Website” button.</li>
+<li data-start="2320" data-end="2421"><strong data-start="2323" data-end="2388">Offer Stripe, PayPal, or credit card payments on your website</strong> to avoid in-app purchase fees.</li>
+</ol>
+<p data-start="2423" data-end="2448"><strong data-start="2423" data-end="2446">Key Considerations:</strong></p>
+<ul data-start="2449" data-end="2616">
+<li data-start="2449" data-end="2529">Apple still charges <strong data-start="2471" data-end="2500">27% for external payments</strong> (slightly lower than 30%).</li>
+<li data-start="2530" data-end="2616">Google’s third-party payment fees vary <strong data-start="2571" data-end="2589">between 11-26%</strong> depending on the region.</li>
+</ul>
+<hr data-start="2618" data-end="2621">
+<h3 data-start="2623" data-end="2676"><strong data-start="2627" data-end="2674">3. Use a Web App (PWA) to Bypass App Stores</strong></h3>
+<p data-start="2677" data-end="2840">For subscription-based or SaaS apps (like Notion, Spotify, or Netflix), you can build a <strong data-start="2765" data-end="2794">PWA (Progressive Web App)</strong> instead of distributing through app stores.</p>
+<p data-start="2842" data-end="2859"><strong data-start="2842" data-end="2857">Advantages:</strong></p>
+<ul data-start="2860" data-end="3031">
+<li data-start="2860" data-end="2954"><strong data-start="2862" data-end="2880">No commissions</strong> from Apple or Google; all transactions happen directly on your website.</li>
+<li data-start="2955" data-end="3031"><strong data-start="2957" data-end="2986">Ideal for SaaS businesses</strong> that don’t require app store distribution.</li>
+</ul>
+<p data-start="3033" data-end="3048"><strong data-start="3033" data-end="3046">Examples:</strong></p>
+<ul data-start="3049" data-end="3241">
+<li data-start="3049" data-end="3141"><strong data-start="3051" data-end="3071">YouTube Premium:</strong> No in-app subscription on iOS; users must subscribe on the website.</li>
+<li data-start="3142" data-end="3241"><strong data-start="3144" data-end="3166">Spotify &amp; Netflix:</strong> Direct users to their websites for payments instead of in-app purchases.</li>
+</ul>
+<p data-start="3243" data-end="3270"><strong data-start="3243" data-end="3268">Implementation Steps:</strong></p>
+<ol data-start="3271" data-end="3521">
+<li data-start="3271" data-end="3362"><strong data-start="3274" data-end="3308">Develop a fully functional PWA</strong> so users can access your service via a web browser.</li>
+<li data-start="3363" data-end="3447"><strong data-start="3366" data-end="3393">Set up website payments</strong> and guide users to subscribe through their browser.</li>
+<li data-start="3448" data-end="3521"><strong data-start="3451" data-end="3487">Use email, SMS, or notifications</strong> to remind users about renewals.</li>
+</ol>
+<hr data-start="3523" data-end="3526">
+<h3 data-start="3528" data-end="3587"><strong data-start="3532" data-end="3585">4. Optimize Payment Options for Different Regions</strong></h3>
+<p data-start="3588" data-end="3679">Some countries have regulations that allow developers to bypass or reduce App Store fees.</p>
+<ul data-start="3681" data-end="3910">
+<li data-start="3681" data-end="3798"><strong data-start="3683" data-end="3707">European Union (EU):</strong> Due to antitrust laws, Google allows <strong data-start="3745" data-end="3769">third-party payments</strong>, reducing fees to <strong data-start="3788" data-end="3795">11%</strong>.</li>
+<li data-start="3799" data-end="3910"><strong data-start="3801" data-end="3831">South Korea, India, Japan:</strong> These governments require Google to support <strong data-start="3876" data-end="3907">alternative payment methods</strong>.</li>
+</ul>
+<p data-start="3912" data-end="3938"><strong data-start="3912" data-end="3936">Recommended Actions:</strong></p>
+<ul data-start="3939" data-end="4160">
+<li data-start="3939" data-end="4012"><strong data-start="3941" data-end="3960">For EU markets:</strong> Use <strong data-start="3965" data-end="3995">Google User Choice Billing</strong> to lower fees.</li>
+<li data-start="4013" data-end="4160"><strong data-start="4015" data-end="4043">For South Korea &amp; India:</strong> Integrate <strong data-start="4054" data-end="4079">local payment systems</strong> (e.g., KakaoPay in South Korea, Paytm in India) to avoid in-app purchase fees.</li>
+</ul>
+<hr data-start="4162" data-end="4165">
+<h3 data-start="4167" data-end="4230"><strong data-start="4171" data-end="4228">5. Avoid Apple/Google Subscription APIs When Possible</strong></h3>
+<p data-start="4231" data-end="4349">Apple and Google <strong data-start="4248" data-end="4259">require</strong> developers to use their official subscription APIs (In-App Purchase, IAP), which means:</p>
+<ul data-start="4350" data-end="4533">
+<li data-start="4350" data-end="4415">You <strong data-start="4356" data-end="4397">cannot provide external payment links</strong> within the app.</li>
+<li data-start="4416" data-end="4533">All in-app digital purchases (such as subscriptions and virtual goods) are subject to <strong data-start="4504" data-end="4530">30% or 15% commissions</strong>.</li>
+</ul>
+<p data-start="4535" data-end="4560"><strong data-start="4535" data-end="4558">Possible Solutions:</strong></p>
+<ol data-start="4561" data-end="4788">
+<li data-start="4561" data-end="4666"><strong data-start="4564" data-end="4607">For SaaS apps (e.g., enterprise tools):</strong> Provide only a web version to avoid in-app transactions.</li>
+<li data-start="4667" data-end="4788"><strong data-start="4670" data-end="4704">For subscription-based models:</strong> Offer <strong data-start="4711" data-end="4730">long-term plans</strong> to benefit from Apple's reduced 15% fee after one year.</li>
+</ol>
+<hr data-start="4790" data-end="4793">
+<h2 data-start="4795" data-end="4848"><strong data-start="4798" data-end="4846">Summary: How to Minimize Apple &amp; Google Fees</strong></h2>
+<table data-start="4850" data-end="5341"><thead data-start="4850" data-end="4907"><tr data-start="4850" data-end="4907"><th data-start="4850" data-end="4861">Strategy</th><th data-start="4861" data-end="4872">Platform</th><th data-start="4872" data-end="4890">Who Can Use It?</th><th data-start="4890" data-end="4907">Estimated Fee</th></tr></thead><tbody data-start="4963" data-end="5341"><tr data-start="4963" data-end="5051"><td><strong data-start="4965" data-end="4988">Use a Web App (PWA)</strong></td><td>iOS / Android</td><td>Any app that can run in a browser</td><td><strong data-start="5043" data-end="5049">0%</strong></td></tr><tr data-start="5052" data-end="5158"><td><strong data-start="5054" data-end="5078">Join 15% Fee Program</strong></td><td>iOS / Android</td><td>Small developers (&lt;$1M/year) or subscription apps</td><td><strong data-start="5149" data-end="5156">15%</strong></td></tr><tr data-start="5159" data-end="5250"><td><strong data-start="5161" data-end="5191">Use External Payment Links</strong></td><td>iOS / Android</td><td>Apps like Spotify/Netflix</td><td><strong data-start="5238" data-end="5248">11-27%</strong></td></tr><tr data-start="5251" data-end="5341"><td><strong data-start="5253" data-end="5283">Leverage Regional Policies</strong></td><td>Android</td><td>Apps in EU, Korea, India, etc.</td><td><strong data-start="5329" data-end="5339">11-26%</strong></td></tr></tbody></table>
+<p data-start="5343" data-end="5396"><strong data-start="5343" data-end="5394">If you want to completely avoid App Store fees:</strong></p>
+<ul data-start="5397" data-end="5549">
+<li data-start="5397" data-end="5472"><strong data-start="5399" data-end="5423">Use a Web App or PWA</strong> and direct users to subscribe on your website.</li>
+<li data-start="5473" data-end="5549"><strong data-start="5475" data-end="5518">Encourage users to pay via your website</strong> instead of in-app purchases.</li>
+</ul>
+<p data-start="5551" data-end="5614"><strong data-start="5551" data-end="5612">If you want to reduce fees while remaining in app stores:</strong></p>
+<ul data-start="5615" data-end="5775">
+<li data-start="5615" data-end="5690">Apply for the <strong data-start="5631" data-end="5661">15% Small Business Program</strong> (for eligible developers).</li>
+<li data-start="5691" data-end="5775"><strong data-start="5693" data-end="5728">Use third-party payment options</strong> in supported countries to lower commissions.</li>
+</ul>
+<hr data-start="5777" data-end="5780">
+<h3 data-start="5782" data-end="5806"><strong data-start="5786" data-end="5804">Final Thoughts</strong></h3>
+<ul data-start="5807" data-end="6059">
+<li data-start="5807" data-end="5886"><strong data-start="5809" data-end="5862">PWA/Web Apps are the most cost-effective solution</strong> but have limitations.</li>
+<li data-start="5887" data-end="5972"><strong data-start="5889" data-end="5929">Guiding users to pay on your website</strong> can significantly reduce App Store fees.</li>
+<li data-start="5973" data-end="6059"><strong data-start="5975" data-end="6004">Regional regulations vary</strong>, so take advantage of local policies to lower costs.</li>
+</ul>
+<p data-start="6061" data-end="6209" data-is-last-node="" data-is-only-node="">If your goal is to <strong data-start="6080" data-end="6153">reduce App Store/Play Store fees and provide users with easier access</strong>, then <strong data-start="6160" data-end="6187">PWA + external payments</strong> is the best strategy.</p></div></div></div>

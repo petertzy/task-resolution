@@ -1,11 +1,127 @@
-## **第一部分：建立 Next.js 項目**
-
-### **步驟 1：安裝 Node.js 和 npm**
-在開始之前，請確保你的電腦已經安裝了 **Node.js**（建議版本 18+）和 **npm** 或 **yarn**。可以使用以下命令檢查：
-
-```sh
-node -v
-npm -v
-```
-
-如果沒有安裝，請前往 [Node.js 官方網站](https://nodejs.org/) 下載並安裝。
+<div data-message-author-role="assistant" data-message-id="9eca1d89-474f-49d7-a94c-ba94037f9e41" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light"><h3 data-start="0" data-end="82"><strong data-start="4" data-end="80">Wie man die Gebühren des Apple App Store und Google Play Store reduziert</strong></h3>
+<p data-start="84" data-end="473">Wenn du digitale Abonnements nicht über den Apple App Store oder den Google Play Store vertreibst, musst du keine Transaktionsgebühren zahlen. Allerdings ist die Aussage, dass „alle Apps eine 30%ige Provision zahlen müssen“, nicht ganz korrekt. Sowohl Apple als auch Google haben <strong data-start="364" data-end="395">gestaffelte Gebührenmodelle</strong>, die es einigen Entwicklern ermöglichen, <strong data-start="437" data-end="460">reduzierte Gebühren</strong> zu zahlen.</p>
+<hr data-start="475" data-end="478">
+<h2 data-start="480" data-end="549"><strong data-start="483" data-end="547">Aktuelle Gebührenrichtlinien von Apple &amp; Google (Stand 2024)</strong></h2>
+<h3 data-start="551" data-end="583"><strong data-start="555" data-end="581">Apple App Store (iOS):</strong></h3>
+<ul data-start="584" data-end="852">
+<li data-start="584" data-end="669"><strong data-start="586" data-end="605">Standardgebühr:</strong> 30% (für die meisten digitalen Abonnements und In-App-Käufe).</li>
+<li data-start="670" data-end="852"><strong data-start="672" data-end="694">Reduzierte Gebühr:</strong> 15%
+<ul data-start="703" data-end="852">
+<li data-start="703" data-end="769">Für Entwickler mit <strong data-start="724" data-end="766">einem Jahresumsatz unter 1 Million USD</strong>.</li>
+<li data-start="772" data-end="852">Für Abonnements <strong data-start="790" data-end="814">nach dem ersten Jahr</strong> (im ersten Jahr bleibt es bei 30%).</li>
+</ul>
+</li>
+</ul>
+<h3 data-start="854" data-end="892"><strong data-start="858" data-end="890">Google Play Store (Android):</strong></h3>
+<ul data-start="893" data-end="1192">
+<li data-start="893" data-end="956"><strong data-start="895" data-end="914">Standardgebühr:</strong> 30% (für In-App-Käufe und Abonnements).</li>
+<li data-start="957" data-end="1035"><strong data-start="959" data-end="981">Reduzierte Gebühr:</strong> 15% (gilt für alle Abonnements ab dem ersten Jahr).</li>
+<li data-start="1036" data-end="1192"><strong data-start="1038" data-end="1070">Alternative Zahlungssysteme:</strong> In einigen Ländern sind <strong data-start="1095" data-end="1122">Drittanbieter-Zahlungen</strong> erlaubt, wodurch die Gebühren auf <strong data-start="1157" data-end="1167">11-26%</strong> gesenkt werden können.</li>
+</ul>
+<hr data-start="1194" data-end="1197">
+<h2 data-start="1199" data-end="1257"><strong data-start="1202" data-end="1255">Strategien zur Reduzierung der App-Store-Gebühren</strong></h2>
+<h3 data-start="1259" data-end="1339"><strong data-start="1263" data-end="1337">1. Teilnahme an offiziellen Rabattprogrammen (Gebühren auf 15% senken)</strong></h3>
+<ul data-start="1340" data-end="1762">
+<li data-start="1340" data-end="1651"><strong data-start="1342" data-end="1362">Apple App Store:</strong> <strong data-start="1363" data-end="1399">App Store Small Business Program</strong>
+<ul data-start="1404" data-end="1651">
+<li data-start="1404" data-end="1487">Entwickler mit einem <strong data-start="1427" data-end="1463">Jahresumsatz unter 1 Million USD</strong> können sich bewerben.</li>
+<li data-start="1490" data-end="1553">Apple reduziert die Provision auf <strong data-start="1526" data-end="1550">15% anstelle von 30%</strong>.</li>
+<li data-start="1556" data-end="1651"><a data-start="1558" data-end="1649" rel="noopener" target="_new" href="https://developer.apple.com/app-store/small-business-program/">Offizielle Bewerbungsseite</a></li>
+</ul>
+</li>
+<li data-start="1652" data-end="1762"><strong data-start="1654" data-end="1676">Google Play Store:</strong> Abonnements unterliegen von Anfang an der <strong data-start="1719" data-end="1732">15%-Regel</strong> (kein Warten auf ein Jahr).</li>
+</ul>
+<p data-start="1764" data-end="1791"><strong data-start="1764" data-end="1789">Wer profitiert davon?</strong></p>
+<ul data-start="1792" data-end="1897">
+<li data-start="1792" data-end="1861">Kleine Entwickler mit <strong data-start="1816" data-end="1858">weniger als 1 Million USD Jahresumsatz</strong>.</li>
+<li data-start="1862" data-end="1897">Apps mit <strong data-start="1873" data-end="1894">Abonnement-Modell</strong>.</li>
+</ul>
+<hr data-start="1899" data-end="1902">
+<h3 data-start="1904" data-end="1979"><strong data-start="1908" data-end="1977">2. Externe Zahlungsmethoden nutzen, um hohe Gebühren zu vermeiden</strong></h3>
+<p data-start="1980" data-end="2138">Apple und Google erlauben es Entwicklern, <strong data-start="2022" data-end="2069">Benutzer auf ihre eigene Website umzuleiten</strong>, um Zahlungen vorzunehmen und so die hohen Provisionen zu umgehen.</p>
+<ul data-start="2140" data-end="2444">
+<li data-start="2140" data-end="2297"><strong data-start="2142" data-end="2152">Apple:</strong> <strong data-start="2153" data-end="2190">External Link Account Entitlement</strong>
+<ul data-start="2195" data-end="2297">
+<li data-start="2195" data-end="2297">Wird von Unternehmen wie Spotify und Netflix genutzt, um Nutzer direkt auf ihre Website zu leiten.</li>
+</ul>
+</li>
+<li data-start="2298" data-end="2444"><strong data-start="2300" data-end="2311">Google:</strong> <strong data-start="2312" data-end="2335">User Choice Billing</strong>
+<ul data-start="2340" data-end="2444">
+<li data-start="2340" data-end="2444">In bestimmten Ländern können Nutzer zwischen Google Play und Drittanbieter-Zahlungsanbietern wählen.</li>
+</ul>
+</li>
+</ul>
+<p data-start="2446" data-end="2475"><strong data-start="2446" data-end="2473">Wie wird das umgesetzt?</strong></p>
+<ol data-start="2476" data-end="2699">
+<li data-start="2476" data-end="2581"><strong data-start="2479" data-end="2511">In-App-Abonnements entfernen</strong> und stattdessen einen „Auf der Website abonnieren“-Button anbieten.</li>
+<li data-start="2582" data-end="2699"><strong data-start="2585" data-end="2657">Stripe, PayPal oder Kreditkartenzahlungen auf der Website einrichten</strong>, um App-Store-Provisionen zu vermeiden.</li>
+</ol>
+<p data-start="2701" data-end="2725"><strong data-start="2701" data-end="2723">Wichtige Hinweise:</strong></p>
+<ul data-start="2726" data-end="2899">
+<li data-start="2726" data-end="2816">Apple erhebt dennoch <strong data-start="2749" data-end="2787">27% Gebühren für externe Zahlungen</strong> (etwas niedriger als 30%).</li>
+<li data-start="2817" data-end="2899">Google erhebt für Drittanbieter-Zahlungen <strong data-start="2861" data-end="2880">zwischen 11-26%</strong>, je nach Region.</li>
+</ul>
+<hr data-start="2901" data-end="2904">
+<h3 data-start="2906" data-end="2975"><strong data-start="2910" data-end="2973">3. Nutzung einer Web-App (PWA), um den App Store zu umgehen</strong></h3>
+<p data-start="2976" data-end="3135">Für abonnementbasierte oder SaaS-Apps (wie Notion, Spotify oder Netflix) kann eine <strong data-start="3059" data-end="3088">PWA (Progressive Web App)</strong> anstelle einer nativen App verwendet werden.</p>
+<p data-start="3137" data-end="3152"><strong data-start="3137" data-end="3150">Vorteile:</strong></p>
+<ul data-start="3153" data-end="3341">
+<li data-start="3153" data-end="3251"><strong data-start="3155" data-end="3176">Keine Provisionen</strong> an Apple oder Google, da alle Zahlungen direkt auf der Website erfolgen.</li>
+<li data-start="3252" data-end="3341"><strong data-start="3254" data-end="3284">Ideal für SaaS-Unternehmen</strong>, die nicht auf App-Store-Distribution angewiesen sind.</li>
+</ul>
+<p data-start="3343" data-end="3359"><strong data-start="3343" data-end="3357">Beispiele:</strong></p>
+<ul data-start="3360" data-end="3539">
+<li data-start="3360" data-end="3463"><strong data-start="3362" data-end="3382">YouTube Premium:</strong> Keine In-App-Abonnements auf iOS; Nutzer müssen sich auf der Website anmelden.</li>
+<li data-start="3464" data-end="3539"><strong data-start="3466" data-end="3488">Spotify &amp; Netflix:</strong> Zahlungsabwicklung erfolgt nur über die Website.</li>
+</ul>
+<p data-start="3541" data-end="3557"><strong data-start="3541" data-end="3555">Umsetzung:</strong></p>
+<ol data-start="3558" data-end="3852">
+<li data-start="3558" data-end="3665"><strong data-start="3561" data-end="3608">Entwicklung einer voll funktionsfähigen PWA</strong>, sodass Nutzer die App über den Browser nutzen können.</li>
+<li data-start="3666" data-end="3753"><strong data-start="3669" data-end="3716">Zahlungsoptionen auf der Website einrichten</strong> und Nutzer gezielt dorthin leiten.</li>
+<li data-start="3754" data-end="3852"><strong data-start="3757" data-end="3813">Erinnerungen per E-Mail oder Push-Benachrichtigungen</strong> für Abonnementverlängerungen senden.</li>
+</ol>
+<hr data-start="3854" data-end="3857">
+<h3 data-start="3859" data-end="3914"><strong data-start="3863" data-end="3912">4. Zahlungsoptionen je nach Region optimieren</strong></h3>
+<p data-start="3915" data-end="4043">In einigen Ländern gibt es gesetzliche Regelungen, die Entwicklern erlauben, App-Store-Gebühren zu umgehen oder zu reduzieren.</p>
+<ul data-start="4045" data-end="4313">
+<li data-start="4045" data-end="4205"><strong data-start="4047" data-end="4074">Europäische Union (EU):</strong> Aufgrund von Kartellgesetzen erlaubt Google <strong data-start="4119" data-end="4146">Drittanbieter-Zahlungen</strong>, wodurch die Gebühren auf <strong data-start="4173" data-end="4180">11%</strong> gesenkt werden können.</li>
+<li data-start="4206" data-end="4313"><strong data-start="4208" data-end="4236">Südkorea, Indien, Japan:</strong> Diese Länder verpflichten Google, alternative Zahlungsmethoden anzubieten.</li>
+</ul>
+<p data-start="4315" data-end="4342"><strong data-start="4315" data-end="4340">Empfohlene Maßnahmen:</strong></p>
+<ul data-start="4343" data-end="4595">
+<li data-start="4343" data-end="4434"><strong data-start="4345" data-end="4366">Für den EU-Markt:</strong> <strong data-start="4367" data-end="4397">Google User Choice Billing</strong> nutzen, um die Gebühren zu senken.</li>
+<li data-start="4435" data-end="4595"><strong data-start="4437" data-end="4463">Für Südkorea &amp; Indien:</strong> <strong data-start="4464" data-end="4490">Lokale Zahlungsdienste</strong> wie <strong data-start="4495" data-end="4515">KakaoPay (Korea)</strong> oder <strong data-start="4521" data-end="4539">Paytm (Indien)</strong> integrieren, um In-App-Kauf-Provisionen zu vermeiden.</li>
+</ul>
+<hr data-start="4597" data-end="4600">
+<h3 data-start="4602" data-end="4671"><strong data-start="4606" data-end="4669">5. Apple-/Google-Abonnement-APIs nach Möglichkeit vermeiden</strong></h3>
+<p data-start="4672" data-end="4798">Apple und Google <strong data-start="4689" data-end="4711">zwingen Entwickler</strong>, ihre offiziellen Abonnement-APIs (In-App Purchase, IAP) zu verwenden. Das bedeutet:</p>
+<ul data-start="4799" data-end="4975">
+<li data-start="4799" data-end="4862"><strong data-start="4801" data-end="4833">Keine externen Zahlungslinks</strong> innerhalb der App erlaubt.</li>
+<li data-start="4863" data-end="4975">Alle In-App-Digitalverkäufe (z. B. Abonnements oder virtuelle Güter) unterliegen <strong data-start="4946" data-end="4972">30% oder 15% Provision</strong>.</li>
+</ul>
+<p data-start="4977" data-end="5001"><strong data-start="4977" data-end="4999">Mögliche Lösungen:</strong></p>
+<ol data-start="5002" data-end="5249">
+<li data-start="5002" data-end="5109"><strong data-start="5005" data-end="5046">Für SaaS-Apps (z. B. Business-Tools):</strong> Nur eine Web-Version anbieten, um In-App-Käufe zu vermeiden.</li>
+<li data-start="5110" data-end="5249"><strong data-start="5113" data-end="5148">Für abonnementbasierte Modelle:</strong> <strong data-start="5149" data-end="5190">Langfristige Abonnementpläne anbieten</strong>, um nach einem Jahr von Apples 15%-Regel zu profitieren.</li>
+</ol>
+<hr data-start="5251" data-end="5254">
+<h2 data-start="5256" data-end="5334"><strong data-start="5259" data-end="5332">Zusammenfassung: Wie lassen sich Apple- &amp; Google-Gebühren minimieren?</strong></h2>
+<table data-start="5336" data-end="5836"><thead data-start="5336" data-end="5396"><tr data-start="5336" data-end="5396"><th data-start="5336" data-end="5348">Strategie</th><th data-start="5348" data-end="5360">Plattform</th><th data-start="5360" data-end="5375">Geeignet für</th><th data-start="5375" data-end="5396">Geschätzte Gebühr</th></tr></thead><tbody data-start="5456" data-end="5836"><tr data-start="5456" data-end="5542"><td><strong data-start="5458" data-end="5482">Web-App (PWA) nutzen</strong></td><td>iOS / Android</td><td>Jede App, die im Browser läuft</td><td><strong data-start="5534" data-end="5540">0%</strong></td></tr><tr data-start="5543" data-end="5652"><td><strong data-start="5545" data-end="5574">15%-Rabattprogramm nutzen</strong></td><td>iOS / Android</td><td>Entwickler mit &lt;1 Mio. USD Umsatz oder Abo-Apps</td><td><strong data-start="5643" data-end="5650">15%</strong></td></tr><tr data-start="5653" data-end="5748"><td><strong data-start="5655" data-end="5690">Externe Zahlungslinks verwenden</strong></td><td>iOS / Android</td><td>Apps wie Spotify/Netflix</td><td><strong data-start="5736" data-end="5746">11-27%</strong></td></tr><tr data-start="5749" data-end="5836"><td><strong data-start="5751" data-end="5778">Regionale Regeln nutzen</strong></td><td>Android</td><td>Apps in EU, Korea, Indien usw.</td><td><strong data-start="5824" data-end="5834">11-26%</strong></td></tr></tbody></table>
+<p data-start="5838" data-end="5897"><strong data-start="5838" data-end="5895">Wenn du App-Store-Gebühren komplett vermeiden willst:</strong></p>
+<ul data-start="5898" data-end="6059">
+<li data-start="5898" data-end="5983"><strong data-start="5900" data-end="5934">Verwende eine Web-App oder PWA</strong>, um Nutzer direkt auf deine Website zu leiten.</li>
+<li data-start="5984" data-end="6059"><strong data-start="5986" data-end="6031">Biete Zahlungen nur über deine Website an</strong>, statt über In-App-Käufe.</li>
+</ul>
+<p data-start="6061" data-end="6125"><strong data-start="6061" data-end="6123">Wenn du Gebühren senken, aber im App Store bleiben willst:</strong></p>
+<ul data-start="6126" data-end="6283">
+<li data-start="6126" data-end="6183"><strong data-start="6128" data-end="6180">15%-Rabattprogramm für kleine Unternehmen nutzen</strong>.</li>
+<li data-start="6184" data-end="6283"><strong data-start="6186" data-end="6248">Drittanbieter-Zahlungen in unterstützten Ländern einführen</strong>, um die Provision zu reduzieren.</li>
+</ul>
+<hr data-start="6285" data-end="6288">
+<h3 data-start="6290" data-end="6305"><strong data-start="6294" data-end="6303">Fazit</strong></h3>
+<ul data-start="6306" data-end="6601">
+<li data-start="6306" data-end="6389"><strong data-start="6308" data-end="6358">PWAs/Web-Apps sind die kostengünstigste Lösung</strong>, haben aber Einschränkungen.</li>
+<li data-start="6390" data-end="6489"><strong data-start="6392" data-end="6486">Nutzer zur Bezahlung auf der Website zu leiten, reduziert die App-Store-Gebühren erheblich</strong>.</li>
+<li data-start="6490" data-end="6601"><strong data-start="6492" data-end="6552">Gesetze und Regelungen unterscheiden sich je nach Region</strong>, nutze lokale Gegebenheiten zu deinem Vorteil.</li>
+</ul>
+<p data-start="6603" data-end="6765" data-is-last-node="" data-is-only-node="">Wer die <strong data-start="6611" data-end="6705">Apple- &amp; Google-Gebühren minimieren und eine bessere Kontrolle über Zahlungen haben möchte</strong>, sollte auf eine <strong data-start="6723" data-end="6764">PWA + externe Zahlungsoptionen setzen</strong>.</p></div></div></div>
