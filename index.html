@@ -58,8 +58,7 @@
             background-color: #D2B4DE;
         }
         .sidebar li.active {
-            background-color: #A9CCE3; /* Highligt color for active item */
-            font-weight: bold;
+            background-color: #e0bff9; /* Highligt color for active item */
         }
 
         .content {
@@ -104,7 +103,7 @@
         <select class="language-select" id="languageSelect" onchange="updateLanguage()">
             <option value="en">English</option>
             <option value="de">German</option>
-            <option value="zh" selected>Chinese</option> <!-- 默认设置为中文 -->
+            <option value="zh" selected>Chinese</option>
         </select>
 
         <ul>
@@ -130,23 +129,20 @@
     </div>
 
     <script>
-        // 默认语言文件夹（中文）
         let languageFolder = 'contentsCN';
 
-        // 更新语言文件夹
         function updateLanguage() {
             const lang = document.getElementById('languageSelect').value;
             if (lang === 'zh') {
-                languageFolder = 'contentsCN'; // 中文
+                languageFolder = 'contentsCN';
             } else if (lang === 'de') {
-                languageFolder = 'contentsDE'; // 德语
+                languageFolder = 'contentsDE';
             } else {
-                languageFolder = 'contents'; // 默认英文
+                languageFolder = 'contents';
             }
             updateSidebar();
         }
 
-        // 更新侧边栏标题
         function updateSidebar() {
             const sidebar = document.getElementById('sidebar');
             const links = sidebar.querySelectorAll('li');
@@ -208,14 +204,11 @@
             });
         }
 
-        // 加载内容并高亮选中的菜单项
         async function showContent(file, element) {
             try {
-                // 移除之前选中的 active 类
                 const activeItem = document.querySelector('.sidebar li.active');
                 if (activeItem) activeItem.classList.remove('active');
-                
-                // 为当前选中的菜单项添加 active 类
+
                 element.classList.add('active');
 
                 console.log(`Attempting to load file: ${file}`);
@@ -227,7 +220,7 @@
             } catch (error) {
                 console.error("Load failed:", error);
                 document.getElementById('displayContent').innerHTML = 
-                    `<p style="color: red;">无法加载内容，请确保文件存在并且本地服务器正在运行。</p>`;
+                    `<p style="color: red;">Failed to load content. Please ensure the file exists and the local server is running.</p>`;
             }
         }
 
