@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>標題選擇頁面</title>
+    <title>Title Selection Page</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.12/marked.min.js"></script>
     <style>
         body {
@@ -59,38 +59,38 @@
 <body>
     <div class="sidebar">
         <ul>
-            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content1.txt')">1. 標題1</li>
-            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content2.txt')">2. 標題2</li>
-            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content3.txt')">3. 標題3</li>
+            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content1.txt')">1. 使用浏览器和拥有一个真正的应用程序之间的区别</li>
+            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content2.txt')">2. 安装：只需将其从浏览器复制到主屏幕 ——> 实际的步骤是什么？</li>
+            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content3.txt')">3. 苹果/谷歌费用：提供数字订阅是免费的，因为我们没有使用应用商店。对于一个正常的应用程序，你需要支付大约30%的收入 ——> 请确认！</li>
         </ul>
     </div>
     
     <div class="content" id="displayContent">
-        點擊左側標題查看內容
+        Click on the title on the left to view content
     </div>
 
     <script>
         async function showContent(file) {
             try {
-                console.log(`嘗試加載文件: ${file}`);
+                console.log(`Attempting to load file: ${file}`);
                 const response = await fetch(file);
-                if (!response.ok) throw new Error(`文件未找到 (HTTP ${response.status})`);
+                if (!response.ok) throw new Error(`File not found (HTTP ${response.status})`);
                 
                 const text = await response.text();
 
                 document.getElementById('displayContent').innerHTML = `<pre>${text}</pre>`;
 
             } catch (error) {
-                console.error("加載失敗:", error);
+                console.error("Load failed:", error);
                 document.getElementById('displayContent').innerHTML = 
-                    `<p style="color: red;">加載內容失敗，請確保文件存在且本地服務器運行中。</p>`;
+                    `<p style="color: red;">Failed to load content, please ensure the file exists and the local server is running.</p>`;
             }
         }
 
-        // 判断文本是否包含HTML标签
+        // Check if the text contains HTML tags
         function isHTML(str) {
             const doc = new DOMParser().parseFromString(str, 'text/html');
-            return Array.from(doc.body.childNodes).some(node => node.nodeType === 1); // 1代表元素节点
+            return Array.from(doc.body.childNodes).some(node => node.nodeType === 1); // 1 represents element nodes
         }
     </script>
 </body>
