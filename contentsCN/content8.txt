@@ -1,0 +1,47 @@
+<div data-message-author-role="assistant" data-message-id="23c48313-bb2f-41b3-a19e-68e79d465be0" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light"><p data-start="0" data-end="59">当用户在 Signal（或其他聊天应用）中点击一个链接时，是否会打开 PWA 还是普通网页浏览器，取决于以下几个因素：</p>
+<h3 data-start="61" data-end="84">1. 取决于 Signal 的默认行为</h3>
+<p data-start="85" data-end="297">Signal 默认会在浏览器中打开链接。<br data-start="105" data-end="108">
+即使用户已经安装了 PWA，Signal 仍然会使用系统的默认浏览器（如 Chrome、Safari 等）来打开链接，而不会直接打开 PWA。<br data-start="179" data-end="182">
+目前 Signal 不支持 Android Instant Apps 或 PWA 深度链接。<br data-start="228" data-end="231">
+虽然某些应用（如 Telegram）支持 PWA 深度链接，能够在支持的浏览器中打开 PWA，但 Signal 目前不支持这种行为。</p>
+<h3 data-start="299" data-end="325">2. 取决于 PWA 是否支持 URL 处理</h3>
+<p data-start="326" data-end="431">PWA 可以通过 Web App Manifest 中的 <code data-start="355" data-end="366">start_url</code> 设置来定义应用的入口，并确保在用户访问链接时，PWA 能正确处理该链接。<br data-start="403" data-end="406">
+📌 <strong data-start="409" data-end="415">示例</strong>：确保 PWA 正确处理 URL</p>
+<pre class="!overflow-visible" data-start="432" data-end="562"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-json"><span><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"My PWA"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"short_name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"PWA"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"start_url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/index.html"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"scope"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"display"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"standalone"</span>
+<span class="hljs-punctuation">}</span>
+</span></code></div></pre>
+<p data-start="563" data-end="601">尽管如此，Signal 仍然会在浏览器中打开链接，而不是自动跳转到 PWA。</p>
+<h3 data-start="603" data-end="628">3. 如何让 Signal 打开 PWA？</h3>
+<p data-start="629" data-end="676">目前，Signal 不支持直接打开 PWA，但你可以通过以下方式帮助用户更容易返回到 PWA：</p>
+<h4 data-start="678" data-end="710">✅ 方法 1：让 PWA 处理 URL 并引导用户打开</h4>
+<p data-start="711" data-end="781">你可以在 PWA 内检测是否在普通浏览器中打开，然后引导用户打开 PWA。
+📌 <strong data-start="752" data-end="758">示例</strong>：如果用户在浏览器打开，提示他们切换到 PWA</p>
+<pre class="!overflow-visible" data-start="782" data-end="936"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">if</span> (<span class="hljs-variable language_">window</span>.<span class="hljs-title function_">matchMedia</span>(<span class="hljs-string">'(display-mode: standalone)'</span>).<span class="hljs-property">matches</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA 模式运行"</span>);
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-title function_">alert</span>(<span class="hljs-string">"建议在 PWA 中打开此链接，以获得最佳体验！"</span>);
+}
+</span></code></div></pre>
+<p data-start="937" data-end="962">你还可以提供一个按钮，点击后引导用户打开 PWA：</p>
+<pre class="!overflow-visible" data-start="963" data-end="1017"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-html"><span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"my-pwa://some-page"</span>&gt;</span>在 PWA 中打开<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</span></code></div></pre>
+<p data-start="1018" data-end="1041">但这种方式仅在 Android 部分设备有效。</p>
+<h4 data-start="1043" data-end="1078">✅ 方法 2：使用 "Add to Home Screen"</h4>
+<p data-start="1079" data-end="1150">让用户先安装 PWA，然后通过 PWA 内部访问 Signal 链接，而不是通过 Signal 点击链接。<br data-start="1132" data-end="1135">
+这样用户体验会更接近原生应用。</p>
+<h4 data-start="1152" data-end="1202">✅ 方法 3：使用 Android App Links（仅适用于拥有原生 APP 的情况）</h4>
+<p data-start="1203" data-end="1391">如果你的 PWA 也有原生 Android 版本，你可以配置 <strong data-start="1234" data-end="1257">Digital Asset Links</strong>，使得 Android 能直接使用 PWA 处理特定链接。<br data-start="1286" data-end="1289">
+同时，你可以注册原生 Android 应用，允许 Signal 识别你的应用并直接打开它，而不是通过浏览器打开链接。<br data-start="1347" data-end="1350">
+但如果没有原生 Android 应用，Signal 仍然会默认使用浏览器打开链接。</p>
+<h3 data-start="1393" data-end="1402">4. 结论</h3>
+<ul data-start="1403" data-end="1555" data-is-last-node="" data-is-only-node="">
+<li data-start="1403" data-end="1555" data-is-last-node=""><strong data-start="1405" data-end="1413">最终建议</strong><br data-start="1413" data-end="1416">
+告诉用户：“请从 PWA 内部访问 Signal 链接，以获得更好的体验！”<br data-start="1456" data-end="1459">
+在 PWA 内部检测是否在浏览器中打开，并提示用户切换到 PWA。<br data-start="1494" data-end="1497">
+如果你的 PWA 也有原生 Android 应用，可以使用 Android App Links 来增强用户体验。</li>
+</ul></div></div></div>

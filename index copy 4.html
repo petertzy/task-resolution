@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -100,49 +100,49 @@
         <select class="language-select" id="languageSelect" onchange="updateLanguage()">
             <option value="en">English</option>
             <option value="de">German</option>
-            <option value="zh" selected>Chinese</option> <!-- 默认设置为中文 -->
+            <option value="zh">Chinese</option>
         </select>
 
         <ul>
-            <li onclick="showContent('content1.txt')">1. 使用浏览器和拥有一个真正的应用程序之间的区别</li>
-            <li onclick="showContent('content2.txt')">2. 安装：只需将其从浏览器复制到主屏幕 ——> 实际的步骤是什么？</li>
-            <li onclick="showContent('content3.txt')">3. 苹果/谷歌费用：提供数字订阅是免费的，因为我们没有使用应用商店。对于一个正常的应用程序，你需要支付大约30%的收入 ——> 请确认！</li>
-            <li onclick="showContent('content4.txt')">4. 请检查功能并分析，是否可以使用PWA实现。如果你想进行比较，可以将其与Flutter进行比较 —— 这是我们在创建自己应用时会使用的框架</li>
-            <li onclick="showContent('content5.txt')">5. 请制作一个演示文稿，说明为了使其成为PWA，你需要在代码中做哪些更改</li>
-            <li onclick="showContent('content6.txt')">6. 是否可以更改PWA的样式，或者它是否会看起来和网站的移动版本一模一样？</li>
-            <li onclick="showContent('content7.txt')">7. 如果用户点击链接购买订阅，会发生什么？</li>
-            <li onclick="showContent('content8.txt')">8. 如果用户点击来自Signal的链接，会打开PWA还是正常的网页浏览器？</li>
-            <li onclick="showContent('content9.txt')">9. 如果用户点击来自Telegram的链接，会打开PWA还是应用内浏览器？</li>
-            <li onclick="showContent('content10.txt')">10. 如果用户点击来自普通浏览器的链接，例如Google搜索，PWA会打开还是正常的网页浏览器？</li>
-            <li onclick="showContent('content11.txt')">11. 关于跟踪呢？我们能否判断用户正在使用PWA？因为我们肯定想知道有多少流量来自PWA</li>
-            <li onclick="showContent('content12.txt')">12. 导航如何？我的意思是当你点击一篇文章时？它像浏览器一样，页面是空白的吗？还是头部会保留，只有内容被替换？我们可以使用本地的滑动手势返回吗？</li>
-            <li onclick="showContent('content13.txt')">13. 它是否会在几天内保持登录状态，即使没有使用PWA？</li>
-            <li onclick="showContent('content14.txt')">14. iOS没有全屏支持？EpochTV的视频会是什么样子？</li>
+            <li onclick="showContent('content1.txt')">1. Difference between just using a browser and having a real application</li>
+            <li onclick="showContent('content2.txt')">2. Installation: What is the actual process of copying it from the browser to the home screen?</li>
+            <li onclick="showContent('content3.txt')">3. Apple/Google fees: Providing digital subscriptions for free because we don’t use the app store. For a normal app, you need to pay about 30% of the revenue → Please confirm!</li>
+            <li onclick="showContent('content4.txt')">4. Please check the functionality and analyze whether it can be implemented with PWA. If you want to make a comparison, you can compare it with Flutter — this is the framework we would use when creating our own app.</li>
+            <li onclick="showContent('content5.txt')">5. Please make a presentation explaining what changes need to be made in the code to make it a PWA.</li>
+            <li onclick="showContent('content6.txt')">6. Can the style of the PWA be changed, or will it look exactly the same as the mobile version of the website?</li>
+            <li onclick="showContent('content7.txt')">7. What happens if the user clicks a link to purchase a subscription?</li>
+            <li onclick="showContent('content8.txt')">8. If the user clicks a link from Signal, will it open the PWA or the normal web browser?</li>
+            <li onclick="showContent('content9.txt')">9. If the user clicks a link from Telegram, will it open the PWA or the in-app browser?</li>
+            <li onclick="showContent('content10.txt')">10. If the user clicks a link from a regular browser, such as Google search, will the PWA open or will the normal web browser open?</li>
+            <li onclick="showContent('content11.txt')">11. What about tracking? Can we determine if the user is using the PWA? Because we definitely want to know how much traffic is coming from the PWA.</li>
+            <li onclick="showContent('content12.txt')">12. How is the navigation? I mean, when you click on an article? Is it like a browser, and the page is blank? Or does the header stay, and only the content gets replaced? Can we use native swipe gestures to go back?</li>
+            <li onclick="showContent('content13.txt')">13. Will it stay logged in for a few days, even if the PWA hasn’t been used?</li>
+            <li onclick="showContent('content14.txt')">14. iOS does not have full-screen support? What will EpochTV videos look like?</li>
         </ul>        
     </div>
     
     <div class="content" id="displayContent">
-        点击左侧标题以查看内容
+        Click on the title on the left to view content
     </div>
 
     <script>
-        // 默认语言文件夹（中文）
-        let languageFolder = 'contentsCN';
+        // Default language folder (English)
+        let languageFolder = 'contents';
 
-        // 更新语言文件夹
+        // Update the language folder based on selected language
         function updateLanguage() {
             const lang = document.getElementById('languageSelect').value;
             if (lang === 'zh') {
-                languageFolder = 'contentsCN'; // 中文
+                languageFolder = 'contentsCN'; // Chinese
             } else if (lang === 'de') {
-                languageFolder = 'contentsDE'; // 德语
+                languageFolder = 'contentsDE'; // German
             } else {
-                languageFolder = 'contents'; // 默认英文
+                languageFolder = 'contents'; // Default English
             }
             updateSidebar();
         }
 
-        // 更新侧边栏标题
+        // Update the sidebar links based on selected language
         function updateSidebar() {
             const sidebar = document.getElementById('sidebar');
             const links = sidebar.querySelectorAll('li');
@@ -204,7 +204,7 @@
             });
         }
 
-        // 加载内容
+        // Function to load content
         async function showContent(file) {
             try {
                 console.log(`Attempting to load file: ${file}`);
@@ -216,11 +216,11 @@
             } catch (error) {
                 console.error("Load failed:", error);
                 document.getElementById('displayContent').innerHTML = 
-                    `<p style="color: red;">无法加载内容，请确保文件存在并且本地服务器正在运行。</p>`;
+                    `<p style="color: red;">Failed to load content, please ensure the file exists and the local server is running.</p>`;
             }
         }
 
-        // 页面加载时默认语言为中文
+        // Initialize the page with default language (English)
         window.onload = function() {
             updateLanguage();
         };

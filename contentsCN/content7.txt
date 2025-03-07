@@ -1,0 +1,81 @@
+<div data-message-author-role="assistant" data-message-id="abbb8cb9-666b-4e29-888f-b5585165d833" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light"><p data-start="0" data-end="38">在 PWA 模式下，用户点击链接进行订阅购买时，行为受到以下几个因素的影响：</p>
+<h3 data-start="40" data-end="56">1. 购买链接指向何处？</h3>
+<ul data-start="57" data-end="652">
+<li data-start="57" data-end="261">
+<p data-start="59" data-end="261"><strong data-start="59" data-end="101">如果跳转到外部支付页面（如 PayPal、Stripe、Apple Pay）</strong><br data-start="101" data-end="104">
+PWA 会像普通网站一样，在浏览器中打开支付页面。如果 PWA 运行在 <code data-start="142" data-end="154">standalone</code> 模式（没有地址栏），部分支付页面可能不会自动打开新窗口，而是直接替换当前的 PWA 界面。<br data-start="200" data-end="203">
+一些移动浏览器（如 iOS Safari）可能会强制在默认浏览器中打开支付页面，而不是在 PWA 内部进行处理。</p>
+</li>
+<li data-start="265" data-end="377">
+<p data-start="267" data-end="377"><strong data-start="267" data-end="302">如果调用 WebView（如 Stripe Checkout）</strong><br data-start="302" data-end="305">
+支付仍然可以完成，体验与普通网页一样。但部分支付提供商（如 App Store 订阅）可能要求通过原生应用内购买，PWA 可能无法完成订阅。</p>
+</li>
+<li data-start="379" data-end="652">
+<p data-start="381" data-end="540"><strong data-start="381" data-end="426">如果是 Deep Link 跳转到 App（如跳转到 PayPal / 微信支付）</strong><br data-start="426" data-end="429">
+一些支付服务（如微信支付、支付宝）会检测到 PWA，并强制要求在默认浏览器中打开支付链接。<br data-start="476" data-end="479">
+为了避免 PWA 被“卡住”，你可以手动在新窗口中打开支付页面。<br data-start="513" data-end="516">
+📌 <strong data-start="521" data-end="527">示例</strong>：在新标签页中打开支付页面</p>
+<pre class="!overflow-visible" data-start="543" data-end="620"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-variable language_">window</span>.<span class="hljs-title function_">open</span>(<span class="hljs-string">'https://your-payment-link.com'</span>, <span class="hljs-string">'_blank'</span>);
+</span></code></div></pre>
+<p data-start="623" data-end="652">这样，支付页面会在新窗口中打开，而不会覆盖 PWA 本身。</p>
+</li>
+</ul>
+<h3 data-start="654" data-end="687">2. PWA 是否在 iOS / Android 设备上？</h3>
+<ul data-start="688" data-end="1264">
+<li data-start="688" data-end="929">
+<p data-start="690" data-end="929"><strong data-start="690" data-end="706">iOS (Safari)</strong><br data-start="706" data-end="709">
+iOS 上的 PWA 不支持 Service Worker 的 Web Payment API，因此无法使用 Apple Pay 或 iOS 内购。许多支付网关会自动跳转到 Safari 浏览器，而不是在 PWA 内部完成支付。<br data-start="825" data-end="828">
+订阅型应用（如 Netflix、Spotify）通常会在 iOS PWA 中提示用户“请在 Safari 浏览器中完成购买”，因为 Apple 禁止 Web App 绕过 App Store 内购。</p>
+</li>
+<li data-start="931" data-end="1264">
+<p data-start="933" data-end="1160"><strong data-start="933" data-end="953">Android (Chrome)</strong><br data-start="953" data-end="956">
+PWA 在 Android 设备上通常可以正常使用 Google Pay、Stripe Checkout 或其他 Web 支付方式。部分 Android 设备可能会让 PWA 在 Chrome Custom Tabs 或默认浏览器中完成支付。如果支付完成后需要返回 PWA，你可以使用 <code data-start="1101" data-end="1114">postMessage</code> 让 PWA 监听支付结果。<br data-start="1128" data-end="1131">
+📌 <strong data-start="1136" data-end="1142">示例</strong>：检测是否在 iOS PWA 上运行</p>
+<pre class="!overflow-visible" data-start="1163" data-end="1264"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">if</span> (<span class="hljs-variable language_">window</span>.<span class="hljs-property">navigator</span>.<span class="hljs-property">standalone</span>) {
+  <span class="hljs-title function_">alert</span>(<span class="hljs-string">"请使用 Safari 打开购买链接，以确保支付成功！"</span>);
+}
+</span></code></div></pre>
+</li>
+</ul>
+<h3 data-start="1266" data-end="1286">3. 如何处理支付完成后的返回？</h3>
+<p data-start="1287" data-end="1330">购买完成后，你可能希望用户能够返回 PWA，而不是停留在支付页面。以下是几种处理方式：</p>
+<ul data-start="1332" data-end="2186">
+<li data-start="1332" data-end="1488">
+<p data-start="1334" data-end="1405"><strong data-start="1334" data-end="1370">方法 1：使用 <code data-start="1344" data-end="1361">target="_blank"</code> 打开支付页面</strong><br data-start="1370" data-end="1373">
+这样支付页面会在新窗口中打开，PWA 会在后台继续运行。</p>
+<pre class="!overflow-visible" data-start="1408" data-end="1488"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-html"><span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://your-payment-link.com"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>&gt;</span>购买订阅<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</span></code></div></pre>
+</li>
+<li data-start="1490" data-end="1920">
+<p data-start="1492" data-end="1563"><strong data-start="1492" data-end="1519">方法 2：使用 Web Payment API</strong><br data-start="1519" data-end="1522">
+适用于支持 Web Payment API 的浏览器（如 Chrome）。</p>
+<pre class="!overflow-visible" data-start="1566" data-end="1920"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">if</span> (<span class="hljs-variable language_">window</span>.<span class="hljs-property">PaymentRequest</span>) {
+  <span class="hljs-keyword">const</span> request = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PaymentRequest</span>([{ <span class="hljs-attr">supportedMethods</span>: <span class="hljs-string">"basic-card"</span> }], { 
+    <span class="hljs-attr">total</span>: { <span class="hljs-attr">label</span>: <span class="hljs-string">"订阅"</span>, <span class="hljs-attr">amount</span>: { <span class="hljs-attr">currency</span>: <span class="hljs-string">"USD"</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">"9.99"</span> } }
+  });
+
+  request.<span class="hljs-title function_">show</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> response.<span class="hljs-title function_">complete</span>(<span class="hljs-string">"success"</span>));
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">open</span>(<span class="hljs-string">"https://your-payment-link.com"</span>, <span class="hljs-string">"_blank"</span>);
+}
+</span></code></div></pre>
+</li>
+<li data-start="1922" data-end="2110">
+<p data-start="1924" data-end="2005"><strong data-start="1924" data-end="1946">方法 3：支付成功后自动返回 PWA</strong><br data-start="1946" data-end="1949">
+让支付页面在成功后重定向回 PWA（如 <code data-start="1971" data-end="2001">https://your-pwa.com/success</code>）：</p>
+<pre class="!overflow-visible" data-start="2008" data-end="2110"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-html"><span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://your-payment-link.com?return_url=https://your-pwa.com/success"</span>&gt;</span>购买<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+</span></code></div></pre>
+</li>
+<li data-start="2112" data-end="2186">
+<p data-start="2114" data-end="2186"><strong data-start="2114" data-end="2138">方法 4：监听支付完成的 Webhook</strong><br data-start="2138" data-end="2141">
+服务器端验证支付后，可以通过 WebSocket 或轮询的方式通知 PWA 支付状态。</p>
+</li>
+</ul>
+<h3 data-start="2188" data-end="2197">4. 总结</h3>
+<p data-start="2198" data-end="2210">✅ <strong data-start="2200" data-end="2208">推荐做法</strong></p>
+<ul data-start="2211" data-end="2373" data-is-only-node="" data-is-last-node="">
+<li data-start="2211" data-end="2258">使用 <code data-start="2216" data-end="2233">target="_blank"</code> 打开支付页面，避免 PWA 被支付页面覆盖。</li>
+<li data-start="2259" data-end="2293">提供“返回 PWA”按钮，确保用户能顺利返回 PWA 页面。</li>
+<li data-start="2294" data-end="2335">在 Android 上使用 Web Payment API，提升支付体验。</li>
+<li data-start="2336" data-end="2373" data-is-last-node="">在 iOS 上提示用户使用 Safari 打开支付链接，避免支付失败。</li>
+</ul></div></div></div>

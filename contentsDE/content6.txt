@@ -1,0 +1,90 @@
+<div data-message-author-role="assistant" data-message-id="857c70f7-9bbf-40a7-9c56-f55b8e0ac2f4" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light"><h3 data-start="0" data-end="55">Das Design von PWA lässt sich vollständig anpassen!</h3>
+<p data-start="57" data-end="400">Das Aussehen und Verhalten einer PWA (Progressive Web App) ist vollständig anpassbar. Sie zwingt dich nicht dazu, das mobile Design deiner Website genau nachzubilden, es sei denn, du möchtest dies. Du kannst das Aussehen der PWA nach deinen Wünschen gestalten, damit sie mehr wie eine native App aussieht, indem du folgende Methoden anwendest:</p>
+<h4 data-start="402" data-end="493">1. Passe die <code data-start="420" data-end="435">manifest.json</code> Datei an, um das Erscheinungsbild der PWA zu beeinflussen</h4>
+<p data-start="494" data-end="597">Die <code data-start="498" data-end="507">display</code>-Option in der <code data-start="522" data-end="537">manifest.json</code>-Datei bestimmt, wie die PWA auf dem Gerät dargestellt wird:</p>
+<ul data-start="599" data-end="995">
+<li data-start="599" data-end="719"><code data-start="601" data-end="615">"standalone"</code>: Entfernt die Browser-Oberfläche (wie die Adressleiste) und lässt die PWA wie eine native App aussehen.</li>
+<li data-start="720" data-end="818"><code data-start="722" data-end="736">"fullscreen"</code>: Die PWA läuft im Vollbildmodus, geeignet für Spiele oder Multimedia-Anwendungen.</li>
+<li data-start="819" data-end="910"><code data-start="821" data-end="835">"minimal-ui"</code>: Zeigt grundlegende Browser-Oberflächenelemente an, wie den Zurück-Button.</li>
+<li data-start="911" data-end="995"><code data-start="913" data-end="924">"browser"</code>: Die PWA sieht aus wie eine normale Webseite mit minimalen Änderungen.</li>
+</ul>
+<p data-start="997" data-end="1013">📌 <strong data-start="1000" data-end="1012">Beispiel</strong>:</p>
+<pre class="!overflow-visible" data-start="1014" data-end="1183"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-json"><span><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"My PWA App"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"short_name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"PWA"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"start_url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"display"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"standalone"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"theme_color"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"#4CAF50"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"background_color"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"#FFFFFF"</span>
+<span class="hljs-punctuation">}</span>
+</span></code></div></pre>
+<p data-start="1184" data-end="1279">Du kannst die <code data-start="1198" data-end="1211">theme_color</code>-Eigenschaft anpassen, um die Hauptfarbe deiner App widerzuspiegeln.</p>
+<h4 data-start="1281" data-end="1342">2. Verwende CSS, um die PWA für mobile Geräte anzupassen</h4>
+<p data-start="1343" data-end="1487">Auch wenn die PWA denselben HTML-Code wie deine Website verwendet, kannst du mit CSS dafür sorgen, dass sie in der PWA-Umgebung anders aussieht.</p>
+<p data-start="1489" data-end="1505">📌 <strong data-start="1492" data-end="1504">Beispiel</strong>:</p>
+<pre class="!overflow-visible" data-start="1506" data-end="1798"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-css"><span><span class="hljs-keyword">@media</span> all <span class="hljs-keyword">and</span> (<span class="hljs-attribute">display-mode</span>: standalone) {
+  <span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f5f5f5</span>;
+    <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">20px</span>;
+  }
+  <span class="hljs-selector-class">.header</span> {
+    <span class="hljs-attribute">display</span>: none; <span class="hljs-comment">/* Versteckt die Navigationsleiste der Webseite */</span>
+  }
+  <span class="hljs-selector-class">.pwa-nav</span> {
+    <span class="hljs-attribute">display</span>: flex; <span class="hljs-comment">/* Zeigt eine Navigationsleiste für die PWA */</span>
+  }
+}
+</span></code></div></pre>
+<p data-start="1799" data-end="1902">Der Stil <code data-start="1808" data-end="1834">display-mode: standalone</code> wird nur in der PWA-Umgebung angewendet, nicht im normalen Browser.</p>
+<h4 data-start="1904" data-end="1961">3. Verwende JavaScript, um den PWA-Modus zu erkennen</h4>
+<p data-start="1962" data-end="2136">Wenn du zwischen der PWA und der normalen Webversion eine unterschiedliche Benutzeroberfläche anbieten möchtest, kannst du JavaScript verwenden, um den PWA-Modus zu erkennen.</p>
+<p data-start="2138" data-end="2154">📌 <strong data-start="2141" data-end="2153">Beispiel</strong>:</p>
+<pre class="!overflow-visible" data-start="2155" data-end="2354"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">if</span> (<span class="hljs-variable language_">window</span>.<span class="hljs-title function_">matchMedia</span>(<span class="hljs-string">'(display-mode: standalone)'</span>).<span class="hljs-property">matches</span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"Im PWA-Modus"</span>);
+  <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">classList</span>.<span class="hljs-title function_">add</span>(<span class="hljs-string">"pwa-mode"</span>);
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"Im Browsermodus"</span>);
+}
+</span></code></div></pre>
+<p data-start="2355" data-end="2455">Dann kannst du in deinem CSS die Klasse <code data-start="2395" data-end="2406">.pwa-mode</code> ansprechen und das Design entsprechend anpassen.</p>
+<h4 data-start="2457" data-end="2544">4. Verwende Frameworks (wie React, Vue), um eine separate PWA-Version zu erstellen</h4>
+<p data-start="2545" data-end="2817">Wenn deine Website eine responsive Webanwendung (RWA) ist, kannst du Frameworks wie React, Vue oder Angular verwenden, um eine andere Benutzeroberfläche für die PWA zu erstellen und sogar einen separaten Einstiegspunkt für die PWA-Version in der <code data-start="2791" data-end="2802">start_url</code> zu definieren:</p>
+<pre class="!overflow-visible" data-start="2819" data-end="2855"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-json"><span><span class="hljs-attr">"start_url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"/pwa-home"</span>
+</span></code></div></pre>
+<p data-start="2856" data-end="2924">So öffnet die PWA direkt <code data-start="2881" data-end="2892">/pwa-home</code> anstatt der regulären Homepage.</p>
+<h4 data-start="2926" data-end="2988">5. Füge eine native App-ähnliche Benutzeroberfläche hinzu</h4>
+<p data-start="2989" data-end="3105">Du kannst bestimmte Designelemente einbauen, die deine PWA mehr wie eine native App wirken lassen, wie zum Beispiel:</p>
+<ul data-start="3107" data-end="3247">
+<li data-start="3107" data-end="3147">Eine Navigationsleiste am unteren Rand</li>
+<li data-start="3148" data-end="3218">Eine Karten-basierte Benutzeroberfläche (Material Design / iOS-Stil)</li>
+<li data-start="3219" data-end="3247">Gesten-basierte Navigation</li>
+</ul>
+<p data-start="3249" data-end="3361">Diese Elemente können dazu beitragen, dass deine PWA mehr wie eine native App aussieht und sich auch so anfühlt.</p>
+<p data-start="3363" data-end="3379">📌 <strong data-start="3366" data-end="3378">Beispiel</strong>:</p>
+<pre class="!overflow-visible" data-start="3380" data-end="3534"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-html"><span><span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pwa-nav"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/home"</span>&gt;</span>🏠 Startseite<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/profile"</span>&gt;</span>👤 Profil<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/settings"</span>&gt;</span>⚙️ Einstellungen<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+</span></code></div></pre>
+<pre class="!overflow-visible" data-start="3536" data-end="3739"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-css"><span><span class="hljs-selector-class">.pwa-nav</span> {
+  <span class="hljs-attribute">position</span>: fixed;
+  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">justify-content</span>: space-around;
+  <span class="hljs-attribute">background</span>: white;
+  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> -<span class="hljs-number">2px</span> <span class="hljs-number">10px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0.1</span>);
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">0</span>;
+}
+</span></code></div></pre>
+<p data-start="3740" data-end="3881">So hat deine PWA eine Navigationsleiste am unteren Rand, ähnlich wie eine native App, anstatt der üblichen Navigation einer normalen Website.</p>
+<h3 data-start="3883" data-end="3902">Zusammenfassung</h3>
+<ul data-start="3903" data-end="4661" data-is-only-node="" data-is-last-node="">
+<li data-start="3903" data-end="3989">Du kannst die <code data-start="3919" data-end="3934">manifest.json</code>-Datei ändern, um das Aussehen der PWA zu beeinflussen.</li>
+<li data-start="3990" data-end="4072">Mit CSS <code data-start="4000" data-end="4008">@media</code>-Regeln kannst du für den PWA-Modus spezifische Stile festlegen.</li>
+<li data-start="4073" data-end="4192">Verwende JavaScript, um zu erkennen, ob die App im PWA-Modus läuft, und passe die Benutzeroberfläche entsprechend an.</li>
+<li data-start="4193" data-end="4290">Nutze Front-End-Frameworks (wie React, Vue), um eine separate Version für die PWA zu erstellen.</li>
+<li data-start="4291" data-end="4447">Entwerfe benutzerdefinierte UI-Elemente wie eine untere Navigationsleiste oder gestenbasierte Navigation, damit die PWA mehr wie eine native App aussieht.</li>
+<li data-start="4448" data-end="4661" data-is-last-node="">Wenn du möchtest, dass deine PWA nativer aussieht, kannst du Material Design oder iOS-Stile verwenden und CSS-Animationen sowie Gesteninteraktionen einsetzen, um das Benutzererlebnis noch flüssiger zu gestalten.</li>
+</ul></div></div></div>
