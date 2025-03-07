@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>標題選擇頁面</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.12/marked.min.js"></script>
     <style>
         body {
             display: flex;
@@ -48,11 +47,12 @@
 <body>
     <div class="sidebar">
         <ul>
-            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content1.md')">1. 標題1</li>
-            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content2.md')">2. 標題2</li>
-            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content3.md')">3. 標題3</li>
+            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content1.txt')">1. 標題1</li>
+            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content2.txt')">2. 標題2</li>
+            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content3.txt')">3. 標題3</li>
         </ul>
     </div>
+    
     <div class="content" id="displayContent">
         點擊左側標題查看內容
     </div>
@@ -65,7 +65,7 @@
                 if (!response.ok) throw new Error(`文件未找到 (HTTP ${response.status})`);
                 
                 const text = await response.text();
-                document.getElementById('displayContent').innerHTML = marked.parse(text);
+                document.getElementById('displayContent').innerHTML = `<pre>${text}</pre>`; // 直接顯示純文本
             } catch (error) {
                 console.error("加載失敗:", error);
                 document.getElementById('displayContent').innerHTML = 
