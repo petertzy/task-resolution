@@ -2,10 +2,10 @@
 <h3 data-start="56" data-end="135">"Between just using the browser and having a real app"</h3>
 <p data-start="137" data-end="309">This topic explores the differences between browser-based applications (Web applications) and native applications (installed applications). Below is a detailed explanation:</p>
 <h3 data-start="311" data-end="352">1. <strong data-start="318" data-end="352">Definitions and Basic Concepts</strong></h3>
-<ul data-start="430" data-end="635">
-<li data-start="430" data-end="538"><strong data-start="432" data-end="441">Web Applications</strong>:
+<ul data-start="1176" data-end="1818">
+<li data-start="1176" data-end="1483"><strong data-start="1178" data-end="1202">Web Applications</strong>:
 Web applications are applications accessed through a browser. These applications run on remote servers, loaded and operated through a network connection. Users do not need to install any software and can simply visit the application's URL to use it. Web applications include social media, email clients, online office tools (such as Google Docs), etc.</li>
-<li data-start="542" data-end="635"><strong data-start="544" data-end="552">Native Applications</strong>:
+<li data-start="1487" data-end="1818"><strong data-start="1489" data-end="1512">Native Applications</strong>:
 Native applications are software developed for specific operating systems (such as Windows, macOS, iOS, Android, etc.) and are installed directly on the user's device. They can take advantage of the operating system's features and hardware resources, and usually need to be downloaded and installed from an app store (such as Google Play, App Store, etc.).</li>
 </ul>
 <h3 data-start="1140" data-end="1172">2. <strong data-start="1147" data-end="1172">Performance and Speed</strong></h3>
