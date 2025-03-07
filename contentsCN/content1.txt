@@ -1,14 +1,10 @@
 <div data-message-author-role="assistant" data-message-id="38fbd115-b4bc-4f7c-8bb6-5657acbc8827" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light"><p data-start="0" data-end="82">“只是使用浏览器和拥有一个真正的应用程序之间的区别”这个主题涉及到浏览器应用（Web 应用）和本地应用（Native 应用）之间的差异。以下是对这一主题的详细解释：</p>
 <h3 data-start="84" data-end="102">1. <strong data-start="91" data-end="102">定义和基本概念</strong></h3>
-<ul data-start="106" data-end="408">
-<li data-start="106" data-end="253">
-<p data-start="108" data-end="253"><strong data-start="108" data-end="125">浏览器应用（Web 应用）</strong>：
-Web 应用程序是通过浏览器访问的应用程序。这些应用程序运行在远程服务器上，通过网络连接加载和操作，用户无需安装任何软件，只需访问应用程序的URL即可使用。Web 应用包括社交媒体、电子邮件客户端、在线办公工具（如Google Docs）等。</p>
-</li>
-<li data-start="261" data-end="408">
-<p data-start="263" data-end="408"><strong data-start="263" data-end="282">本地应用（Native 应用）</strong>：
-本地应用程序是为特定操作系统（如Windows、macOS、iOS、Android等）开发的软件，直接安装在用户的设备上。它们可以利用操作系统的特性和硬件资源，通常需要从应用商店（如Google Play、App Store等）下载安装。</p>
-</li>
+<ul data-start="430" data-end="635">
+<li data-start="430" data-end="538"><strong data-start="432" data-end="441">浏览器应用（Web 应用）</strong>：
+Web 应用程序是通过浏览器访问的应用程序。这些应用程序运行在远程服务器上，通过网络连接加载和操作，用户无需安装任何软件，只需访问应用程序的URL即可使用。Web 应用包括社交媒体、电子邮件客户端、在线办公工具（如Google Docs）等。</li>
+<li data-start="542" data-end="635"><strong data-start="544" data-end="552">本地应用（Native 应用）</strong>：
+本地应用程序是为特定操作系统（如Windows、macOS、iOS、Android等）开发的软件，直接安装在用户的设备上。它们可以利用操作系统的特性和硬件资源，通常需要从应用商店（如Google Play、App Store等）下载安装。</li>
 </ul>
 <h3 data-start="410" data-end="426">2. <strong data-start="417" data-end="426">性能和速度</strong></h3>
 <ul data-start="430" data-end="635">
