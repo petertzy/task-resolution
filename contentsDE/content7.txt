@@ -1,7 +1,4 @@
-<div data-message-author-role="assistant" data-message-id="abbb8cb9-666b-4e29-888f-b5585165d833" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&]:mt-5" data-message-model-slug="gpt-4o-mini">
-  <div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]">
-    <div class="markdown prose w-full break-words dark:prose-invert light">
-      <p data-start="0" data-end="38">Im PWA-Modus wird das Verhalten von Nutzern, die auf einen Link klicken, um ein Abonnement zu kaufen, durch die folgenden Faktoren beeinflusst:</p>
+<div data-message-author-role="assistant" data-message-id="abbb8cb9-666b-4e29-888f-b5585165d833" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light"><p data-start="0" data-end="38">Im PWA-Modus wird das Verhalten von Nutzern, die auf einen Link klicken, um ein Abonnement zu kaufen, durch die folgenden Faktoren beeinflusst:</p>
       <h3 data-start="40" data-end="56">1. Wohin führt der Kauf-Link?</h3>
       <ul data-start="57" data-end="652">
         <li data-start="57" data-end="261">
