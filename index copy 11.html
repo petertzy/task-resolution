@@ -59,9 +59,9 @@
 <body>
     <div class="sidebar">
         <ul>
-            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content1.txt')">1. 標題1</li>
-            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content2.txt')">2. 標題2</li>
-            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content3.txt')">3. 標題3</li>
+            <li onclick="showContent('https://67c6c675-640a-4512-a169-b7274642eb96.usrfiles.com/ugd/67c6c6_77d56f92cbf24c5cbd88234ae9f0324a.txt')">1. 標題1</li>
+            <li onclick="showContent('https://67c6c675-640a-4512-a169-b7274642eb96.usrfiles.com/ugd/67c6c6_09929b675a80483cb29f05c6be4bc949.txt')">2. 標題2</li>
+            <li onclick="showContent('https://67c6c675-640a-4512-a169-b7274642eb96.usrfiles.com/ugd/67c6c6_c2491d246a934c39b48279aab9049fd7.txt')">3. 標題3</li>
         </ul>
     </div>
     
@@ -83,7 +83,9 @@
                     // 如果是HTML格式，直接显示
                     document.getElementById('displayContent').innerHTML = text;
                 } else {
-                    document.getElementById('displayContent').innerHTML = `<pre>${text}</pre>`;
+                    // 如果是Markdown格式或普通文本，使用marked.js渲染
+                    const htmlContent = marked.parse(text);
+                    document.getElementById('displayContent').innerHTML = htmlContent;
                 }
 
             } catch (error) {

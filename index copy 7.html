@@ -16,8 +16,6 @@
             width: 25%;
             background-color: #D6EAF8;
             padding: 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
         }
         .sidebar ul {
             list-style: none;
@@ -39,32 +37,22 @@
             flex: 1;
             background-color: #FCF3CF;
             display: flex;
-            align-items: flex-start;
-            justify-content: flex-start;
+            align-items: center;
+            justify-content: center;
             font-size: 1.5em;
-            padding: 20px;
+            padding: 80px;
             overflow: auto;
-            box-sizing: border-box;
-        }
-        pre {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            max-width: 100%;
-            overflow-wrap: break-word;
-            margin: 0;
-            word-break: break-all;
         }
     </style>
 </head>
 <body>
     <div class="sidebar">
         <ul>
-            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content1.txt')">1. 標題1</li>
-            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content2.txt')">2. 標題2</li>
-            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content3.txt')">3. 標題3</li>
+            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content1.md')">1. 標題1</li>
+            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content2.md')">2. 標題2</li>
+            <li onclick="showContent('https://raw.githubusercontent.com/petertzy/task-resolution/main/contents/content3.md')">3. 標題3</li>
         </ul>
     </div>
-    
     <div class="content" id="displayContent">
         點擊左側標題查看內容
     </div>
@@ -77,26 +65,12 @@
                 if (!response.ok) throw new Error(`文件未找到 (HTTP ${response.status})`);
                 
                 const text = await response.text();
-
-                // 判断文件内容是否包含HTML标签
-                if (isHTML(text)) {
-                    // 如果是HTML格式，直接显示
-                    document.getElementById('displayContent').innerHTML = text;
-                } else {
-                    document.getElementById('displayContent').innerHTML = `<pre>${text}</pre>`;
-                }
-
+                document.getElementById('displayContent').innerHTML = marked.parse(text);
             } catch (error) {
                 console.error("加載失敗:", error);
                 document.getElementById('displayContent').innerHTML = 
                     `<p style="color: red;">加載內容失敗，請確保文件存在且本地服務器運行中。</p>`;
             }
-        }
-
-        // 判断文本是否包含HTML标签
-        function isHTML(str) {
-            const doc = new DOMParser().parseFromString(str, 'text/html');
-            return Array.from(doc.body.childNodes).some(node => node.nodeType === 1); // 1代表元素节点
         }
     </script>
 </body>
