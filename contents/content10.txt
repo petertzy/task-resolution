@@ -1,45 +1,42 @@
-<div data-message-author-role="assistant" data-message-id="c548fc52-59a1-4e7b-b09c-8e6130c3c991" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini">
-  <div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]">
-    <div class="markdown prose w-full break-words dark:prose-invert light">
-      <p data-start="0" data-end="117">When a user clicks a link from a regular browser (e.g., a link in Google search results), by default, the PWA (Progressive Web App) will open in a standard web browser environment and will not launch as a standalone application. To explain this behavior more clearly, we need to differentiate a few situations and concepts:</p>
-      <h3 data-start="119" data-end="136">1. Default Behavior When Clicking a Link:</h3>
-      <p data-start="137" data-end="364">When you click a link in Google search or other regular web browsers (such as Chrome, Safari, Firefox, Edge, etc.), the default behavior of the browser is to open the webpage the link points to. <br data-start="221" data-end="224">Even if the link points to a PWA website, the browser still treats it as a regular webpage link.<br data-start="262" data-end="265"><strong data-start="265" data-end="273">The result is:</strong> The PWA will open in a browser tab or window, and you will still see the browser’s address bar, menu, tabs, and other browser interface elements. This is essentially no different from accessing any other regular website; the PWA is still running within the "container" of the browser.</p>
-      <h3 data-start="366" data-end="387">2. The "Installation" Concept of PWA:</h3>
-      <p data-start="388" data-end="565">One of the core features of a PWA is its installability, where users can "install" the PWA from the browser to their device (e.g., using the "Add to Home Screen" option in the browser menu).<br data-start="456" data-end="459"><strong data-start="459" data-end="469">The meaning of installation:</strong> Installing a PWA is essentially adding the PWA website to the device’s app list and creating an app icon on the home screen or in the app drawer.<br data-start="521" data-end="524"><strong data-start="524" data-end="537">How to launch after installation:</strong> Once the PWA is installed, users can launch it in the following two ways:</p>
-      <ul data-start="566" data-end="735">
-        <li data-start="566" data-end="649"><strong data-start="568" data-end="582">Via a browser link:</strong> If the user enters the PWA’s URL in the browser’s address bar or clicks a bookmark or link from the browser history, the PWA will still open in the browser (same as case 1).</li>
-        <li data-start="650" data-end="735"><strong data-start="652" data-end="669">Via the installed app icon:</strong> After installing the PWA, users can find the app icon on their device’s home screen or in the app list. Clicking the icon will launch the PWA in a "standalone app" mode.</li>
-      </ul>
-      <h3 data-start="737" data-end="764">3. Characteristics of PWA in "Standalone App" Mode:</h3>
-      <ul data-start="765" data-end="1030">
-        <li data-start="765" data-end="850"><strong data-start="767" data-end="778">More like a native app:</strong> A PWA launched in "standalone app" mode typically hides the browser’s address bar and most browser interface elements, resulting in a cleaner interface that focuses on the app content, making the user experience more akin to a native app.</li>
-        <li data-start="851" data-end="939"><strong data-start="853" data-end="871">Running in a separate process (possibly):</strong> In some operating systems and browsers, a PWA launched in standalone app mode might run in its own process, isolated from the browser process, which can lead to better performance and resource management.</li>
-        <li data-start="940" data-end="1030"><strong data-start="942" data-end="969">Possibly having more system permissions (depending on PWA functionality):</strong> After installation, the PWA may request additional system permissions, such as push notifications, background synchronization, and access to device hardware, depending on the functionality of the PWA and user authorization.</li>
-      </ul>
-      <h3 data-start="1032" data-end="1039">Summary:</h3>
-      <ul data-start="1040" data-end="1246">
-        <li data-start="1040" data-end="1146"><strong data-start="1042" data-end="1057">Clicking a link from a browser:</strong> Whether from Google search results or other webpages, when clicking a link to a PWA, it will open in a standard web browser environment, essentially as a regular webpage, running in a browser tab or window.</li>
-        <li data-start="1147" data-end="1246"><strong data-start="1149" data-end="1166">For a "standalone app" experience:</strong> If you want the PWA to run in a mode closer to a native app, you must first install the PWA on your device and then launch it by clicking the PWA icon on the home screen or app list.</li>
-      </ul>
-      <h3 data-start="1248" data-end="1257">Simple Understanding:</h3>
-      <ul data-start="1258" data-end="1332">
-        <li data-start="1258" data-end="1291"><strong data-start="1260" data-end="1291">Browser link = Regular webpage access to PWA (still in the browser)</strong></li>
-        <li data-start="1292" data-end="1332"><strong data-start="1294" data-end="1332">Installed PWA icon = Standalone app mode PWA (more like a native app)</strong></li>
-      </ul>
-      <h3 data-start="1334" data-end="1359">How to get the "Standalone App" experience with PWA?</h3>
-      <ol data-start="1360" data-end="1717">
-        <li data-start="1360" data-end="1419"><strong data-start="1363" data-end="1377">Visit the PWA website:</strong> First, use a browser (such as Chrome, Safari) to visit the PWA website you want to install.</li>
-        <li data-start="1420" data-end="1555"><strong data-start="1423" data-end="1445">Find the "Add to Home Screen" or "Install" option:</strong> Modern browsers typically detect the PWA’s installability and provide options such as "Add to Home Screen" (Chrome, Safari) or "Install [App Name]" (Edge, Firefox). These options are usually in the browser menu (typically the three dots or more icon in the upper-right corner).</li>
-        <li data-start="1556" data-end="1631"><strong data-start="1559" data-end="1570">Install the PWA:</strong> Click the "Add to Home Screen" or "Install" option, and follow the prompts to complete the installation. This will create a PWA app icon on your device’s home screen or in the app list.</li>
-        <li data-start="1632" data-end="1717"><strong data-start="1635" data-end="1648">Launch via the app icon:</strong> Once installation is complete, return to your device’s home screen or app list, find the PWA app icon, and click it to launch the PWA. The PWA will now open in "standalone app" mode.</li>
-      </ol>
-      <h3 data-start="1719" data-end="1733">Suggestions from a User Experience Perspective:</h3>
-      <ul data-start="1734" data-end="1950">
-        <li data-start="1734" data-end="1842"><strong data-start="1736" data-end="1753">Provide clear instructions to users on how to install the PWA:</strong> If you want users to experience the best PWA experience (i.e., standalone app mode), clearly guide them to install the PWA on the website. For example, you can add an installation prompt in a prominent position on the site or pop up an installation guide when the user visits for the first time.</li>
-        <li data-start="1843" data-end="1950"><strong data-start="1845" data-end="1862">Explain the benefits of installing the PWA:</strong> Explain to users that after installing the PWA, they will get a faster, more convenient, and more native-like experience, such as offline access, push notifications, etc. Emphasize the difference between launching the PWA via the app icon and accessing it via a browser link.</li>
-      </ul>
-      <h3 data-start="1952" data-end="1959">Conclusion:</h3>
-      <p data-start="1960" data-end="2028" data-is-last-node="" data-is-only-node="">When clicking a PWA link from a browser, the PWA always runs in the browser environment. Only after installing the PWA and launching it via the app icon can users experience a more native app-like experience.</p>
-    </div>
-  </div>
+<div data-message-author-role="assistant" data-message-id="c548fc52-59a1-4e7b-b09c-8e6130c3c991" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light"><p data-start="0" data-end="117">When a user clicks a link from a regular browser (e.g., a link in Google search results), by default, the PWA (Progressive Web App) will open in a standard web browser environment and will not launch as a standalone application. To explain this behavior more clearly, we need to differentiate a few situations and concepts:</p>
+<h3 data-start="119" data-end="136">1. Default Behavior When Clicking a Link:</h3>
+<p data-start="137" data-end="364">When you click a link in Google search or other regular web browsers (such as Chrome, Safari, Firefox, Edge, etc.), the default behavior of the browser is to open the webpage the link points to. <br data-start="221" data-end="224">Even if the link points to a PWA website, the browser still treats it as a regular webpage link.<br data-start="262" data-end="265"><strong data-start="265" data-end="273">The result is:</strong> The PWA will open in a browser tab or window, and you will still see the browser’s address bar, menu, tabs, and other browser interface elements. This is essentially no different from accessing any other regular website; the PWA is still running within the "container" of the browser.</p>
+<h3 data-start="366" data-end="387">2. The "Installation" Concept of PWA:</h3>
+<p data-start="388" data-end="565">One of the core features of a PWA is its installability, where users can "install" the PWA from the browser to their device (e.g., using the "Add to Home Screen" option in the browser menu).<br data-start="456" data-end="459"><strong data-start="459" data-end="469">The meaning of installation:</strong> Installing a PWA is essentially adding the PWA website to the device’s app list and creating an app icon on the home screen or in the app drawer.<br data-start="521" data-end="524"><strong data-start="524" data-end="537">How to launch after installation:</strong> Once the PWA is installed, users can launch it in the following two ways:</p>
+<ul data-start="566" data-end="735">
+<li data-start="566" data-end="649"><strong data-start="568" data-end="582">Via a browser link:</strong> If the user enters the PWA’s URL in the browser’s address bar or clicks a bookmark or link from the browser history, the PWA will still open in the browser (same as case 1).</li>
+<li data-start="650" data-end="735"><strong data-start="652" data-end="669">Via the installed app icon:</strong> After installing the PWA, users can find the app icon on their device’s home screen or in the app list. Clicking the icon will launch the PWA in a "standalone app" mode.</li>
+</ul>
+<h3 data-start="737" data-end="764">3. Characteristics of PWA in "Standalone App" Mode:</h3>
+<ul data-start="765" data-end="1030">
+<li data-start="765" data-end="850"><strong data-start="767" data-end="778">More like a native app:</strong> A PWA launched in "standalone app" mode typically hides the browser’s address bar and most browser interface elements, resulting in a cleaner interface that focuses on the app content, making the user experience more akin to a native app.</li>
+<li data-start="851" data-end="939"><strong data-start="853" data-end="871">Running in a separate process (possibly):</strong> In some operating systems and browsers, a PWA launched in standalone app mode might run in its own process, isolated from the browser process, which can lead to better performance and resource management.</li>
+<li data-start="940" data-end="1030"><strong data-start="942" data-end="969">Possibly having more system permissions (depending on PWA functionality):</strong> After installation, the PWA may request additional system permissions, such as push notifications, background synchronization, and access to device hardware, depending on the functionality of the PWA and user authorization.</li>
+</ul>
+<h3 data-start="1032" data-end="1039">Summary:</h3>
+<ul data-start="1040" data-end="1246">
+<li data-start="1040" data-end="1146"><strong data-start="1042" data-end="1057">Clicking a link from a browser:</strong> Whether from Google search results or other webpages, when clicking a link to a PWA, it will open in a standard web browser environment, essentially as a regular webpage, running in a browser tab or window.</li>
+<li data-start="1147" data-end="1246"><strong data-start="1149" data-end="1166">For a "standalone app" experience:</strong> If you want the PWA to run in a mode closer to a native app, you must first install the PWA on your device and then launch it by clicking the PWA icon on the home screen or app list.</li>
+</ul>
+<h3 data-start="1248" data-end="1257">Simple Understanding:</h3>
+<ul data-start="1258" data-end="1332">
+<li data-start="1258" data-end="1291"><strong data-start="1260" data-end="1291">Browser link = Regular webpage access to PWA (still in the browser)</strong></li>
+<li data-start="1292" data-end="1332"><strong data-start="1294" data-end="1332">Installed PWA icon = Standalone app mode PWA (more like a native app)</strong></li>
+</ul>
+<h3 data-start="1334" data-end="1359">How to get the "Standalone App" experience with PWA?</h3>
+<ol data-start="1360" data-end="1717">
+<li data-start="1360" data-end="1419"><strong data-start="1363" data-end="1377">Visit the PWA website:</strong> First, use a browser (such as Chrome, Safari) to visit the PWA website you want to install.</li>
+<li data-start="1420" data-end="1555"><strong data-start="1423" data-end="1445">Find the "Add to Home Screen" or "Install" option:</strong> Modern browsers typically detect the PWA’s installability and provide options such as "Add to Home Screen" (Chrome, Safari) or "Install [App Name]" (Edge, Firefox). These options are usually in the browser menu (typically the three dots or more icon in the upper-right corner).</li>
+<li data-start="1556" data-end="1631"><strong data-start="1559" data-end="1570">Install the PWA:</strong> Click the "Add to Home Screen" or "Install" option, and follow the prompts to complete the installation. This will create a PWA app icon on your device’s home screen or in the app list.</li>
+<li data-start="1632" data-end="1717"><strong data-start="1635" data-end="1648">Launch via the app icon:</strong> Once installation is complete, return to your device’s home screen or app list, find the PWA app icon, and click it to launch the PWA. The PWA will now open in "standalone app" mode.</li>
+</ol>
+<h3 data-start="1719" data-end="1733">Suggestions from a User Experience Perspective:</h3>
+<ul data-start="1734" data-end="1950">
+<li data-start="1734" data-end="1842"><strong data-start="1736" data-end="1753">Provide clear instructions to users on how to install the PWA:</strong> If you want users to experience the best PWA experience (i.e., standalone app mode), clearly guide them to install the PWA on the website. For example, you can add an installation prompt in a prominent position on the site or pop up an installation guide when the user visits for the first time.</li>
+<li data-start="1843" data-end="1950"><strong data-start="1845" data-end="1862">Explain the benefits of installing the PWA:</strong> Explain to users that after installing the PWA, they will get a faster, more convenient, and more native-like experience, such as offline access, push notifications, etc. Emphasize the difference between launching the PWA via the app icon and accessing it via a browser link.</li>
+</ul>
+<h3 data-start="1952" data-end="1959">Conclusion:</h3>
+<p data-start="1960" data-end="2028" data-is-last-node="" data-is-only-node="">When clicking a PWA link from a browser, the PWA always runs in the browser environment. Only after installing the PWA and launching it via the app icon can users experience a more native app-like experience.</p>
+</div>
+</div>
 </div>

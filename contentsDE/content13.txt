@@ -1,104 +1,101 @@
-<div data-message-author-role="assistant" data-message-id="f759a925-c165-4aaf-bd18-d7262dbcecc0" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&]:mt-5" data-message-model-slug="gpt-4o-mini">
-  <div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]">
-    <div class="markdown prose w-full break-words dark:prose-invert light">
-      <p data-start="0" data-end="84">Ja, eine PWA (Progressive Web App) kann Benutzer mehrere Tage lang eingeloggt halten, auch wenn die App für einige Tage nicht genutzt wurde. Dies hängt davon ab, wie du die Benutzerauthentifizierung und Sitzungsverwaltung in der PWA implementierst.</p>
-      <p data-start="86" data-end="123">Hier ist eine detaillierte Erklärung, wie PWAs den Login-Zustand beibehalten können und welche Schlüsselfaktoren die Dauer des Logins beeinflussen:</p>
-      <h3 data-start="125" data-end="142">1. Grundprinzipien der Login-Zustands-Persistenz</h3>
-      <p data-start="143" data-end="177">Webanwendungen (einschließlich PWAs) verwenden typischerweise die folgenden Technologien, um den Login-Zustand eines Benutzers zu speichern:</p>
-      <ul data-start="179" data-end="1018">
-        <li data-start="179" data-end="597">
-          <p data-start="181" data-end="313"><strong data-start="181" data-end="206">Cookies (HTTP-Cookies)</strong>: Dies ist die traditionelle Methode der Web-Sitzungsverwaltung. Nach einer erfolgreichen Anmeldung setzt der Server ein Cookie mit Sitzungsinformationen und sendet es an den Browser des Benutzers. Der Browser sendet dieses Cookie bei nachfolgenden Anfragen automatisch mit, und der Server validiert das Cookie, um den Benutzer zu identifizieren.</p>
-          <ul data-start="316" data-end="597">
-            <li data-start="316" data-end="465"><strong data-start="318" data-end="352">Persistente Cookies</strong>: Diese Cookies können mit einem Ablaufdatum gesetzt werden (mit dem <code data-start="362" data-end="371">Expires</code> oder <code data-start="374" data-end="383">Max-Age</code>-Attribut). Der Browser speichert sie auf der Festplatte, und sie bleiben erhalten, bis sie ablaufen oder manuell gelöscht werden. Dadurch bleibt der Login-Zustand über Browser-Sitzungen hinweg bestehen.</li>
-            <li data-start="468" data-end="597"><strong data-start="470" data-end="500">Sitzungs-Cookies</strong>: Wenn kein Ablaufdatum gesetzt ist oder das Ablaufdatum auf das Ende der Sitzung gesetzt ist, handelt es sich um ein Sitzungs-Cookie. Sitzungs-Cookies werden im Arbeitsspeicher des Browsers gespeichert, und wenn der Browser geschlossen wird, werden sie gelöscht, wodurch der Login-Zustand verloren geht.</li>
-          </ul>
-        </li>
-        <li data-start="599" data-end="852">
-          <p data-start="601" data-end="754"><strong data-start="601" data-end="634">LocalStorage (Web Storage API)</strong>: Damit können Schlüssel-Wert-Paare lokal im Browser des Benutzers gespeichert werden. PWAs können Authentifizierungstoken (z. B. JWT - JSON Web Token) im LocalStorage speichern. Jedes Mal, wenn die App startet oder eine Authentifizierung erforderlich ist, wird das Token aus dem LocalStorage gelesen und validiert.</p>
-          <ul data-start="757" data-end="852">
-            <li data-start="757" data-end="852"><strong data-start="759" data-end="768">Persistente Speicherung</strong>: Daten im LocalStorage bleiben im Browser, bis sie explizit durch JavaScript oder manuell durch den Benutzer gelöscht werden. Dadurch kann der Login-Zustand über lange Zeiträume bestehen bleiben.</li>
-          </ul>
-        </li>
-        <li data-start="854" data-end="1018">
-          <p data-start="856" data-end="1018"><strong data-start="856" data-end="884">Service Worker Cache API</strong>: Der Service Worker kann im Hintergrund des Browsers laufen, Netzwerk-Anfragen abfangen und die Cache-API verwenden, um Ressourcen zu cachen. Während die Cache-API hauptsächlich für das Caching von statischen Ressourcen und Netzwerk-Anfragen verwendet wird, könnte sie theoretisch verwendet werden, um einige Sitzungsinformationen zu speichern, normalerweise in Kombination mit anderen Speichermechanismen, anstatt sensible Authentifizierungstoken direkt zu speichern.</p>
-        </li>
-      </ul>
-      <h3 data-start="1020" data-end="1046">2. Schlüsselfaktoren, die die Persistenz des Login-Zustands in einer PWA beeinflussen</h3>
-      <ul data-start="1047" data-end="2260">
-        <li data-start="1047" data-end="1411">
-          <p data-start="1049" data-end="1077"><strong data-start="1049" data-end="1076">Cookie-Einstellungen (wenn Cookies verwendet werden)</strong>:</p>
-          <ul data-start="1080" data-end="1411">
-            <li data-start="1080" data-end="1205">Ob die <code data-start="1088" data-end="1097">Expires</code> oder <code data-start="1100" data-end="1109">Max-Age</code>-Attribute gesetzt sind: Diese bestimmen, ob das Cookie ein persistentes Cookie ist. Wenn kein Ablaufdatum gesetzt ist oder es am Ende der Sitzung abläuft, handelt es sich um ein Sitzungs-Cookie, und der Login-Zustand geht verloren, wenn der Browser geschlossen wird.</li>
-            <li data-start="1208" data-end="1316">Länge der Ablaufzeit: Du kannst das Ablaufdatum des Cookies auf mehrere Tage, Wochen oder sogar länger setzen. Je länger die Ablaufzeit, desto länger bleibt der Login-Zustand bestehen. Zum Beispiel würde das Setzen von <code data-start="1275" data-end="1291">Max-Age=604800</code> (7 Tage) das Cookie für 7 Tage gültig halten.</li>
-            <li data-start="1319" data-end="1411"><code data-start="1321" data-end="1331">HttpOnly</code> und <code data-start="1334" data-end="1342">Secure</code>-Attribute: Diese Attribute erhöhen die Sicherheit (verhindern den Zugriff durch clientseitiges JavaScript und sorgen für eine HTTPS-Übertragung), stehen jedoch nicht in direktem Zusammenhang mit der Persistenz des Cookies.</li>
-          </ul>
-        </li>
-        <li data-start="1413" data-end="1688">
-          <p data-start="1415" data-end="1455"><strong data-start="1415" data-end="1454">Verwendung von LocalStorage (wenn LocalStorage verwendet wird)</strong>:</p>
-          <ul data-start="1458" data-end="1688">
-            <li data-start="1458" data-end="1609">Token-Ablauf (z. B. JWT <code data-start="1476" data-end="1481">exp</code>-Anspruch): Auch wenn das Token im LocalStorage gespeichert ist, kann es ein Ablaufdatum haben. Wenn das Token abläuft, wird es selbst dann vom Server abgelehnt, wenn es noch im LocalStorage vorhanden ist. Du musst den Ablauf des Tokens in deiner PWA behandeln, z. B. durch Implementierung eines Token-Aktualisierungsmechanismus.</li>
-            <li data-start="1612" data-end="1688">Manuelles Löschen von LocalStorage: Wenn der Code der PWA-App oder der Benutzer die Browserdaten (einschließlich LocalStorage) manuell löscht, geht der Login-Zustand verloren.</li>
-          </ul>
-        </li>
-        <li data-start="1690" data-end="2036">
-          <p data-start="1692" data-end="1707"><strong data-start="1692" data-end="1706">Browser-Einstellungen und Benutzerverhalten</strong>:</p>
-          <ul data-start="1710" data-end="2036">
-            <li data-start="1710" data-end="1838"><strong data-start="1712" data-end="1734">Cookie- und Website-Dateneinstellungen im Browser</strong>: Benutzer können die Cookie-Akzeptanzrichtlinien, die Speicherzeit und die Frage, ob Cookies und Website-Daten beim Schließen des Browsers gelöscht werden, konfigurieren. Eine strenge Cookie-Verwaltung durch den Benutzer kann die Persistenz des Login-Zustands in der PWA beeinflussen.</li>
-            <li data-start="1841" data-end="1922"><strong data-start="1843" data-end="1858">Manuelles Löschen von Browserdaten durch den Benutzer</strong>: Wenn Benutzer den Cache, Cookies, LocalStorage oder andere Daten des Browsers löschen, werden alle Login-Informationen gelöscht, wodurch die PWA den Benutzer ausloggt.</li>
-            <li data-start="1925" data-end="2036"><strong data-start="1927" data-end="1941">Unterschiede zwischen Browser-Versionen und Plattformen</strong>: Verschiedene Browser und Betriebssysteme können geringfügige Unterschiede in den Cookie- und LocalStorage-Verwaltungspolitiken haben. Moderne Browser verhalten sich jedoch weitgehend konsistent bei der Verwaltung von persistenten Cookies und LocalStorage.</li>
-          </ul>
-        </li>
-        <li data-start="2038" data-end="2260">
-          <p data-start="2040" data-end="2053"><strong data-start="2040" data-end="2052">Serverseitige Sitzungsverwaltung</strong>:</p>
-          <ul data-start="2056" data-end="2260">
-            <li data-start="2056" data-end="2187"><strong data-start="2058" data-end="2072">Ablauf der Serversitzung</strong>: Selbst wenn der Client (PWA) den Login-Zustand erfolgreich beibehält (z. B. durch Cookies oder LocalStorage), kann der Server eine Sitzungsablaufzeit haben. Wenn die Serversitzung abläuft, kann der Server eine erneute Authentifizierung verlangen, auch wenn das Cookie oder Token des Clients noch gültig ist.</li>
-            <li data-start="2190" data-end="2260"><strong data-start="2192" data-end="2206">Serverseitige Sitzungsmanagement-Richtlinien</strong>: Die Richtlinien für das Sitzungsmanagement auf der Serverseite (z. B. gleitende Sitzungsablaufzeit, zulässige gleichzeitige Sitzungen) beeinflussen indirekt die Persistenz des Login-Zustands auf der Client-Seite.</li>
-          </ul>
-        </li>
-      </ul>
-      <h3 data-start="2262" data-end="2294">3. Sicherstellen, dass der Login-Zustand der PWA auch über längere Zeiträume hinweg beibehalten wird (auch wenn die App für Tage nicht verwendet wird)</h3>
-      <p data-start="2295" data-end="2325">Um sicherzustellen, dass die PWA den Login-Zustand des Benutzers für längere Zeiträume beibehält, kannst du folgende Strategien umsetzen:</p>
-      <ul data-start="2327" data-end="2678">
-        <li data-start="2327" data-end="2390">Verwende persistente Cookies oder LocalStorage, um Sitzungsinformationen des Benutzers (z. B. Session-ID oder JWT-Token) zu speichern.</li>
-        <li data-start="2391" data-end="2474">Setze für Cookies das richtige Ablaufdatum mit <code data-start="2407" data-end="2416">Expires</code> oder <code data-start="2419" data-end="2428">Max-Age</code>, oder stelle sicher, dass das im LocalStorage gespeicherte Token eine ausreichende Lebensdauer hat (z. B. mehrere Tage oder Wochen).</li>
-        <li data-start="2475" data-end="2583"><strong data-start="2477" data-end="2504">Implementiere einen Token-Aktualisierungsmechanismus</strong> (wenn du JWT-Tokens verwendest): Wenn ein Token kurz vor dem Ablauf steht, kann die PWA automatisch ein Token-Refresh vom Server anfordern, wodurch die Login-Sitzung des Benutzers verlängert wird, ohne dass eine erneute Anmeldung erforderlich ist. Dies sorgt für ein nahtloses Login-Erlebnis.</li>
-        <li data-start="2584" data-end="2640">Informiere die Benutzer darüber, wie lange ihr Login-Zustand bestehen bleibt und wie sie sich abmelden können, wenn sie sich anmelden. Dies setzt die Erwartungen der Benutzer bezüglich der Persistenz des Login-Zustands.</li>
-        <li data-start="2641" data-end="2678">Teste die Persistenz des Login-Zustands auf verschiedenen Browsern und Geräten, um sicherzustellen, dass er in allen Fällen wie erwartet funktioniert.</li>
-      </ul>
-      <h4 data-start="2680" data-end="2729">Beispiel: Verwendung von persistente Cookies, um den Login-Zustand in Next.js API-Routen festzulegen</h4>
-      <p data-start="2730" data-end="2831">Angenommen, du verwendest Next.js API-Routen, um die Benutzeranmeldung zu verarbeiten und ein Cookie zu setzen, das den Login-Zustand nach erfolgreicher Authentifizierung beibehält. Du kannst ein persistentes Cookie in der API-Route setzen, das 7 Tage gültig bleibt:</p>
-      <pre class="!overflow-visible" data-start="2833" data-end="3650">
-        <div class="overflow-y-auto p-4" dir="ltr">
-          <code class="!whitespace-pre language-javascript"><span>
-            <span class="hljs-comment">// pages/api/login.js (Next.js API Route)</span>
-            <span class="hljs-keyword">import</span> { serialize } <span class="hljs-keyword">from</span> <span class="hljs-string">'cookie'</span>;
+<div data-message-author-role="assistant" data-message-id="f759a925-c165-4aaf-bd18-d7262dbcecc0" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light"><p data-start="0" data-end="84">Ja, eine PWA (Progressive Web App) kann Benutzer mehrere Tage lang eingeloggt halten, auch wenn die App für einige Tage nicht genutzt wurde. Dies hängt davon ab, wie du die Benutzerauthentifizierung und Sitzungsverwaltung in der PWA implementierst.</p>
+<p data-start="86" data-end="123">Hier ist eine detaillierte Erklärung, wie PWAs den Login-Zustand beibehalten können und welche Schlüsselfaktoren die Dauer des Logins beeinflussen:</p>
+<h3 data-start="125" data-end="142">1. Grundprinzipien der Login-Zustands-Persistenz</h3>
+<p data-start="143" data-end="177">Webanwendungen (einschließlich PWAs) verwenden typischerweise die folgenden Technologien, um den Login-Zustand eines Benutzers zu speichern:</p>
+<ul data-start="179" data-end="1018">
+<li data-start="179" data-end="597">
+<p data-start="181" data-end="313"><strong data-start="181" data-end="206">Cookies (HTTP-Cookies)</strong>: Dies ist die traditionelle Methode der Web-Sitzungsverwaltung. Nach einer erfolgreichen Anmeldung setzt der Server ein Cookie mit Sitzungsinformationen und sendet es an den Browser des Benutzers. Der Browser sendet dieses Cookie bei nachfolgenden Anfragen automatisch mit, und der Server validiert das Cookie, um den Benutzer zu identifizieren.</p>
+<ul data-start="316" data-end="597">
+<li data-start="316" data-end="465"><strong data-start="318" data-end="352">Persistente Cookies</strong>: Diese Cookies können mit einem Ablaufdatum gesetzt werden (mit dem <code data-start="362" data-end="371">Expires</code> oder <code data-start="374" data-end="383">Max-Age</code>-Attribut). Der Browser speichert sie auf der Festplatte, und sie bleiben erhalten, bis sie ablaufen oder manuell gelöscht werden. Dadurch bleibt der Login-Zustand über Browser-Sitzungen hinweg bestehen.</li>
+<li data-start="468" data-end="597"><strong data-start="470" data-end="500">Sitzungs-Cookies</strong>: Wenn kein Ablaufdatum gesetzt ist oder das Ablaufdatum auf das Ende der Sitzung gesetzt ist, handelt es sich um ein Sitzungs-Cookie. Sitzungs-Cookies werden im Arbeitsspeicher des Browsers gespeichert, und wenn der Browser geschlossen wird, werden sie gelöscht, wodurch der Login-Zustand verloren geht.</li>
+</ul>
+</li>
+<li data-start="599" data-end="852">
+<p data-start="601" data-end="754"><strong data-start="601" data-end="634">LocalStorage (Web Storage API)</strong>: Damit können Schlüssel-Wert-Paare lokal im Browser des Benutzers gespeichert werden. PWAs können Authentifizierungstoken (z. B. JWT - JSON Web Token) im LocalStorage speichern. Jedes Mal, wenn die App startet oder eine Authentifizierung erforderlich ist, wird das Token aus dem LocalStorage gelesen und validiert.</p>
+<ul data-start="757" data-end="852">
+<li data-start="757" data-end="852"><strong data-start="759" data-end="768">Persistente Speicherung</strong>: Daten im LocalStorage bleiben im Browser, bis sie explizit durch JavaScript oder manuell durch den Benutzer gelöscht werden. Dadurch kann der Login-Zustand über lange Zeiträume bestehen bleiben.</li>
+</ul>
+</li>
+<li data-start="854" data-end="1018">
+<p data-start="856" data-end="1018"><strong data-start="856" data-end="884">Service Worker Cache API</strong>: Der Service Worker kann im Hintergrund des Browsers laufen, Netzwerk-Anfragen abfangen und die Cache-API verwenden, um Ressourcen zu cachen. Während die Cache-API hauptsächlich für das Caching von statischen Ressourcen und Netzwerk-Anfragen verwendet wird, könnte sie theoretisch verwendet werden, um einige Sitzungsinformationen zu speichern, normalerweise in Kombination mit anderen Speichermechanismen, anstatt sensible Authentifizierungstoken direkt zu speichern.</p>
+</li>
+</ul>
+<h3 data-start="1020" data-end="1046">2. Schlüsselfaktoren, die die Persistenz des Login-Zustands in einer PWA beeinflussen</h3>
+<ul data-start="1047" data-end="2260">
+<li data-start="1047" data-end="1411">
+<p data-start="1049" data-end="1077"><strong data-start="1049" data-end="1076">Cookie-Einstellungen (wenn Cookies verwendet werden)</strong>:</p>
+<ul data-start="1080" data-end="1411">
+<li data-start="1080" data-end="1205">Ob die <code data-start="1088" data-end="1097">Expires</code> oder <code data-start="1100" data-end="1109">Max-Age</code>-Attribute gesetzt sind: Diese bestimmen, ob das Cookie ein persistentes Cookie ist. Wenn kein Ablaufdatum gesetzt ist oder es am Ende der Sitzung abläuft, handelt es sich um ein Sitzungs-Cookie, und der Login-Zustand geht verloren, wenn der Browser geschlossen wird.</li>
+<li data-start="1208" data-end="1316">Länge der Ablaufzeit: Du kannst das Ablaufdatum des Cookies auf mehrere Tage, Wochen oder sogar länger setzen. Je länger die Ablaufzeit, desto länger bleibt der Login-Zustand bestehen. Zum Beispiel würde das Setzen von <code data-start="1275" data-end="1291">Max-Age=604800</code> (7 Tage) das Cookie für 7 Tage gültig halten.</li>
+<li data-start="1319" data-end="1411"><code data-start="1321" data-end="1331">HttpOnly</code> und <code data-start="1334" data-end="1342">Secure</code>-Attribute: Diese Attribute erhöhen die Sicherheit (verhindern den Zugriff durch clientseitiges JavaScript und sorgen für eine HTTPS-Übertragung), stehen jedoch nicht in direktem Zusammenhang mit der Persistenz des Cookies.</li>
+</ul>
+</li>
+<li data-start="1413" data-end="1688">
+<p data-start="1415" data-end="1455"><strong data-start="1415" data-end="1454">Verwendung von LocalStorage (wenn LocalStorage verwendet wird)</strong>:</p>
+<ul data-start="1458" data-end="1688">
+<li data-start="1458" data-end="1609">Token-Ablauf (z. B. JWT <code data-start="1476" data-end="1481">exp</code>-Anspruch): Auch wenn das Token im LocalStorage gespeichert ist, kann es ein Ablaufdatum haben. Wenn das Token abläuft, wird es selbst dann vom Server abgelehnt, wenn es noch im LocalStorage vorhanden ist. Du musst den Ablauf des Tokens in deiner PWA behandeln, z. B. durch Implementierung eines Token-Aktualisierungsmechanismus.</li>
+<li data-start="1612" data-end="1688">Manuelles Löschen von LocalStorage: Wenn der Code der PWA-App oder der Benutzer die Browserdaten (einschließlich LocalStorage) manuell löscht, geht der Login-Zustand verloren.</li>
+</ul>
+</li>
+<li data-start="1690" data-end="2036">
+<p data-start="1692" data-end="1707"><strong data-start="1692" data-end="1706">Browser-Einstellungen und Benutzerverhalten</strong>:</p>
+<ul data-start="1710" data-end="2036">
+<li data-start="1710" data-end="1838"><strong data-start="1712" data-end="1734">Cookie- und Website-Dateneinstellungen im Browser</strong>: Benutzer können die Cookie-Akzeptanzrichtlinien, die Speicherzeit und die Frage, ob Cookies und Website-Daten beim Schließen des Browsers gelöscht werden, konfigurieren. Eine strenge Cookie-Verwaltung durch den Benutzer kann die Persistenz des Login-Zustands in der PWA beeinflussen.</li>
+<li data-start="1841" data-end="1922"><strong data-start="1843" data-end="1858">Manuelles Löschen von Browserdaten durch den Benutzer</strong>: Wenn Benutzer den Cache, Cookies, LocalStorage oder andere Daten des Browsers löschen, werden alle Login-Informationen gelöscht, wodurch die PWA den Benutzer ausloggt.</li>
+<li data-start="1925" data-end="2036"><strong data-start="1927" data-end="1941">Unterschiede zwischen Browser-Versionen und Plattformen</strong>: Verschiedene Browser und Betriebssysteme können geringfügige Unterschiede in den Cookie- und LocalStorage-Verwaltungspolitiken haben. Moderne Browser verhalten sich jedoch weitgehend konsistent bei der Verwaltung von persistenten Cookies und LocalStorage.</li>
+</ul>
+</li>
+<li data-start="2038" data-end="2260">
+<p data-start="2040" data-end="2053"><strong data-start="2040" data-end="2052">Serverseitige Sitzungsverwaltung</strong>:</p>
+<ul data-start="2056" data-end="2260">
+<li data-start="2056" data-end="2187"><strong data-start="2058" data-end="2072">Ablauf der Serversitzung</strong>: Selbst wenn der Client (PWA) den Login-Zustand erfolgreich beibehält (z. B. durch Cookies oder LocalStorage), kann der Server eine Sitzungsablaufzeit haben. Wenn die Serversitzung abläuft, kann der Server eine erneute Authentifizierung verlangen, auch wenn das Cookie oder Token des Clients noch gültig ist.</li>
+<li data-start="2190" data-end="2260"><strong data-start="2192" data-end="2206">Serverseitige Sitzungsmanagement-Richtlinien</strong>: Die Richtlinien für das Sitzungsmanagement auf der Serverseite (z. B. gleitende Sitzungsablaufzeit, zulässige gleichzeitige Sitzungen) beeinflussen indirekt die Persistenz des Login-Zustands auf der Client-Seite.</li>
+</ul>
+</li>
+</ul>
+<h3 data-start="2262" data-end="2294">3. Sicherstellen, dass der Login-Zustand der PWA auch über längere Zeiträume hinweg beibehalten wird (auch wenn die App für Tage nicht verwendet wird)</h3>
+<p data-start="2295" data-end="2325">Um sicherzustellen, dass die PWA den Login-Zustand des Benutzers für längere Zeiträume beibehält, kannst du folgende Strategien umsetzen:</p>
+<ul data-start="2327" data-end="2678">
+<li data-start="2327" data-end="2390">Verwende persistente Cookies oder LocalStorage, um Sitzungsinformationen des Benutzers (z. B. Session-ID oder JWT-Token) zu speichern.</li>
+<li data-start="2391" data-end="2474">Setze für Cookies das richtige Ablaufdatum mit <code data-start="2407" data-end="2416">Expires</code> oder <code data-start="2419" data-end="2428">Max-Age</code>, oder stelle sicher, dass das im LocalStorage gespeicherte Token eine ausreichende Lebensdauer hat (z. B. mehrere Tage oder Wochen).</li>
+<li data-start="2475" data-end="2583"><strong data-start="2477" data-end="2504">Implementiere einen Token-Aktualisierungsmechanismus</strong> (wenn du JWT-Tokens verwendest): Wenn ein Token kurz vor dem Ablauf steht, kann die PWA automatisch ein Token-Refresh vom Server anfordern, wodurch die Login-Sitzung des Benutzers verlängert wird, ohne dass eine erneute Anmeldung erforderlich ist. Dies sorgt für ein nahtloses Login-Erlebnis.</li>
+<li data-start="2584" data-end="2640">Informiere die Benutzer darüber, wie lange ihr Login-Zustand bestehen bleibt und wie sie sich abmelden können, wenn sie sich anmelden. Dies setzt die Erwartungen der Benutzer bezüglich der Persistenz des Login-Zustands.</li>
+<li data-start="2641" data-end="2678">Teste die Persistenz des Login-Zustands auf verschiedenen Browsern und Geräten, um sicherzustellen, dass er in allen Fällen wie erwartet funktioniert.</li>
+</ul>
+<h4 data-start="2680" data-end="2729">Beispiel: Verwendung von persistente Cookies, um den Login-Zustand in Next.js API-Routen festzulegen</h4>
+<p data-start="2730" data-end="2831">Angenommen, du verwendest Next.js API-Routen, um die Benutzeranmeldung zu verarbeiten und ein Cookie zu setzen, das den Login-Zustand nach erfolgreicher Authentifizierung beibehält. Du kannst ein persistentes Cookie in der API-Route setzen, das 7 Tage gültig bleibt:</p>
+<pre class="!overflow-visible" data-start="2833" data-end="3650">
+<div class="overflow-y-auto p-4" dir="ltr">
+<code class="!whitespace-pre language-javascript"><span>
+<span class="hljs-comment">// pages/api/login.js (Next.js API Route)</span>
+<span class="hljs-keyword">import</span> { serialize } <span class="hljs-keyword">from</span> <span class="hljs-string">'cookie'</span>;
 
-            <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">handler</span>(<span class="hljs-params">req, res</span>) {
-              <span class="hljs-keyword">if</span> (req.<span class="hljs-property">method</span> === <span class="hljs-string">'POST'</span>) {
-                <span class="hljs-comment">// ... (Benutzerauthentifizierungslogik) ...</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">handler</span>(<span class="hljs-params">req, res</span>) {
+<span class="hljs-keyword">if</span> (req.<span class="hljs-property">method</span> === <span class="hljs-string">'POST'</span>) {
+<span class="hljs-comment">// ... (Benutzerauthentifizierungslogik) ...</span>
 
-                <span class="hljs-keyword">const</span> userId = <span class="hljs-comment">/* ... Benutzer-ID nach erfolgreicher Authentifizierung holen ... */</span>;
-                <span class="hljs-keyword">const</span> sessionId = <span class="hljs-comment">/* ... Sitzungs-ID generieren ... */</span>;
+<span class="hljs-keyword">const</span> userId = <span class="hljs-comment">/* ... Benutzer-ID nach erfolgreicher Authentifizierung holen ... */</span>;
+<span class="hljs-keyword">const</span> sessionId = <span class="hljs-comment">/* ... Sitzungs-ID generieren ... */</span>;
 
-                <span class="hljs-comment">// Setze persistentes Cookie, läuft nach 7 Tagen ab (604800 Sekunden)</span>
-                <span class="hljs-keyword">const</span> serializedCookie = <span class="hljs-title function_">serialize</span>(<span class="hljs-string">'sessionId'</span>, sessionId, {
-                  <span class="hljs-attr">httpOnly</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// Verhindert den Zugriff durch JavaScript im Browser</span>
-                  <span class="hljs-attr">secure</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// Nur über HTTPS</span>
-                  <span class="hljs-attr">maxAge</span>: 604800, <span class="hljs-comment">// Läuft in 7 Tagen ab</span>
-                  <span class="hljs-attr">path</span>: <span class="hljs-string">"/"</span>,
-                });
+<span class="hljs-comment">// Setze persistentes Cookie, läuft nach 7 Tagen ab (604800 Sekunden)</span>
+<span class="hljs-keyword">const</span> serializedCookie = <span class="hljs-title function_">serialize</span>(<span class="hljs-string">'sessionId'</span>, sessionId, {
+<span class="hljs-attr">httpOnly</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// Verhindert den Zugriff durch JavaScript im Browser</span>
+<span class="hljs-attr">secure</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// Nur über HTTPS</span>
+<span class="hljs-attr">maxAge</span>: 604800, <span class="hljs-comment">// Läuft in 7 Tagen ab</span>
+<span class="hljs-attr">path</span>: <span class="hljs-string">"/"</span>,
+});
 
-                res.<span class="hljs-property">setHeader</span>(<span class="hljs-string">'Set-Cookie'</span>, serializedCookie);
-                res.<span class="hljs-property">status</span>(200).<span class="hljs-property">json</span>({ message: <span class="hljs-string">'Login erfolgreich'</span> });
-              }
-              <span class="hljs-keyword">else</span> {
-                res.<span class="hljs-property">status</span>(405).<span class="hljs-property">json</span>({ message: <span class="hljs-string">'Methode nicht erlaubt'</span> });
-              }
-            }
-          </span></code>
-        </div>
-      </pre>
-      <p data-start="3652" data-end="3760">In diesem Beispiel wird die sessionId in einem HttpOnly-Cookie gesetzt, das 7 Tage lang gültig bleibt. Wenn der Benutzer für eine Weile inaktiv ist, bleibt das Cookie für 7 Tage gültig, selbst wenn die App in dieser Zeit nicht verwendet wurde.</p>
-    </div>
-  </div>
+res.<span class="hljs-property">setHeader</span>(<span class="hljs-string">'Set-Cookie'</span>, serializedCookie);
+res.<span class="hljs-property">status</span>(200).<span class="hljs-property">json</span>({ message: <span class="hljs-string">'Login erfolgreich'</span> });
+}
+<span class="hljs-keyword">else</span> {
+res.<span class="hljs-property">status</span>(405).<span class="hljs-property">json</span>({ message: <span class="hljs-string">'Methode nicht erlaubt'</span> });
+}
+}
+</span></code>
+</div>
+</pre>
+<p data-start="3652" data-end="3760">In diesem Beispiel wird die sessionId in einem HttpOnly-Cookie gesetzt, das 7 Tage lang gültig bleibt. Wenn der Benutzer für eine Weile inaktiv ist, bleibt das Cookie für 7 Tage gültig, selbst wenn die App in dieser Zeit nicht verwendet wurde.</p>
+</div>
+</div>
 </div>

@@ -1,90 +1,86 @@
-<div data-message-author-role="assistant" data-message-id="23c48313-bb2f-41b3-a19e-68e79d465be0" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini">
-  <div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]">
-    <div class="markdown prose w-full break-words dark:prose-invert light">
-      <p data-start="0" data-end="59">
-        Wenn ein Benutzer auf einen Link in Signal (oder anderen Chat-Apps) klickt, ob dieser in einer PWA (Progressive Web App) oder einem normalen Webbrowser geöffnet wird, hängt von mehreren Faktoren ab:
-      </p>
-      <h3 data-start="61" data-end="84">1. Es hängt vom Standardverhalten von Signal ab</h3>
-      <p data-start="85" data-end="297">
-        Signal öffnet standardmäßig Links im Browser.<br data-start="105" data-end="108">
-        Selbst wenn der Benutzer die PWA installiert hat, verwendet Signal immer noch den Standardbrowser des Systems (wie Chrome, Safari usw.), um den Link zu öffnen, anstatt die PWA direkt zu öffnen.<br data-start="179" data-end="182">
-        Derzeit unterstützt Signal keine Android Instant Apps oder PWA-Tiefenlinks.<br data-start="228" data-end="231">
-        Während einige Apps (wie Telegram) PWA-Tiefenlinks unterstützen und die PWA im unterstützten Browser öffnen können, unterstützt Signal derzeit dieses Verhalten nicht.
-      </p>
-      <h3 data-start="299" data-end="325">2. Es hängt davon ab, ob die PWA URL-Verarbeitung unterstützt</h3>
-      <p data-start="326" data-end="431">
-        PWAs können ihren Einstiegspunkt über die `start_url`-Einstellung im Web App Manifest definieren und sicherstellen, dass die PWA den Link korrekt verarbeitet, wenn ein Benutzer darauf zugreift.<br data-start="403" data-end="406">
-        📌 <strong data-start="409" data-end="415">Beispiel</strong>: Stellen Sie sicher, dass die PWA URLs korrekt verarbeitet
-      </p>
-      <pre class="!overflow-visible" data-start="432" data-end="562">
-        <div class="overflow-y-auto p-4" dir="ltr">
-          <code class="!whitespace-pre language-json">
-            {
-              "name": "Meine PWA",
-              "short_name": "PWA",
-              "start_url": "/index.html",
-              "scope": "/",
-              "display": "standalone"
-            }
-          </code>
-        </div>
-      </pre>
-      <p data-start="563" data-end="601">
-        Trotzdem wird Signal den Link weiterhin im Browser öffnen, anstatt automatisch zur PWA weiterzuleiten.
-      </p>
-      <h3 data-start="603" data-end="628">3. Wie lässt sich Signal dazu bringen, die PWA zu öffnen?</h3>
-      <p data-start="629" data-end="676">
-        Derzeit unterstützt Signal nicht das direkte Öffnen der PWA, aber Sie können den Benutzern helfen, leichter zur PWA zurückzukehren:
-      </p>
-      <h4 data-start="678" data-end="710">✅ Methode 1: Lassen Sie die PWA die URL verarbeiten und den Benutzer zur PWA weiterleiten</h4>
-      <p data-start="711" data-end="781">
-        Sie können innerhalb der PWA erkennen, ob sie in einem normalen Browser geöffnet wurde und den Benutzer dann auffordern, die PWA zu öffnen.
-        📌 <strong data-start="752" data-end="758">Beispiel</strong>: Wenn der Benutzer im Browser öffnet, fordern Sie ihn auf, zur PWA zu wechseln
-      </p>
-      <pre class="!overflow-visible" data-start="782" data-end="936">
-        <div class="overflow-y-auto p-4" dir="ltr">
-          <code class="!whitespace-pre language-javascript">
-            if (window.matchMedia('(display-mode: standalone)').matches) {
-              console.log("Im PWA-Modus ausgeführt");
-            } else {
-              alert("Wir empfehlen, diesen Link in der PWA für das beste Erlebnis zu öffnen!");
-            }
-          </code>
-        </div>
-      </pre>
-      <p data-start="937" data-end="962">
-        Sie können auch eine Schaltfläche bereitstellen, die der Benutzer anklicken kann, um die PWA zu öffnen:
-      </p>
-      <pre class="!overflow-visible" data-start="963" data-end="1017">
-        <div class="overflow-y-auto p-4" dir="ltr">
-          <code class="!whitespace-pre language-html">
-            <a href="my-pwa://some-page">In der PWA öffnen</a>
-          </code>
-        </div>
-      </pre>
-      <p data-start="1018" data-end="1041">
-        Diese Methode funktioniert jedoch nur auf einigen Android-Geräten.
-      </p>
-      <h4 data-start="1043" data-end="1078">✅ Methode 2: Verwenden Sie "Zum Home-Bildschirm hinzufügen"</h4>
-      <p data-start="1079" data-end="1150">
-        Lassen Sie den Benutzer zuerst die PWA installieren und dann über die PWA auf Signal-Links zugreifen, anstatt auf Links in Signal zu klicken.<br data-start="1132" data-end="1135">
-        Auf diese Weise wird das Benutzererlebnis näher an eine native App gebracht.
-      </p>
-      <h4 data-start="1152" data-end="1202">✅ Methode 3: Verwenden Sie Android App Links (nur für Apps mit nativer Version)</h4>
-      <p data-start="1203" data-end="1391">
-        Wenn Ihre PWA auch eine native Android-Version hat, können Sie <strong data-start="1234" data-end="1257">Digital Asset Links</strong> konfigurieren, damit Android die PWA direkt zur Verarbeitung bestimmter Links verwenden kann.<br data-start="1286" data-end="1289">
-        Zusätzlich können Sie Ihre native Android-App registrieren, damit Signal Ihre App erkennt und sie direkt öffnet, anstatt den Link im Browser zu öffnen.<br data-start="1347" data-end="1350">
-        Wenn jedoch keine native Android-App vorhanden ist, wird Signal weiterhin den Link im Browser öffnen.
-      </p>
-      <h3 data-start="1393" data-end="1402">4. Fazit</h3>
-      <ul data-start="1403" data-end="1555" data-is-last-node="" data-is-only-node="">
-        <li data-start="1403" data-end="1555" data-is-last-node="">
-          <strong data-start="1405" data-end="1413">Abschließende Empfehlung</strong><br data-start="1413" data-end="1416">
-          Sagen Sie den Benutzern: "Bitte greifen Sie auf Signal-Links aus der PWA heraus zu, um die beste Erfahrung zu erzielen!"<br data-start="1456" data-end="1459">
-          Erkennen Sie innerhalb der PWA, ob sie im Browser geöffnet wird, und fordern Sie die Benutzer auf, zur PWA zu wechseln.<br data-start="1494" data-end="1497">
-          Wenn Ihre PWA auch eine native Android-App hat, können Sie Android App Links verwenden, um das Benutzererlebnis zu verbessern.
-        </li>
-      </ul>
-    </div>
-  </div>
+<div data-message-author-role="assistant" data-message-id="23c48313-bb2f-41b3-a19e-68e79d465be0" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light"><p data-start="0" data-end="59">Wenn ein Benutzer auf einen Link in Signal (oder anderen Chat-Apps) klickt, ob dieser in einer PWA (Progressive Web App) oder einem normalen Webbrowser geöffnet wird, hängt von mehreren Faktoren ab:
+</p>
+<h3 data-start="61" data-end="84">1. Es hängt vom Standardverhalten von Signal ab</h3>
+<p data-start="85" data-end="297">
+Signal öffnet standardmäßig Links im Browser.<br data-start="105" data-end="108">
+Selbst wenn der Benutzer die PWA installiert hat, verwendet Signal immer noch den Standardbrowser des Systems (wie Chrome, Safari usw.), um den Link zu öffnen, anstatt die PWA direkt zu öffnen.<br data-start="179" data-end="182">
+Derzeit unterstützt Signal keine Android Instant Apps oder PWA-Tiefenlinks.<br data-start="228" data-end="231">
+Während einige Apps (wie Telegram) PWA-Tiefenlinks unterstützen und die PWA im unterstützten Browser öffnen können, unterstützt Signal derzeit dieses Verhalten nicht.
+</p>
+<h3 data-start="299" data-end="325">2. Es hängt davon ab, ob die PWA URL-Verarbeitung unterstützt</h3>
+<p data-start="326" data-end="431">
+PWAs können ihren Einstiegspunkt über die `start_url`-Einstellung im Web App Manifest definieren und sicherstellen, dass die PWA den Link korrekt verarbeitet, wenn ein Benutzer darauf zugreift.<br data-start="403" data-end="406">
+📌 <strong data-start="409" data-end="415">Beispiel</strong>: Stellen Sie sicher, dass die PWA URLs korrekt verarbeitet
+</p>
+<pre class="!overflow-visible" data-start="432" data-end="562">
+<div class="overflow-y-auto p-4" dir="ltr">
+<code class="!whitespace-pre language-json">
+{
+"name": "Meine PWA",
+"short_name": "PWA",
+"start_url": "/index.html",
+"scope": "/",
+"display": "standalone"
+}
+</code>
+</div>
+</pre>
+<p data-start="563" data-end="601">
+Trotzdem wird Signal den Link weiterhin im Browser öffnen, anstatt automatisch zur PWA weiterzuleiten.
+</p>
+<h3 data-start="603" data-end="628">3. Wie lässt sich Signal dazu bringen, die PWA zu öffnen?</h3>
+<p data-start="629" data-end="676">
+Derzeit unterstützt Signal nicht das direkte Öffnen der PWA, aber Sie können den Benutzern helfen, leichter zur PWA zurückzukehren:
+</p>
+<h4 data-start="678" data-end="710">✅ Methode 1: Lassen Sie die PWA die URL verarbeiten und den Benutzer zur PWA weiterleiten</h4>
+<p data-start="711" data-end="781">
+Sie können innerhalb der PWA erkennen, ob sie in einem normalen Browser geöffnet wurde und den Benutzer dann auffordern, die PWA zu öffnen.
+📌 <strong data-start="752" data-end="758">Beispiel</strong>: Wenn der Benutzer im Browser öffnet, fordern Sie ihn auf, zur PWA zu wechseln
+</p>
+<pre class="!overflow-visible" data-start="782" data-end="936">
+<div class="overflow-y-auto p-4" dir="ltr">
+<code class="!whitespace-pre language-javascript">
+if (window.matchMedia('(display-mode: standalone)').matches) {
+console.log("Im PWA-Modus ausgeführt");
+} else {
+alert("Wir empfehlen, diesen Link in der PWA für das beste Erlebnis zu öffnen!");
+}
+</code>
+</div>
+</pre>
+<p data-start="937" data-end="962">
+Sie können auch eine Schaltfläche bereitstellen, die der Benutzer anklicken kann, um die PWA zu öffnen:
+</p>
+<pre class="!overflow-visible" data-start="963" data-end="1017">
+<div class="overflow-y-auto p-4" dir="ltr">
+<code class="!whitespace-pre language-html">
+<a href="my-pwa://some-page">In der PWA öffnen</a>
+</code>
+</div>
+</pre>
+<p data-start="1018" data-end="1041">
+Diese Methode funktioniert jedoch nur auf einigen Android-Geräten.
+</p>
+<h4 data-start="1043" data-end="1078">✅ Methode 2: Verwenden Sie "Zum Home-Bildschirm hinzufügen"</h4>
+<p data-start="1079" data-end="1150">
+Lassen Sie den Benutzer zuerst die PWA installieren und dann über die PWA auf Signal-Links zugreifen, anstatt auf Links in Signal zu klicken.<br data-start="1132" data-end="1135">
+Auf diese Weise wird das Benutzererlebnis näher an eine native App gebracht.
+</p>
+<h4 data-start="1152" data-end="1202">✅ Methode 3: Verwenden Sie Android App Links (nur für Apps mit nativer Version)</h4>
+<p data-start="1203" data-end="1391">
+Wenn Ihre PWA auch eine native Android-Version hat, können Sie <strong data-start="1234" data-end="1257">Digital Asset Links</strong> konfigurieren, damit Android die PWA direkt zur Verarbeitung bestimmter Links verwenden kann.<br data-start="1286" data-end="1289">
+Zusätzlich können Sie Ihre native Android-App registrieren, damit Signal Ihre App erkennt und sie direkt öffnet, anstatt den Link im Browser zu öffnen.<br data-start="1347" data-end="1350">
+Wenn jedoch keine native Android-App vorhanden ist, wird Signal weiterhin den Link im Browser öffnen.
+</p>
+<h3 data-start="1393" data-end="1402">4. Fazit</h3>
+<ul data-start="1403" data-end="1555" data-is-last-node="" data-is-only-node="">
+<li data-start="1403" data-end="1555" data-is-last-node="">
+<strong data-start="1405" data-end="1413">Abschließende Empfehlung</strong><br data-start="1413" data-end="1416">
+Sagen Sie den Benutzern: "Bitte greifen Sie auf Signal-Links aus der PWA heraus zu, um die beste Erfahrung zu erzielen!"<br data-start="1456" data-end="1459">
+Erkennen Sie innerhalb der PWA, ob sie im Browser geöffnet wird, und fordern Sie die Benutzer auf, zur PWA zu wechseln.<br data-start="1494" data-end="1497">
+Wenn Ihre PWA auch eine native Android-App hat, können Sie Android App Links verwenden, um das Benutzererlebnis zu verbessern.
+</li>
+</ul>
+</div>
+</div>
 </div>

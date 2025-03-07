@@ -1,96 +1,93 @@
-<div data-message-author-role="assistant" data-message-id="54b5a989-639b-48e6-b1cd-2303262958a9" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&]:mt-5" data-message-model-slug="gpt-4o-mini">
-  <div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]">
-    <div class="markdown prose w-full break-words dark:prose-invert light">
-      <p data-start="0" data-end="123">Es ist durchaus möglich, festzustellen, ob Benutzer eine PWA (Progressive Web App) verwenden und den Verkehr von PWAs zu verfolgen. Dies ist entscheidend, um die Einführung von PWAs, das Benutzerverhalten und die Wirksamkeit zu bewerten. Hier sind einige gängige Methoden, die Ihnen helfen können, zu erkennen, ob Benutzer eine PWA verwenden und wie Sie den PWA-Verkehr verfolgen können:</p>
-      <h3 data-start="125" data-end="157">1. Clientseitige JavaScript-Erkennung (am häufigsten und empfohlen)</h3>
-      <p data-start="158" data-end="290">Dies ist die gängigste und zuverlässigste Methode. Mit clientseitigem JavaScript-Code können Sie feststellen, ob eine PWA im „Standalone-Modus“ läuft. Wenn eine PWA über das installierte App-Symbol gestartet wird, läuft sie normalerweise im Standalone-Modus, wobei die Adressleiste und UI-Elemente des Browsers ausgeblendet sind und die App mehr wie eine native App aussieht.</p>
-      <p data-start="292" data-end="406">Sie können die JavaScript-APIs <code data-start="298" data-end="347">window.matchMedia('(display-mode: standalone)')</code> oder <code data-start="350" data-end="372">navigator.standalone</code> verwenden, um zu erkennen, ob sie im Standalone-Modus läuft.</p>
-      <ul data-start="408" data-end="470">
-        <li data-start="408" data-end="470"><strong data-start="410" data-end="461">window.matchMedia('(display-mode: standalone)')</strong> (modern und empfohlen):</li>
-      </ul>
-      <pre class="!overflow-visible" data-start="472" data-end="752"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">function</span> <span class="hljs-title function_">isRunningStandalone</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">matchMedia</span>(<span class="hljs-string">'(display-mode: standalone)'</span>).<span class="hljs-property">matches</span>;
+<div data-message-author-role="assistant" data-message-id="54b5a989-639b-48e6-b1cd-2303262958a9" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light"><p data-start="0" data-end="123">Es ist durchaus möglich, festzustellen, ob Benutzer eine PWA (Progressive Web App) verwenden und den Verkehr von PWAs zu verfolgen. Dies ist entscheidend, um die Einführung von PWAs, das Benutzerverhalten und die Wirksamkeit zu bewerten. Hier sind einige gängige Methoden, die Ihnen helfen können, zu erkennen, ob Benutzer eine PWA verwenden und wie Sie den PWA-Verkehr verfolgen können:</p>
+<h3 data-start="125" data-end="157">1. Clientseitige JavaScript-Erkennung (am häufigsten und empfohlen)</h3>
+<p data-start="158" data-end="290">Dies ist die gängigste und zuverlässigste Methode. Mit clientseitigem JavaScript-Code können Sie feststellen, ob eine PWA im „Standalone-Modus“ läuft. Wenn eine PWA über das installierte App-Symbol gestartet wird, läuft sie normalerweise im Standalone-Modus, wobei die Adressleiste und UI-Elemente des Browsers ausgeblendet sind und die App mehr wie eine native App aussieht.</p>
+<p data-start="292" data-end="406">Sie können die JavaScript-APIs <code data-start="298" data-end="347">window.matchMedia('(display-mode: standalone)')</code> oder <code data-start="350" data-end="372">navigator.standalone</code> verwenden, um zu erkennen, ob sie im Standalone-Modus läuft.</p>
+<ul data-start="408" data-end="470">
+<li data-start="408" data-end="470"><strong data-start="410" data-end="461">window.matchMedia('(display-mode: standalone)')</strong> (modern und empfohlen):</li>
+</ul>
+<pre class="!overflow-visible" data-start="472" data-end="752"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">function</span> <span class="hljs-title function_">isRunningStandalone</span>(<span class="hljs-params"></span>) {
+<span class="hljs-keyword">return</span> <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">matchMedia</span>(<span class="hljs-string">'(display-mode: standalone)'</span>).<span class="hljs-property">matches</span>;
 }
 
 <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isRunningStandalone</span>()) {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA läuft im Standalone-Modus"</span>);
-    <span class="hljs-comment">// Logik zur Verfolgung des Standalone-Modus hier ausführen</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA läuft im Standalone-Modus"</span>);
+<span class="hljs-comment">// Logik zur Verfolgung des Standalone-Modus hier ausführen</span>
 } <span class="hljs-keyword">else</span> {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA läuft im Browser-Modus"</span>);
-    <span class="hljs-comment">// Logik zur Verfolgung des Browser-Modus hier ausführen</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA läuft im Browser-Modus"</span>);
+<span class="hljs-comment">// Logik zur Verfolgung des Browser-Modus hier ausführen</span>
 }
 </span></code></div></pre>
-      <ul data-start="754" data-end="796">
-        <li data-start="754" data-end="796"><strong data-start="756" data-end="780">navigator.standalone</strong> (älter, aber immer noch von einigen Browsern unterstützt):</li>
-      </ul>
-      <pre class="!overflow-visible" data-start="798" data-end="1006"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">if</span> (navigator.<span class="hljs-property">standalone</span> === <span class="hljs-literal">true</span>) {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA läuft im Standalone-Modus (mit navigator.standalone)"</span>);
-    <span class="hljs-comment">// ...</span>
+<ul data-start="754" data-end="796">
+<li data-start="754" data-end="796"><strong data-start="756" data-end="780">navigator.standalone</strong> (älter, aber immer noch von einigen Browsern unterstützt):</li>
+</ul>
+<pre class="!overflow-visible" data-start="798" data-end="1006"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">if</span> (navigator.<span class="hljs-property">standalone</span> === <span class="hljs-literal">true</span>) {
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA läuft im Standalone-Modus (mit navigator.standalone)"</span>);
+<span class="hljs-comment">// ...</span>
 } <span class="hljs-keyword">else</span> {
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA läuft im Browser-Modus (mit navigator.standalone)"</span>);
-    <span class="hljs-comment">// ...</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA läuft im Browser-Modus (mit navigator.standalone)"</span>);
+<span class="hljs-comment">// ...</span>
 }
 </span></code></div></pre>
-      <p data-start="1008" data-end="1036">Mit diesen Erkennungsmethoden können Sie in Ihrem PWA-Code zwischen den beiden Szenarien unterscheiden:</p>
-      <ul data-start="1037" data-end="1197">
-        <li data-start="1037" data-end="1097"><strong data-start="1039" data-end="1057">PWA im Standalone-Modus:</strong> Dies bedeutet in der Regel, dass der Benutzer die App über das installierte PWA-Symbol gestartet hat, und dies kann als PWA-Verkehr betrachtet werden.</li>
-        <li data-start="1098" data-end="1197"><strong data-start="1100" data-end="1116">PWA im Browser-Modus:</strong> Dies bedeutet normalerweise, dass der Benutzer die App über eine URL in der Adressleiste des Browsers, ein Browser-Lesezeichen oder einen externen Link (z. B. aus einer Google-Suche oder einem Telegram-Link) aufgerufen hat, was als normaler Website-Verkehr betrachtet werden kann.</li>
-      </ul>
-      <h3 data-start="1199" data-end="1244">2. Integration von Web-Analyse-Tools (z. B. Google Analytics, Baidu Analytics usw.)</h3>
-      <p data-start="1245" data-end="1363">Sie können beliebte Web-Analyse-Tools (wie Google Analytics, Baidu Analytics oder andere in Ihrem Projekt verwendete Analyse-Tools) in Ihre PWA integrieren. Der Schlüssel besteht darin, die oben genannten JavaScript-Erkennungsmethoden in Ihren Analyse-Code zu integrieren, um zwischen PWA-Verkehr und normalem Website-Verkehr zu unterscheiden.</p>
-      <h4 data-start="1365" data-end="1422">Methode 1: Verwendung von benutzerdefinierten Dimensionen oder Benutzer-Eigenschaften</h4>
-      <p data-start="1423" data-end="1547">Dies ist die empfohlene Methode, da sie sehr flexibel ist und eine einfache Datenaufteilung und Filterung in den Analyseberichten ermöglicht. Erstellen Sie eine benutzerdefinierte Dimension oder Benutzer-Eigenschaft im Analyse-Tool, wie z. B. „PWA-Ausführungsmodus“ (oder einen ähnlichen Namen). Der Wert dieser Dimension kann „Standalone“ oder „Browser“ sein.</p>
-      <p data-start="1549" data-end="1591">In Ihrem PWA-Code kombinieren Sie die JavaScript-Erkennungscodes, um diese benutzerdefinierte Dimension oder Benutzer-Eigenschaft festzulegen.</p>
-      <p data-start="1593" data-end="1625">Beispiel mit Google Analytics (gtag.js):</p>
-      <pre class="!overflow-visible" data-start="1627" data-end="2168"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">function</span> <span class="hljs-title function_">isRunningStandalone</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">matchMedia</span>(<span class="hljs-string">'(display-mode: standalone)'</span>).<span class="hljs-property">matches</span>;
+<p data-start="1008" data-end="1036">Mit diesen Erkennungsmethoden können Sie in Ihrem PWA-Code zwischen den beiden Szenarien unterscheiden:</p>
+<ul data-start="1037" data-end="1197">
+<li data-start="1037" data-end="1097"><strong data-start="1039" data-end="1057">PWA im Standalone-Modus:</strong> Dies bedeutet in der Regel, dass der Benutzer die App über das installierte PWA-Symbol gestartet hat, und dies kann als PWA-Verkehr betrachtet werden.</li>
+<li data-start="1098" data-end="1197"><strong data-start="1100" data-end="1116">PWA im Browser-Modus:</strong> Dies bedeutet normalerweise, dass der Benutzer die App über eine URL in der Adressleiste des Browsers, ein Browser-Lesezeichen oder einen externen Link (z. B. aus einer Google-Suche oder einem Telegram-Link) aufgerufen hat, was als normaler Website-Verkehr betrachtet werden kann.</li>
+</ul>
+<h3 data-start="1199" data-end="1244">2. Integration von Web-Analyse-Tools (z. B. Google Analytics, Baidu Analytics usw.)</h3>
+<p data-start="1245" data-end="1363">Sie können beliebte Web-Analyse-Tools (wie Google Analytics, Baidu Analytics oder andere in Ihrem Projekt verwendete Analyse-Tools) in Ihre PWA integrieren. Der Schlüssel besteht darin, die oben genannten JavaScript-Erkennungsmethoden in Ihren Analyse-Code zu integrieren, um zwischen PWA-Verkehr und normalem Website-Verkehr zu unterscheiden.</p>
+<h4 data-start="1365" data-end="1422">Methode 1: Verwendung von benutzerdefinierten Dimensionen oder Benutzer-Eigenschaften</h4>
+<p data-start="1423" data-end="1547">Dies ist die empfohlene Methode, da sie sehr flexibel ist und eine einfache Datenaufteilung und Filterung in den Analyseberichten ermöglicht. Erstellen Sie eine benutzerdefinierte Dimension oder Benutzer-Eigenschaft im Analyse-Tool, wie z. B. „PWA-Ausführungsmodus“ (oder einen ähnlichen Namen). Der Wert dieser Dimension kann „Standalone“ oder „Browser“ sein.</p>
+<p data-start="1549" data-end="1591">In Ihrem PWA-Code kombinieren Sie die JavaScript-Erkennungscodes, um diese benutzerdefinierte Dimension oder Benutzer-Eigenschaft festzulegen.</p>
+<p data-start="1593" data-end="1625">Beispiel mit Google Analytics (gtag.js):</p>
+<pre class="!overflow-visible" data-start="1627" data-end="2168"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">function</span> <span class="hljs-title function_">isRunningStandalone</span>(<span class="hljs-params"></span>) {
+<span class="hljs-keyword">return</span> <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">matchMedia</span>(<span class="hljs-string">'(display-mode: standalone)'</span>).<span class="hljs-property">matches</span>;
 }
 
 <span class="hljs-comment">// Google Analytics initialisieren (stellen Sie sicher, dass der GA-Code richtig konfiguriert ist)</span>
 <span class="hljs-comment">// ...</span>
 
 <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isRunningStandalone</span>()) {
-    <span class="hljs-title function_">gtag</span>(<span class="hljs-string">'set'</span>, <span class="hljs-string">'user_properties'</span>, { <span class="hljs-attr">pwa_mode</span>: <span class="hljs-string">'Standalone'</span> });
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA läuft im Standalone-Modus, benutzerdefinierte Dimension pwa_mode auf Standalone gesetzt"</span>);
+<span class="hljs-title function_">gtag</span>(<span class="hljs-string">'set'</span>, <span class="hljs-string">'user_properties'</span>, { <span class="hljs-attr">pwa_mode</span>: <span class="hljs-string">'Standalone'</span> });
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA läuft im Standalone-Modus, benutzerdefinierte Dimension pwa_mode auf Standalone gesetzt"</span>);
 } <span class="hljs-keyword">else</span> {
-    <span class="hljs-title function_">gtag</span>(<span class="hljs-string">'set'</span>, <span class="hljs-string">'user_properties'</span>, { <span class="hljs-attr">pwa_mode</span>: <span class="hljs-string">'Browser'</span> });
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA läuft im Browser-Modus, benutzerdefinierte Dimension pwa_mode auf Browser gesetzt"</span>);
+<span class="hljs-title function_">gtag</span>(<span class="hljs-string">'set'</span>, <span class="hljs-string">'user_properties'</span>, { <span class="hljs-attr">pwa_mode</span>: <span class="hljs-string">'Browser'</span> });
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA läuft im Browser-Modus, benutzerdefinierte Dimension pwa_mode auf Browser gesetzt"</span>);
 }
 
 <span class="hljs-comment">// Seitenaufruf-Verfolgung (oder andere Ereignisverfolgung)</span>
 <span class="hljs-title function_">gtag</span>(<span class="hljs-string">'config'</span>, <span class="hljs-string">'YOUR_GOOGLE_ANALYTICS_TRACKING_ID'</span>);
 </span></code></div></pre>
-      <p data-start="2170" data-end="2192">Oder verwenden Sie Ereignisse (Events) mit benutzerdefinierten Parametern:</p>
-      <pre class="!overflow-visible" data-start="2194" data-end="2718"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">function</span> <span class="hljs-title function_">isRunningStandalone</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">matchMedia</span>(<span class="hljs-string">'(display-mode: standalone)'</span>).<span class="hljs-property">matches</span>;
+<p data-start="2170" data-end="2192">Oder verwenden Sie Ereignisse (Events) mit benutzerdefinierten Parametern:</p>
+<pre class="!overflow-visible" data-start="2194" data-end="2718"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">function</span> <span class="hljs-title function_">isRunningStandalone</span>(<span class="hljs-params"></span>) {
+<span class="hljs-keyword">return</span> <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">matchMedia</span>(<span class="hljs-string">'(display-mode: standalone)'</span>).<span class="hljs-property">matches</span>;
 }
 
 <span class="hljs-comment">// Google Analytics initialisieren</span>
 <span class="hljs-comment">// ...</span>
 
 <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isRunningStandalone</span>()) {
-    <span class="hljs-title function_">gtag</span>(<span class="hljs-string">'event'</span>, <span class="hljs-string">'pwa_mode_detection'</span>, { <span class="hljs-attr">mode</span>: <span class="hljs-string">'Standalone'</span> });
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA läuft im Standalone-Modus, Ereignis pwa_mode_detection: Standalone gesendet"</span>);
+<span class="hljs-title function_">gtag</span>(<span class="hljs-string">'event'</span>, <span class="hljs-string">'pwa_mode_detection'</span>, { <span class="hljs-attr">mode</span>: <span class="hljs-string">'Standalone'</span> });
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA läuft im Standalone-Modus, Ereignis pwa_mode_detection: Standalone gesendet"</span>);
 } <span class="hljs-keyword">else</span> {
-    <span class="hljs-title function_">gtag</span>(<span class="hljs-string">'event'</span>, <span class="hljs-string">'pwa_mode_detection'</span>, { <span class="hljs-attr">mode</span>: <span class="hljs-string">'Browser'</span> });
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA läuft im Browser-Modus, Ereignis pwa_mode_detection: Browser gesendet"</span>);
+<span class="hljs-title function_">gtag</span>(<span class="hljs-string">'event'</span>, <span class="hljs-string">'pwa_mode_detection'</span>, { <span class="hljs-attr">mode</span>: <span class="hljs-string">'Browser'</span> });
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA läuft im Browser-Modus, Ereignis pwa_mode_detection: Browser gesendet"</span>);
 }
 
 <span class="hljs-comment">// Seitenaufruf-Verfolgung</span>
 <span class="hljs-title function_">gtag</span>(<span class="hljs-string">'config'</span>, <span class="hljs-string">'YOUR_GOOGLE_ANALYTICS_TRACKING_ID'</span>);
 </span></code></div></pre>
-      <p data-start="2720" data-end="2764">In den Analyseberichten des Tools können Sie die benutzerdefinierte Dimension „PWA-Ausführungsmodus“ oder die Benutzer-Eigenschaft verwenden, um die Daten zu analysieren:</p>
-      <ul data-start="2765" data-end="2900">
-        <li data-start="2765" data-end="2900"><strong data-start="2767" data-end="2900">Standalone-Modus:</strong> Verkehr von Benutzern, die die App im PWA-Standalone-Modus (installierte App) aufrufen.</li>
-        <li data-start="2902" data-end="3022"><strong data-start="2904" data-end="3022">Browser-Modus:</strong> Verkehr von Benutzern, die die App über einen Browser aufrufen.</li>
-      </ul>
-      <p data-start="3024" data-end="3134">Mit dieser Methode können Sie den PWA-Verkehr und den regulären Website-Verkehr in Ihren Berichten einfach unterscheiden und die Nutzungsmuster beider analysieren.</p>
-      <h3 data-start="3136" data-end="3169">3. Verfolgung über serverseitige Erkennung (User-Agent-String, HTTP-Header)</h3>
-      <p data-start="3170" data-end="3254">Eine weitere Methode zur Unterscheidung von PWA-Verkehr ist die serverseitige Erkennung, bei der der User-Agent-String oder die HTTP-Header untersucht werden, die vom Browser gesendet werden. Obwohl diese Methode nicht so genau wie die clientseitige Erkennung ist (da der User-Agent-String möglicherweise nicht immer explizit den PWA-Verkehr angibt), kann sie einen Hinweis darauf geben, ob die Anfrage von einer PWA stammt.</p>
-      <ul data-start="3256" data-end="3370">
-        <li data-start="3256" data-end="3370"><strong data-start="3258" data-end="3280">User-Agent-String:</strong> Suchen Sie nach bestimmten Mustern oder Schlüsselwörtern im User-Agent-String, die auf PWA-Verkehr hinweisen, wie z. B. „wv“ (für WebView), „Chrome“ (für Chrome-basierte PWAs) oder „Standalone“ (was darauf hinweist, dass die App im Standalone-Modus läuft). Diese Methode ist jedoch fehleranfällig, da nicht alle PWAs diese Schlüsselwörter im User-Agent-String enthalten.</li>
-        <li data-start="3282" data-end="3370"><strong data-start="3284" data-end="3303">HTTP-Header:</strong> Untersuchen Sie die „Referer“- oder „Origin“-Header, um festzustellen, ob die Anfrage von einer PWA oder einer normalen Webseite stammt. Diese Methode ist jedoch auch nicht immer zuverlässig.</li>
-      </ul>
-    </div>
-  </div>
+<p data-start="2720" data-end="2764">In den Analyseberichten des Tools können Sie die benutzerdefinierte Dimension „PWA-Ausführungsmodus“ oder die Benutzer-Eigenschaft verwenden, um die Daten zu analysieren:</p>
+<ul data-start="2765" data-end="2900">
+<li data-start="2765" data-end="2900"><strong data-start="2767" data-end="2900">Standalone-Modus:</strong> Verkehr von Benutzern, die die App im PWA-Standalone-Modus (installierte App) aufrufen.</li>
+<li data-start="2902" data-end="3022"><strong data-start="2904" data-end="3022">Browser-Modus:</strong> Verkehr von Benutzern, die die App über einen Browser aufrufen.</li>
+</ul>
+<p data-start="3024" data-end="3134">Mit dieser Methode können Sie den PWA-Verkehr und den regulären Website-Verkehr in Ihren Berichten einfach unterscheiden und die Nutzungsmuster beider analysieren.</p>
+<h3 data-start="3136" data-end="3169">3. Verfolgung über serverseitige Erkennung (User-Agent-String, HTTP-Header)</h3>
+<p data-start="3170" data-end="3254">Eine weitere Methode zur Unterscheidung von PWA-Verkehr ist die serverseitige Erkennung, bei der der User-Agent-String oder die HTTP-Header untersucht werden, die vom Browser gesendet werden. Obwohl diese Methode nicht so genau wie die clientseitige Erkennung ist (da der User-Agent-String möglicherweise nicht immer explizit den PWA-Verkehr angibt), kann sie einen Hinweis darauf geben, ob die Anfrage von einer PWA stammt.</p>
+<ul data-start="3256" data-end="3370">
+<li data-start="3256" data-end="3370"><strong data-start="3258" data-end="3280">User-Agent-String:</strong> Suchen Sie nach bestimmten Mustern oder Schlüsselwörtern im User-Agent-String, die auf PWA-Verkehr hinweisen, wie z. B. „wv“ (für WebView), „Chrome“ (für Chrome-basierte PWAs) oder „Standalone“ (was darauf hinweist, dass die App im Standalone-Modus läuft). Diese Methode ist jedoch fehleranfällig, da nicht alle PWAs diese Schlüsselwörter im User-Agent-String enthalten.</li>
+<li data-start="3282" data-end="3370"><strong data-start="3284" data-end="3303">HTTP-Header:</strong> Untersuchen Sie die „Referer“- oder „Origin“-Header, um festzustellen, ob die Anfrage von einer PWA oder einer normalen Webseite stammt. Diese Methode ist jedoch auch nicht immer zuverlässig.</li>
+</ul>
+</div>
+</div>
 </div>

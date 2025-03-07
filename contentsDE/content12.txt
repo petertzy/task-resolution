@@ -1,109 +1,105 @@
-<div data-message-author-role="assistant" data-message-id="0bdf545a-2e52-4ac1-92a4-0b984f01a052" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&]:mt-5" data-message-model-slug="gpt-4o-mini">
-  <div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]">
-    <div class="markdown prose w-full break-words dark:prose-invert light">
-      <p data-start="0" data-end="98">
-        Dies ist eine sehr gute Frage zur Navigationserfahrung von PWAs! Besonders wenn der Benutzer auf einen Artikel-Link klickt, beeinflusst die Art und Weise, wie PWAs navigieren, direkt die Benutzererfahrung und das Anwendungsgefühl. Lassen Sie mich das Verhalten der PWA-Navigation und das von Ihnen erwähnte Verhalten der Kopfzeile und das Zurückwischen des Gestensteuerung näher erläutern.
-      </p>
-      <h3 data-start="100" data-end="127">1. Die Navigationsweise von PWAs: Abhängig von der Art der Implementierung des Projekts</h3>
-      <p data-start="128" data-end="182">
-        Die technologischen Merkmale von PWAs ermöglichen verschiedene Navigationsmodi. Die endgültige Navigationserfahrung hängt davon ab, wie Ihr Next.js-Projekt aufgebaut und konfiguriert ist:
-      </p>
-      <h4 data-start="184" data-end="212">Traditionelle Webseitennavigation (Mehrseitenanwendung - MPA-Stil)</h4>
-      <p data-start="213" data-end="245">
-        Diese Methode ist ähnlich wie bei traditionellen Websites, bei denen jedes Klicken auf einen Link eine vollständige Neulade des gesamten Seiteninhalts auslöst.
-      </p>
-      <ul data-start="246" data-end="368">
-        <li data-start="246" data-end="339"><strong data-start="248" data-end="255">Phänomen:</strong> Wenn auf einen Artikel-Link geklickt wird, kann ein kurzer Weißbildschirm oder Ladeindikator angezeigt werden, da der Browser die gesamte Seite neu anfordert und rendert. Gemeinsame Elemente wie Kopfzeile und Fußzeile werden ebenfalls zusammen mit der Seite neu geladen.</li>
-        <li data-start="340" data-end="368"><strong data-start="342" data-end="349">Erfahrung:</strong> Die Navigationserfahrung ist nicht sehr flüssig und fühlt sich eher wie das Umblättern traditioneller Webseiten an.</li>
-      </ul>
-      <h4 data-start="370" data-end="406">Einzelne Seitenanwendung (SPA) Navigation (häufiger bei PWAs, ähnlich einer nativen App)</h4>
-      <p data-start="407" data-end="477">
-        Diese Art von Anwendung verwendet Client-seitiges Routing (z.B. mit Next.js's <code data-start="432" data-end="443">next/link</code>-Komponente und Routing-Features), um den Seiteninhalt dynamisch zu aktualisieren, ohne die komplette Seite neu zu laden.
-      </p>
-      <ul data-start="478" data-end="591">
-        <li data-start="478" data-end="557"><strong data-start="480" data-end="487">Phänomen:</strong> Wenn auf einen Artikel-Link geklickt wird, erscheint kein sichtbarer Weißbildschirm oder eine Neulade, die Kopfzeile und andere statische Elemente bleiben unverändert, nur der Hauptbereich der Seite (z.B. Artikel-Liste oder Artikel-Details) wird dynamisch aktualisiert.</li>
-        <li data-start="558" data-end="591"><strong data-start="560" data-end="567">Erfahrung:</strong> Die Navigationserfahrung ist sehr flüssig, ähnlich wie bei nativen App-Seitenwechseln.</li>
-      </ul>
-      <p data-start="593" data-end="680">
-        In einem Next.js-Projekt, wenn Sie die <code data-start="613" data-end="624">next/link</code> Komponente für Seitenumleitungen verwenden und keine speziellen Konfigurationen vorgenommen haben, wird Ihre PWA standardmäßig die SPA-Stil-Client-Routing-Navigation verwenden.
-      </p>
-      <h3 data-start="682" data-end="704">2. Wird die Kopfzeile beibehalten?</h3>
-      <ul data-start="705" data-end="915">
-        <li data-start="705" data-end="834"><strong data-start="707" data-end="729">SPA Stil Navigation (häufig bei PWAs):</strong> Die Kopfzeile bleibt normalerweise erhalten, nur der Inhaltsbereich wird ersetzt. Dies ist einer der Hauptvorteile der SPA-Navigation, da sie eine zusammenhängende Benutzererfahrung bietet. Zum Beispiel bleibt beim Klicken auf einen Artikel-Link der Kopfbereich "My PWA App" und die Navigation unverändert, nur der Artikelbereich wird dynamisch aktualisiert.</li>
-        <li data-start="835" data-end="915"><strong data-start="837" data-end="850">MPA-Stil Navigation:</strong> Die Kopfzeile wird zusammen mit der gesamten Seite neu geladen. Wenn Sie absichtlich im MPA-Stil bauen oder traditionelle <code data-start="892" data-end="897">&lt;a&gt;</code>-Tags verwenden, kann dies der Fall sein.</li>
-      </ul>
-      <p data-start="917" data-end="951">Um eine beibehaltene Kopfzeile im SPA-Stil in einem Next.js-Projekt zu erreichen, sollten Sie:</p>
-      <ul data-start="952" data-end="1026">
-        <li data-start="952" data-end="1026">Die <code data-start="957" data-end="968">next/link</code> Komponente verwenden: Dies ist die von Next.js empfohlene Client-Routing-Komponente, die die dynamische Aktualisierung der Seite ermöglicht, ohne die Seite vollständig neu zu laden.</li>
-      </ul>
-      <pre class="!overflow-visible" data-start="1027" data-end="1483">
-        <div class="overflow-y-auto p-4" dir="ltr">
-          <code class="!whitespace-pre language-javascript">
-            <span><span class="hljs-keyword">import</span> <span class="hljs-title class_">Link</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'next/link'</span>;
+<div data-message-author-role="assistant" data-message-id="0bdf545a-2e52-4ac1-92a4-0b984f01a052" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light"><p data-start="0" data-end="98">Dies ist eine sehr gute Frage zur Navigationserfahrung von PWAs! Besonders wenn der Benutzer auf einen Artikel-Link klickt, beeinflusst die Art und Weise, wie PWAs navigieren, direkt die Benutzererfahrung und das Anwendungsgefühl. Lassen Sie mich das Verhalten der PWA-Navigation und das von Ihnen erwähnte Verhalten der Kopfzeile und das Zurückwischen des Gestensteuerung näher erläutern.
+</p>
+<h3 data-start="100" data-end="127">1. Die Navigationsweise von PWAs: Abhängig von der Art der Implementierung des Projekts</h3>
+<p data-start="128" data-end="182">
+Die technologischen Merkmale von PWAs ermöglichen verschiedene Navigationsmodi. Die endgültige Navigationserfahrung hängt davon ab, wie Ihr Next.js-Projekt aufgebaut und konfiguriert ist:
+</p>
+<h4 data-start="184" data-end="212">Traditionelle Webseitennavigation (Mehrseitenanwendung - MPA-Stil)</h4>
+<p data-start="213" data-end="245">
+Diese Methode ist ähnlich wie bei traditionellen Websites, bei denen jedes Klicken auf einen Link eine vollständige Neulade des gesamten Seiteninhalts auslöst.
+</p>
+<ul data-start="246" data-end="368">
+<li data-start="246" data-end="339"><strong data-start="248" data-end="255">Phänomen:</strong> Wenn auf einen Artikel-Link geklickt wird, kann ein kurzer Weißbildschirm oder Ladeindikator angezeigt werden, da der Browser die gesamte Seite neu anfordert und rendert. Gemeinsame Elemente wie Kopfzeile und Fußzeile werden ebenfalls zusammen mit der Seite neu geladen.</li>
+<li data-start="340" data-end="368"><strong data-start="342" data-end="349">Erfahrung:</strong> Die Navigationserfahrung ist nicht sehr flüssig und fühlt sich eher wie das Umblättern traditioneller Webseiten an.</li>
+</ul>
+<h4 data-start="370" data-end="406">Einzelne Seitenanwendung (SPA) Navigation (häufiger bei PWAs, ähnlich einer nativen App)</h4>
+<p data-start="407" data-end="477">
+Diese Art von Anwendung verwendet Client-seitiges Routing (z.B. mit Next.js's <code data-start="432" data-end="443">next/link</code>-Komponente und Routing-Features), um den Seiteninhalt dynamisch zu aktualisieren, ohne die komplette Seite neu zu laden.
+</p>
+<ul data-start="478" data-end="591">
+<li data-start="478" data-end="557"><strong data-start="480" data-end="487">Phänomen:</strong> Wenn auf einen Artikel-Link geklickt wird, erscheint kein sichtbarer Weißbildschirm oder eine Neulade, die Kopfzeile und andere statische Elemente bleiben unverändert, nur der Hauptbereich der Seite (z.B. Artikel-Liste oder Artikel-Details) wird dynamisch aktualisiert.</li>
+<li data-start="558" data-end="591"><strong data-start="560" data-end="567">Erfahrung:</strong> Die Navigationserfahrung ist sehr flüssig, ähnlich wie bei nativen App-Seitenwechseln.</li>
+</ul>
+<p data-start="593" data-end="680">
+In einem Next.js-Projekt, wenn Sie die <code data-start="613" data-end="624">next/link</code> Komponente für Seitenumleitungen verwenden und keine speziellen Konfigurationen vorgenommen haben, wird Ihre PWA standardmäßig die SPA-Stil-Client-Routing-Navigation verwenden.
+</p>
+<h3 data-start="682" data-end="704">2. Wird die Kopfzeile beibehalten?</h3>
+<ul data-start="705" data-end="915">
+<li data-start="705" data-end="834"><strong data-start="707" data-end="729">SPA Stil Navigation (häufig bei PWAs):</strong> Die Kopfzeile bleibt normalerweise erhalten, nur der Inhaltsbereich wird ersetzt. Dies ist einer der Hauptvorteile der SPA-Navigation, da sie eine zusammenhängende Benutzererfahrung bietet. Zum Beispiel bleibt beim Klicken auf einen Artikel-Link der Kopfbereich "My PWA App" und die Navigation unverändert, nur der Artikelbereich wird dynamisch aktualisiert.</li>
+<li data-start="835" data-end="915"><strong data-start="837" data-end="850">MPA-Stil Navigation:</strong> Die Kopfzeile wird zusammen mit der gesamten Seite neu geladen. Wenn Sie absichtlich im MPA-Stil bauen oder traditionelle <code data-start="892" data-end="897">&lt;a&gt;</code>-Tags verwenden, kann dies der Fall sein.</li>
+</ul>
+<p data-start="917" data-end="951">Um eine beibehaltene Kopfzeile im SPA-Stil in einem Next.js-Projekt zu erreichen, sollten Sie:</p>
+<ul data-start="952" data-end="1026">
+<li data-start="952" data-end="1026">Die <code data-start="957" data-end="968">next/link</code> Komponente verwenden: Dies ist die von Next.js empfohlene Client-Routing-Komponente, die die dynamische Aktualisierung der Seite ermöglicht, ohne die Seite vollständig neu zu laden.</li>
+</ul>
+<pre class="!overflow-visible" data-start="1027" data-end="1483">
+<div class="overflow-y-auto p-4" dir="ltr">
+<code class="!whitespace-pre language-javascript">
+<span><span class="hljs-keyword">import</span> <span class="hljs-title class_">Link</span> <span class="hljs-keyword">from</span> <span class="hljs-string">'next/link'</span>;
 
-            <span class="hljs-keyword">function</span> <span class="hljs-title function_">ArticleList</span>(<span class="hljs-params"></span>) {
-              <span class="hljs-keyword">return</span> (
-                <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
-                  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/articles/article-1"</span>&gt;</span>
-                      <span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span>Artikel 1 Titel<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
-                  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-                  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/articles/article-2"</span>&gt;</span>
-                      <span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span>Artikel 2 Titel<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
-                  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-                  {/* ...mehr Artikel-Links */}
-              <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span>
-            );
-          }
-          </code>
-        </div>
-      </pre>
-      <ul data-start="1484" data-end="1577">
-        <li data-start="1484" data-end="1577">Vermeiden Sie die Verwendung des traditionellen <code data-start="1494" data-end="1499">&lt;a&gt;</code>-Tags für interne Seitenumleitungen: Das <code data-start="1511" data-end="1516">&lt;a&gt;</code>-Tag löst standardmäßig eine vollständige Seitenneulade aus. Außer wenn zu einer externen Seite gewechselt wird, sollte in einer PWA das <code data-start="1565" data-end="1576">next/link</code> Tag für interne Seitenumleitungen verwendet werden.</li>
-      </ul>
-      <h3 data-start="1579" data-end="1603">3. Lokale Wischgeste zum Zurückkehren (Browser zurück)</h3>
-      <p data-start="1604" data-end="1668">Ja, normalerweise können Benutzer mit einer Wischgeste durch die PWA navigieren, wenn das Client-Routing korrekt implementiert wurde und die PWA in einem unterstützten Browser ausgeführt wird.</p>
-      <ul data-start="1670" data-end="2196">
-        <li data-start="1670" data-end="1792">
-          <p data-start="1672" data-end="1792"><strong data-start="1672" data-end="1679">Prinzip:</strong> Moderne Browser (insbesondere mobile Browser) bieten die History API und die Wischgeste zurück/vorwärts. Wenn ein Client-seitiges Routing verwendet wird, aktualisiert der Browser die Historie, sodass die Wischgeste zurück funktioniert und Benutzer zwischen den PWA-Seiten navigieren können.</p>
-        </li>
-        <li data-start="1796" data-end="1963">
-          <p data-start="1798" data-end="1807"><strong data-start="1798" data-end="1807">Anwendungsfall:</strong></p>
-          <ul data-start="1810" data-end="1963">
-            <li data-start="1810" data-end="1852">PWA, die Client-Routing verwenden (z.B. Next.js + <code data-start="1839" data-end="1850">next/link</code>).</li>
-            <li data-start="1855" data-end="1907">In modernen Browsern, die Wischgesten unterstützen (z.B. Chrome, Safari, Edge für mobile Geräte).</li>
-            <li data-start="1910" data-end="1963">Die Navigation in der PWA verwendet korrekt die History API (was durch <code data-start="1944" data-end="1955">next/link</code> standardmäßig verwaltet wird).</li>
-          </ul>
-        </li>
-        <li data-start="1965" data-end="2196">
-          <p data-start="1967" data-end="1990"><strong data-start="1967" data-end="1990">Wenn die Wischgeste zurück nicht funktioniert, mögliche Gründe:</strong></p>
-          <ul data-start="1993" data-end="2196">
-            <li data-start="1993" data-end="2060"><strong data-start="1995" data-end="2009">Kein Client-Routing verwendet:</strong> Wenn eine PWA traditionelle Seitenumleitungen verwendet, kann der Browser die Historie nicht richtig verfolgen, was dazu führt, dass die Wischgeste zurück nicht funktioniert.</li>
-            <li data-start="2063" data-end="2129"><strong data-start="2065" data-end="2078">Browser-Kompatibilität:</strong> In seltenen Fällen unterstützen ältere oder spezielle Browser keine Wischgesten, aber in den meisten modernen Browsern funktioniert dies.</li>
-            <li data-start="2132" data-end="2196"><strong data-start="2134" data-end="2147">Fehler im PWA-Code:</strong> Wenn es Fehler bei der Konfiguration des Client-Routings gibt, kann dies die Historienverwaltung des Browsers beeinträchtigen und dazu führen, dass die Wischgeste zurück nicht funktioniert.</li>
-          </ul>
-        </li>
-      </ul>
-      <h3 data-start="2198" data-end="2205">Zusammenfassung:</h3>
-      <p data-start="2206" data-end="2280">
-        Moderne PWAs verwenden normalerweise SPA-Stil-Navigation, die Client-Routing verwendet, um flüssige Seitenwechsel zu ermöglichen, wobei die Kopfzeile beibehalten wird und nur der Inhaltsbereich aktualisiert wird. Next.js fördert diesen Entwicklungsstil.
-      </p>
-      <ul data-start="2282" data-end="2386">
-        <li data-start="2282" data-end="2342">Wenn Sie die <code data-start="2291" data-end="2302">next/link</code>-Komponente für Seitenumleitungen verwenden, sollte Ihre PWA in der Lage sein, eine Navigation mit beibehaltenem Kopfbereich und dynamischer Inhaltsaktualisierung zu erreichen.</li>
-        <li data-start="2343" data-end="2386">In den meisten modernen Browsern können Benutzer durch Wischgesten zwischen den Seiten vorwärts und rückwärts navigieren, was die Navigationserfahrung verbessert.</li>
-      </ul>
-      <p data-start="2388" data-end="2404">Um die beste Navigationserfahrung zu gewährleisten, prüfen Sie:</p>
-      <ol data-start="2405" data-end="2563">
-        <li data-start="2405" data-end="2466">Verwenden Sie im Next.js-Projekt die <code data-start="2426" data-end="2437">next/link</code>-Komponente für interne Seitenumleitungen? Dies ist der Schlüssel zur Umsetzung der SPA-Stil-Navigation.</li>
-        <li data-start="2467" data-end="2518">Läuft Ihre PWA in modernen Browsern? Moderne Browser unterstützen die History API und Wischgesten.</li>
-        <li data-start="2519" data-end="2563">Testen Sie die Navigation Ihrer PWA auf verschiedenen Geräten und Browsern, insbesondere ob die Wischgeste zurück funktioniert.</li>
-      </ol>
-      <p data-start="2565" data-end="2635" data-is-last-node="" data-is-only-node="">
-        Durch eine sinnvolle PWA-Architektur und die leistungsstarken Funktionen von Next.js können Sie eine flüssige, native App-ähnliche Navigationserfahrung mit beibehaltenem Kopfbereich und natürlichen Wischgesten bieten.
-      </p>
-    </div>
-  </div>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">ArticleList</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/articles/article-1"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span>Artikel 1 Titel<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/articles/article-2"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span>Artikel 2 Titel<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      {/* ...mehr Artikel-Links */}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span>
+);
+}
+</code>
+</div>
+</pre>
+<ul data-start="1484" data-end="1577">
+<li data-start="1484" data-end="1577">Vermeiden Sie die Verwendung des traditionellen <code data-start="1494" data-end="1499">&lt;a&gt;</code>-Tags für interne Seitenumleitungen: Das <code data-start="1511" data-end="1516">&lt;a&gt;</code>-Tag löst standardmäßig eine vollständige Seitenneulade aus. Außer wenn zu einer externen Seite gewechselt wird, sollte in einer PWA das <code data-start="1565" data-end="1576">next/link</code> Tag für interne Seitenumleitungen verwendet werden.</li>
+</ul>
+<h3 data-start="1579" data-end="1603">3. Lokale Wischgeste zum Zurückkehren (Browser zurück)</h3>
+<p data-start="1604" data-end="1668">Ja, normalerweise können Benutzer mit einer Wischgeste durch die PWA navigieren, wenn das Client-Routing korrekt implementiert wurde und die PWA in einem unterstützten Browser ausgeführt wird.</p>
+<ul data-start="1670" data-end="2196">
+<li data-start="1670" data-end="1792">
+<p data-start="1672" data-end="1792"><strong data-start="1672" data-end="1679">Prinzip:</strong> Moderne Browser (insbesondere mobile Browser) bieten die History API und die Wischgeste zurück/vorwärts. Wenn ein Client-seitiges Routing verwendet wird, aktualisiert der Browser die Historie, sodass die Wischgeste zurück funktioniert und Benutzer zwischen den PWA-Seiten navigieren können.</p>
+</li>
+<li data-start="1796" data-end="1963">
+<p data-start="1798" data-end="1807"><strong data-start="1798" data-end="1807">Anwendungsfall:</strong></p>
+<ul data-start="1810" data-end="1963">
+<li data-start="1810" data-end="1852">PWA, die Client-Routing verwenden (z.B. Next.js + <code data-start="1839" data-end="1850">next/link</code>).</li>
+<li data-start="1855" data-end="1907">In modernen Browsern, die Wischgesten unterstützen (z.B. Chrome, Safari, Edge für mobile Geräte).</li>
+<li data-start="1910" data-end="1963">Die Navigation in der PWA verwendet korrekt die History API (was durch <code data-start="1944" data-end="1955">next/link</code> standardmäßig verwaltet wird).</li>
+</ul>
+</li>
+<li data-start="1965" data-end="2196">
+<p data-start="1967" data-end="1990"><strong data-start="1967" data-end="1990">Wenn die Wischgeste zurück nicht funktioniert, mögliche Gründe:</strong></p>
+<ul data-start="1993" data-end="2196">
+<li data-start="1993" data-end="2060"><strong data-start="1995" data-end="2009">Kein Client-Routing verwendet:</strong> Wenn eine PWA traditionelle Seitenumleitungen verwendet, kann der Browser die Historie nicht richtig verfolgen, was dazu führt, dass die Wischgeste zurück nicht funktioniert.</li>
+<li data-start="2063" data-end="2129"><strong data-start="2065" data-end="2078">Browser-Kompatibilität:</strong> In seltenen Fällen unterstützen ältere oder spezielle Browser keine Wischgesten, aber in den meisten modernen Browsern funktioniert dies.</li>
+<li data-start="2132" data-end="2196"><strong data-start="2134" data-end="2147">Fehler im PWA-Code:</strong> Wenn es Fehler bei der Konfiguration des Client-Routings gibt, kann dies die Historienverwaltung des Browsers beeinträchtigen und dazu führen, dass die Wischgeste zurück nicht funktioniert.</li>
+</ul>
+</li>
+</ul>
+<h3 data-start="2198" data-end="2205">Zusammenfassung:</h3>
+<p data-start="2206" data-end="2280">
+Moderne PWAs verwenden normalerweise SPA-Stil-Navigation, die Client-Routing verwendet, um flüssige Seitenwechsel zu ermöglichen, wobei die Kopfzeile beibehalten wird und nur der Inhaltsbereich aktualisiert wird. Next.js fördert diesen Entwicklungsstil.
+</p>
+<ul data-start="2282" data-end="2386">
+<li data-start="2282" data-end="2342">Wenn Sie die <code data-start="2291" data-end="2302">next/link</code>-Komponente für Seitenumleitungen verwenden, sollte Ihre PWA in der Lage sein, eine Navigation mit beibehaltenem Kopfbereich und dynamischer Inhaltsaktualisierung zu erreichen.</li>
+<li data-start="2343" data-end="2386">In den meisten modernen Browsern können Benutzer durch Wischgesten zwischen den Seiten vorwärts und rückwärts navigieren, was die Navigationserfahrung verbessert.</li>
+</ul>
+<p data-start="2388" data-end="2404">Um die beste Navigationserfahrung zu gewährleisten, prüfen Sie:</p>
+<ol data-start="2405" data-end="2563">
+<li data-start="2405" data-end="2466">Verwenden Sie im Next.js-Projekt die <code data-start="2426" data-end="2437">next/link</code>-Komponente für interne Seitenumleitungen? Dies ist der Schlüssel zur Umsetzung der SPA-Stil-Navigation.</li>
+<li data-start="2467" data-end="2518">Läuft Ihre PWA in modernen Browsern? Moderne Browser unterstützen die History API und Wischgesten.</li>
+<li data-start="2519" data-end="2563">Testen Sie die Navigation Ihrer PWA auf verschiedenen Geräten und Browsern, insbesondere ob die Wischgeste zurück funktioniert.</li>
+</ol>
+<p data-start="2565" data-end="2635" data-is-last-node="" data-is-only-node="">
+Durch eine sinnvolle PWA-Architektur und die leistungsstarken Funktionen von Next.js können Sie eine flüssige, native App-ähnliche Navigationserfahrung mit beibehaltenem Kopfbereich und natürlichen Wischgesten bieten.
+</p>
+</div>
+</div>
 </div>
