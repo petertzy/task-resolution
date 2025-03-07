@@ -22,6 +22,7 @@
             flex-direction: column;
         }
 
+        /* Language selection dropdown styling */
         .language-select {
             margin-bottom: 2px;
             padding: 2px;
@@ -57,11 +58,6 @@
         .sidebar li:hover {
             background-color: #D2B4DE;
         }
-        .sidebar li.active {
-            background-color: #A9CCE3; /* Highligt color for active item */
-            font-weight: bold;
-        }
-
         .content {
             flex: 1;
             background-color: #FCF3CF;
@@ -108,20 +104,20 @@
         </select>
 
         <ul>
-            <li onclick="showContent('content1.txt', this)">1. 使用浏览器和拥有一个真正的应用程序之间的区别</li>
-            <li onclick="showContent('content2.txt', this)">2. 安装：只需将其从浏览器复制到主屏幕 ——> 实际的步骤是什么？</li>
-            <li onclick="showContent('content3.txt', this)">3. 苹果/谷歌费用：提供数字订阅是免费的，因为我们没有使用应用商店。对于一个正常的应用程序，你需要支付大约30%的收入 ——> 请确认！</li>
-            <li onclick="showContent('content4.txt', this)">4. 请检查功能并分析，是否可以使用PWA实现。如果你想进行比较，可以将其与Flutter进行比较 —— 这是我们在创建自己应用时会使用的框架</li>
-            <li onclick="showContent('content5.txt', this)">5. 请制作一个演示文稿，说明为了使其成为PWA，你需要在代码中做哪些更改</li>
-            <li onclick="showContent('content6.txt', this)">6. 是否可以更改PWA的样式，或者它是否会看起来和网站的移动版本一模一样？</li>
-            <li onclick="showContent('content7.txt', this)">7. 如果用户点击链接购买订阅，会发生什么？</li>
-            <li onclick="showContent('content8.txt', this)">8. 如果用户点击来自Signal的链接，会打开PWA还是正常的网页浏览器？</li>
-            <li onclick="showContent('content9.txt', this)">9. 如果用户点击来自Telegram的链接，会打开PWA还是应用内浏览器？</li>
-            <li onclick="showContent('content10.txt', this)">10. 如果用户点击来自普通浏览器的链接，例如Google搜索，PWA会打开还是正常的网页浏览器？</li>
-            <li onclick="showContent('content11.txt', this)">11. 关于跟踪呢？我们能否判断用户正在使用PWA？因为我们肯定想知道有多少流量来自PWA</li>
-            <li onclick="showContent('content12.txt', this)">12. 导航如何？我的意思是当你点击一篇文章时？它像浏览器一样，页面是空白的吗？还是头部会保留，只有内容被替换？我们可以使用本地的滑动手势返回吗？</li>
-            <li onclick="showContent('content13.txt', this)">13. 它是否会在几天内保持登录状态，即使没有使用PWA？</li>
-            <li onclick="showContent('content14.txt', this)">14. iOS没有全屏支持？EpochTV的视频会是什么样子？</li>
+            <li onclick="showContent('content1.txt')">1. 使用浏览器和拥有一个真正的应用程序之间的区别</li>
+            <li onclick="showContent('content2.txt')">2. 安装：只需将其从浏览器复制到主屏幕 ——> 实际的步骤是什么？</li>
+            <li onclick="showContent('content3.txt')">3. 苹果/谷歌费用：提供数字订阅是免费的，因为我们没有使用应用商店。对于一个正常的应用程序，你需要支付大约30%的收入 ——> 请确认！</li>
+            <li onclick="showContent('content4.txt')">4. 请检查功能并分析，是否可以使用PWA实现。如果你想进行比较，可以将其与Flutter进行比较 —— 这是我们在创建自己应用时会使用的框架</li>
+            <li onclick="showContent('content5.txt')">5. 请制作一个演示文稿，说明为了使其成为PWA，你需要在代码中做哪些更改</li>
+            <li onclick="showContent('content6.txt')">6. 是否可以更改PWA的样式，或者它是否会看起来和网站的移动版本一模一样？</li>
+            <li onclick="showContent('content7.txt')">7. 如果用户点击链接购买订阅，会发生什么？</li>
+            <li onclick="showContent('content8.txt')">8. 如果用户点击来自Signal的链接，会打开PWA还是正常的网页浏览器？</li>
+            <li onclick="showContent('content9.txt')">9. 如果用户点击来自Telegram的链接，会打开PWA还是应用内浏览器？</li>
+            <li onclick="showContent('content10.txt')">10. 如果用户点击来自普通浏览器的链接，例如Google搜索，PWA会打开还是正常的网页浏览器？</li>
+            <li onclick="showContent('content11.txt')">11. 关于跟踪呢？我们能否判断用户正在使用PWA？因为我们肯定想知道有多少流量来自PWA</li>
+            <li onclick="showContent('content12.txt')">12. 导航如何？我的意思是当你点击一篇文章时？它像浏览器一样，页面是空白的吗？还是头部会保留，只有内容被替换？我们可以使用本地的滑动手势返回吗？</li>
+            <li onclick="showContent('content13.txt')">13. 它是否会在几天内保持登录状态，即使没有使用PWA？</li>
+            <li onclick="showContent('content14.txt')">14. iOS没有全屏支持？EpochTV的视频会是什么样子？</li>
         </ul>        
     </div>
     
@@ -208,16 +204,9 @@
             });
         }
 
-        // 加载内容并高亮选中的菜单项
-        async function showContent(file, element) {
+        // 加载内容
+        async function showContent(file) {
             try {
-                // 移除之前选中的 active 类
-                const activeItem = document.querySelector('.sidebar li.active');
-                if (activeItem) activeItem.classList.remove('active');
-                
-                // 为当前选中的菜单项添加 active 类
-                element.classList.add('active');
-
                 console.log(`Attempting to load file: ${file}`);
                 const response = await fetch(`https://raw.githubusercontent.com/petertzy/task-resolution/main/${languageFolder}/${file}`);
                 if (!response.ok) throw new Error(`File not found (HTTP ${response.status})`);
@@ -231,6 +220,7 @@
             }
         }
 
+        // 页面加载时默认语言为中文
         window.onload = function() {
             updateLanguage();
         };
