@@ -1,0 +1,44 @@
+<div data-message-author-role="assistant" data-message-id="0df25002-cce6-410a-aabe-056579138131" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light"><p data-start="0" data-end="116">当用户点击来自 Telegram 的链接访问您的 PWA（渐进式 Web 应用）时，默认情况下，链接会在 Telegram 的应用内浏览器中打开，而不是直接启动已安装的 PWA 应用。为了更好地理解这一行为，我们需要分解几个关键点：</p>
+<h3 data-start="118" data-end="146">1. 什么是 Telegram 的应用内浏览器？</h3>
+<p data-start="147" data-end="339">Telegram，像许多其他社交媒体或消息应用一样，为了优化用户体验，内置了一个应用内浏览器。<br data-start="194" data-end="197">
+当您在 Telegram 中点击一个外部链接时，它不会直接跳转到您设备上的默认浏览器（例如 Chrome、Safari），而是在 Telegram 应用内打开一个简化版的浏览器界面。<br data-start="288" data-end="291">
+这种应用内浏览器的目的是让用户无需离开 Telegram 就能查看网页内容。<br data-start="329" data-end="332">
+<strong data-start="332" data-end="339">特点：</strong></p>
+<ul data-start="340" data-end="414">
+<li data-start="340" data-end="350">地址栏通常可见。</li>
+<li data-start="351" data-end="387">功能相比于完整浏览器（如 Chrome 或 Safari）有所简化。</li>
+<li data-start="388" data-end="414">用户仍然处于 Telegram 应用的上下文中。</li>
+</ul>
+<h3 data-start="416" data-end="436">2. PWA 的链接如何被处理？</h3>
+<h4 data-start="437" data-end="451">未安装的 PWA：</h4>
+<p data-start="452" data-end="574">如果您仅通过 Next.js 等工具创建了一个 PWA 网站，并且用户尚未将其“安装”到设备上（即没有将其添加到主屏幕），那么点击任何链接（包括来自 Telegram 的链接）都会像普通网站链接一样处理。通常，这会导致链接在应用内浏览器中打开。</p>
+<h4 data-start="576" data-end="590">已安装的 PWA：</h4>
+<p data-start="591" data-end="690">如果用户已经通过浏览器菜单（例如 Chrome 的“添加到主屏幕”或 Safari 的“添加到主屏幕”）将您的 PWA 安装到设备上，情况则有所不同。但这仍不意味着链接会直接打开 PWA 应用本身。</p>
+<h3 data-start="692" data-end="727">3. 为什么通常会在应用内浏览器中打开，而不是 PWA 应用？</h3>
+<h4 data-start="728" data-end="743">链接处理的默认行为：</h4>
+<p data-start="744" data-end="821">大多数应用（包括 Telegram）处理外部链接的默认行为是使用其应用内浏览器。这是为了保持用户在应用内的体验，便于追踪链接点击以及考虑可能的安全性问题。</p>
+<h4 data-start="823" data-end="842">操作系统和 PWA 的注册：</h4>
+<p data-start="843" data-end="964">操作系统（如 Android 或 iOS）需要知道哪些链接应由哪些应用处理。尽管 PWA 可以注册特定域名的链接，但来自 Telegram 等其他应用的链接请求，操作系统通常会默认交给浏览器处理，进而被 Telegram 的应用内浏览器拦截。</p>
+<h3 data-start="966" data-end="1005">4. 如何提高链接直接打开已安装的 PWA 应用（尽管无法完全保证）？</h3>
+<p data-start="1006" data-end="1107">虽然 Telegram 默认会在应用内浏览器中打开链接，但可以尝试以下方法来增加链接直接打开已安装的 PWA 应用的可能性，但请注意，这并非百分之百可靠，依赖于操作系统和 Telegram 的实现方式：</p>
+<h4 data-start="1109" data-end="1126">确保 PWA 正确安装：</h4>
+<p data-start="1127" data-end="1192">用户必须已经通过浏览器将 PWA 安装到设备上（即通过“添加到主屏幕”功能）。如果 PWA 未安装，它肯定会在应用内浏览器中打开。</p>
+<h4 data-start="1194" data-end="1212">使用正确的 PWA 链接：</h4>
+<p data-start="1213" data-end="1275">确保您在 Telegram 中分享的是 PWA 的根域名链接，或者是明确指向 PWA 内容的深层链接（Deep Link）。</p>
+<h4 data-start="1277" data-end="1295">考虑深度链接配置（高级）：</h4>
+<p data-start="1296" data-end="1479">对于更复杂的需求，您可以配置 PWA 的深度链接。在您的 PWA 的 manifest.json 文件中配置 protocol_handlers 或 web_app_manifests（具体取决于平台和浏览器支持）。通过深度链接配置，您可以让操作系统识别哪些链接应由 PWA 应用处理。不过，即便配置了深度链接，链接仍然可能被 Telegram 的应用内浏览器拦截。</p>
+<h4 data-start="1481" data-end="1501">告知用户安装 PWA 的好处：</h4>
+<p data-start="1502" data-end="1575">最直接有效的方法是鼓励用户安装您的 PWA。当用户将 PWA 安装到设备上后，他们会更倾向于从主屏幕图标启动应用，从而体验到更接近原生应用的感觉。</p>
+<h3 data-start="1577" data-end="1587">总结与建议：</h3>
+<ul data-start="1588" data-end="1854">
+<li data-start="1588" data-end="1666"><strong data-start="1590" data-end="1599">默认情况：</strong> 用户点击来自 Telegram 的链接时，很可能会在 Telegram 的应用内浏览器中打开，而不是直接启动已安装的 PWA 应用。</li>
+<li data-start="1667" data-end="1768"><strong data-start="1669" data-end="1687">想要获得 PWA 应用体验：</strong> 为了获得最佳的 PWA 体验，您应鼓励用户将您的 PWA 安装到设备的主屏幕上。安装后的 PWA 从主屏幕启动时，会像原生应用一样运行，摆脱浏览器地址栏和界面。</li>
+<li data-start="1769" data-end="1854"><strong data-start="1771" data-end="1786">链接行为并非完全可控：</strong> 来自其他应用的链接行为，特别是像 Telegram 这样的应用内浏览器，其行为受多种因素影响，您作为 PWA 开发者可能无法完全控制。</li>
+</ul>
+<h3 data-start="1856" data-end="1870">用户体验角度的建议：</h3>
+<ul data-start="1871" data-end="2135">
+<li data-start="1871" data-end="1939"><strong data-start="1873" data-end="1893">在 PWA 网站内引导用户安装：</strong> 清晰地指导用户如何将 PWA 安装到他们的设备主屏幕（例如在页面顶部或底部显示安装提示）。</li>
+<li data-start="1940" data-end="2011"><strong data-start="1942" data-end="1961">明确告知安装 PWA 的优势：</strong> 告诉用户安装 PWA 后，他们能获得更快速、更便捷、更像原生应用的体验，诸如离线访问、推送通知等。</li>
+<li data-start="2012" data-end="2135"><strong data-start="2014" data-end="2038">考虑创建一个 Landing Page：</strong> 如果 Telegram 是您 PWA 的重要流量来源，可以考虑创建一个专门的 landing page，当用户通过 Telegram 链接访问时，目标是引导用户安装 PWA，并解释安装的好处。</li>
+</ul>
+<p data-start="2137" data-end="2226" data-is-last-node="" data-is-only-node="">简单来说，要获得最佳的 PWA 体验，安装是关键。虽然来自 Telegram 的链接很可能会在应用内浏览器中打开，但安装后的 PWA 从主屏幕启动时，能真正展现 PWA 的优势。</p></div></div></div>

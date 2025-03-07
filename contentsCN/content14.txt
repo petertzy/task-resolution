@@ -1,0 +1,37 @@
+<div data-message-author-role="assistant" data-message-id="2e4e7fb0-3143-4684-a8dd-35ca195185c2" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light"><p data-start="0" data-end="133">iOS 对 PWA（渐进式Web应用）的全屏支持确实存在一些限制，这与 Android 上的 PWA 体验有所不同。您提到的关于单个视频页面的问题，恰好揭示了 iOS PWA 在视频播放和全屏显示方面的一些特点。以下是 iOS PWA 的全屏支持情况及其可能的表现：</p>
+<h3 data-start="135" data-end="165">1. iOS PWA 的 “伪全屏” 与地址栏问题：</h3>
+<p data-start="166" data-end="264">iOS 上的 PWA 并不能实现真正的全屏体验，尤其是在浏览器中。为了接近全屏体验，用户需要将 PWA “添加到主屏幕”，通过 Safari 浏览器的“分享”菜单中的“添加到主屏幕”选项完成操作。</p>
+<ul data-start="266" data-end="593">
+<li data-start="266" data-end="386"><strong data-start="268" data-end="278">独立应用模式</strong>：当 PWA 从主屏幕图标启动时，它会以独立应用模式运行，隐藏 Safari 浏览器的地址栏和大部分浏览器界面元素，这样看起来更像原生应用。但即便如此，它依然无法实现真正的全屏，更多是“伪全屏”或“最大化窗口”。</li>
+<li data-start="387" data-end="506"><strong data-start="389" data-end="400">地址栏残留问题</strong>：在某些早期的 iOS 版本中，即使 PWA 添加到主屏幕，顶部可能依然会有细微的地址栏或状态栏残留，无法实现完全沉浸式全屏。虽然新的 iOS 版本已做了改进，但在某些情况下（如页面跳转）仍然可能短暂出现地址栏。</li>
+<li data-start="507" data-end="593"><strong data-start="509" data-end="530">通过 Safari 访问的 PWA</strong>：如果 PWA 通过 Safari 或其他应用内浏览器打开，则会显示完整的浏览器界面，包括地址栏和浏览器工具栏，无法做到全屏。</li>
+</ul>
+<h3 data-start="595" data-end="623">2. 单个视频页面在 iOS PWA 中的表现：</h3>
+<p data-start="624" data-end="669">接下来，我们来看看当您在 iOS PWA 中打开一个单个视频页面时，可能会是什么样的体验：</p>
+<ul data-start="671" data-end="1016">
+<li data-start="671" data-end="856">
+<p data-start="673" data-end="707"><strong data-start="673" data-end="705">情况 1：PWA 已“添加到主屏幕”并以独立应用模式启动</strong></p>
+<ul data-start="710" data-end="856">
+<li data-start="710" data-end="773">视频播放器尽可能占据屏幕空间，提供接近全屏的播放体验。视频会通过 iOS 原生视频播放器播放，并且通常会提供一个全屏按钮。</li>
+<li data-start="776" data-end="856">仍然存在的限制：即使在独立应用模式下，顶部的状态栏（显示时间、电量、信号等）可能仍然可见，这部分区域无法完全被视频播放器覆盖。有时，地址栏可能会有短暂闪现。</li>
+</ul>
+</li>
+<li data-start="858" data-end="1016">
+<p data-start="860" data-end="899"><strong data-start="860" data-end="897">情况 2：通过 Safari 或应用内浏览器访问（非独立应用模式）</strong></p>
+<ul data-start="902" data-end="1016">
+<li data-start="902" data-end="965">视频页面将在 Safari 或应用内浏览器标签中打开，浏览器的地址栏、工具栏等界面元素会一直显示，无法实现全屏沉浸式体验。</li>
+<li data-start="968" data-end="1016">即使点击了视频播放器中的全屏按钮，视频也仅能最大化到浏览器窗口的边界，无法覆盖整个设备屏幕。</li>
+</ul>
+</li>
+</ul>
+<h3 data-start="1018" data-end="1043">3. 关键在于“添加到主屏幕”与启动方式：</h3>
+<p data-start="1044" data-end="1181">iOS PWA 能否接近全屏的视频播放体验，关键在于用户是否将 PWA 添加到主屏幕并通过主屏幕图标启动。为了获得最佳的视频播放体验，建议 iOS 用户将 PWA “添加到主屏幕”并从主屏幕启动。您可以在网站中明确告知用户，安装 PWA 后可以获得更接近原生应用的全屏体验。</p>
+<p data-start="1183" data-end="1266">然而，由于 iOS 系统的限制，即使是添加到主屏幕的 PWA，也无法完全消除地址栏或状态栏的残留。因此，如果对全屏体验有极高要求，原生 iOS 应用依然是更好的选择。</p>
+<h3 data-start="1268" data-end="1280">4. 优化建议：</h3>
+<ul data-start="1281" data-end="1600">
+<li data-start="1281" data-end="1389"><strong data-start="1283" data-end="1299">全屏模式下的 UI 设计</strong>：在设计 PWA 的视频页面时，可以通过深色主题或沉浸式 UI 风格来弱化状态栏等区域的视觉干扰。同时，简化视频播放器控件，尽量减少周围的 UI 元素，以最大化视频内容的显示空间。</li>
+<li data-start="1390" data-end="1525"><strong data-start="1392" data-end="1417">尝试 Web Fullscreen API</strong>：虽然 iOS 对 PWA 的全屏支持有限，但仍可尝试通过 Web Fullscreen API (requestFullscreen()) 来让视频播放器进入全屏模式，尽管这可能无法突破 iOS 的“伪全屏”限制。</li>
+<li data-start="1526" data-end="1600"><strong data-start="1528" data-end="1539">清晰的用户引导</strong>：在 PWA 网站上明确告知 iOS 用户如何将 PWA “添加到主屏幕”，并指导他们如何安装，以获得更好的视频观看体验。</li>
+</ul>
+<h3 data-start="1602" data-end="1609">总结：</h3>
+<p data-start="1610" data-end="1846" data-is-last-node="" data-is-only-node="">iOS 上的 PWA 无法实现真正的设备屏幕全屏，即使添加到主屏幕后，也只能达到“伪全屏”的效果，顶部的状态栏和地址栏可能会有所残留。为了获得最佳的视频观看体验，用户应该从主屏幕启动 PWA。作为开发者，可以针对 iOS PWA 的“伪全屏”特点进行优化，提升视频播放体验。对于对全屏体验要求极高的应用，原生 iOS 应用仍然是更好的选择，而 PWA 在 iOS 上更多的是在功能和便捷性之间取得平衡，尽管无法完全实现原生 App 的沉浸式全屏体验，但仍能提供接近的功能。</p></div></div></div>

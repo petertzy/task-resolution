@@ -1,0 +1,98 @@
+<div data-message-author-role="assistant" data-message-id="54b5a989-639b-48e6-b1cd-2303262958a9" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light"><p data-start="0" data-end="123">判断用户是否正在使用 PWA（渐进式 Web 应用）并跟踪来自 PWA 的流量是完全可行的，这对了解 PWA 的采用情况、用户行为以及评估其效果至关重要。以下是几种常用的方法，可以帮助您判断用户是否正在使用 PWA 以及如何跟踪 PWA 的流量：</p>
+<h3 data-start="125" data-end="157">1. 客户端 JavaScript 检测（最常用且推荐）</h3>
+<p data-start="158" data-end="290">这是最常见且可靠的方法，通过客户端的 JavaScript 代码，您可以检测 PWA 是否以“独立应用模式”（standalone mode）运行。当 PWA 通过已安装的应用图标启动时，通常会以独立应用模式运行，隐藏浏览器的地址栏和界面元素，看起来更像原生应用。</p>
+<p data-start="292" data-end="406">您可以使用 <code data-start="298" data-end="347">window.matchMedia('(display-mode: standalone)')</code> 或 <code data-start="350" data-end="372">navigator.standalone</code> 这两个 JavaScript API 来判断是否处于独立应用模式。</p>
+<ul data-start="408" data-end="470">
+<li data-start="408" data-end="470"><strong data-start="410" data-end="461">window.matchMedia('(display-mode: standalone)')</strong>（更现代且推荐）：</li>
+</ul>
+<pre class="!overflow-visible" data-start="472" data-end="752"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">function</span> <span class="hljs-title function_">isRunningStandalone</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">matchMedia</span>(<span class="hljs-string">'(display-mode: standalone)'</span>).<span class="hljs-property">matches</span>;
+}
+
+<span class="hljs-keyword">if</span> (<span class="hljs-title function_">isRunningStandalone</span>()) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA 正在以独立应用模式运行"</span>);
+    <span class="hljs-comment">// 在这里执行 PWA 模式下的跟踪逻辑</span>
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA 正在浏览器中运行"</span>);
+    <span class="hljs-comment">// 在这里执行浏览器模式下的跟踪逻辑</span>
+}
+</span></code></div></pre>
+<ul data-start="754" data-end="796">
+<li data-start="754" data-end="796"><strong data-start="756" data-end="780">navigator.standalone</strong>（较老，但仍有一些浏览器支持）：</li>
+</ul>
+<pre class="!overflow-visible" data-start="798" data-end="1006"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">if</span> (navigator.<span class="hljs-property">standalone</span> === <span class="hljs-literal">true</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA 正在以独立应用模式运行 (使用 navigator.standalone)"</span>);
+    <span class="hljs-comment">// ...</span>
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA 正在浏览器中运行 (使用 navigator.standalone)"</span>);
+    <span class="hljs-comment">// ...</span>
+}
+</span></code></div></pre>
+<p data-start="1008" data-end="1036">使用这些检测方法，您可以在 PWA 代码中区分两种情况：</p>
+<ul data-start="1037" data-end="1197">
+<li data-start="1037" data-end="1097"><strong data-start="1039" data-end="1057">PWA 以独立应用模式运行：</strong> 这通常意味着用户是通过已安装的 PWA 图标启动的，这可以视为 PWA 流量。</li>
+<li data-start="1098" data-end="1197"><strong data-start="1100" data-end="1116">PWA 在浏览器中运行：</strong> 这通常意味着用户是通过浏览器地址栏输入网址、点击浏览器书签或通过外部链接（如 Google 搜索结果、Telegram 链接等）访问的，这可以视为普通网站流量。</li>
+</ul>
+<h3 data-start="1199" data-end="1244">2. 集成 Web 分析工具（例如 Google Analytics、百度统计等）</h3>
+<p data-start="1245" data-end="1363">您可以将常用的 Web 分析工具（如 Google Analytics、百度统计，或者项目中使用的其他分析工具）集成到您的 PWA 中。关键是在您的分析代码中结合上述 JavaScript 检测方法，来区分 PWA 流量和普通网站流量。</p>
+<h4 data-start="1365" data-end="1422">方法一：使用自定义维度（Custom Dimensions）或用户属性（User Properties）</h4>
+<p data-start="1423" data-end="1547">这是推荐的方法，因为它非常灵活，便于在分析报告中进行数据细分和筛选。在分析工具中创建一个自定义维度或用户属性，例如命名为“PWA 运行模式”（或类似名称）。该维度的值可以是“Standalone”（独立应用模式）或“Browser”（浏览器模式）。</p>
+<p data-start="1549" data-end="1591">在 PWA 代码中结合 JavaScript 检测代码设置这个自定义维度或用户属性。</p>
+<p data-start="1593" data-end="1625">例如，使用 Google Analytics（gtag.js）：</p>
+<pre class="!overflow-visible" data-start="1627" data-end="2168"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">function</span> <span class="hljs-title function_">isRunningStandalone</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">matchMedia</span>(<span class="hljs-string">'(display-mode: standalone)'</span>).<span class="hljs-property">matches</span>;
+}
+
+<span class="hljs-comment">// 初始化 Google Analytics（确保您已正确配置 GA 代码）</span>
+<span class="hljs-comment">// ...</span>
+
+<span class="hljs-keyword">if</span> (<span class="hljs-title function_">isRunningStandalone</span>()) {
+    <span class="hljs-title function_">gtag</span>(<span class="hljs-string">'set'</span>, <span class="hljs-string">'user_properties'</span>, { <span class="hljs-attr">pwa_mode</span>: <span class="hljs-string">'Standalone'</span> });
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA 正在以独立应用模式运行，已设置 GA 自定义维度 pwa_mode: Standalone"</span>);
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-title function_">gtag</span>(<span class="hljs-string">'set'</span>, <span class="hljs-string">'user_properties'</span>, { <span class="hljs-attr">pwa_mode</span>: <span class="hljs-string">'Browser'</span> });
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA 正在浏览器中运行，已设置 GA 自定义维度 pwa_mode: Browser"</span>);
+}
+
+<span class="hljs-comment">// 页面浏览跟踪（或其他事件跟踪）</span>
+<span class="hljs-title function_">gtag</span>(<span class="hljs-string">'config'</span>, <span class="hljs-string">'YOUR_GOOGLE_ANALYTICS_TRACKING_ID'</span>);
+</span></code></div></pre>
+<p data-start="2170" data-end="2192">或者使用事件（Events）配合自定义参数：</p>
+<pre class="!overflow-visible" data-start="2194" data-end="2718"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">function</span> <span class="hljs-title function_">isRunningStandalone</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">matchMedia</span>(<span class="hljs-string">'(display-mode: standalone)'</span>).<span class="hljs-property">matches</span>;
+}
+
+<span class="hljs-comment">// 初始化 Google Analytics</span>
+<span class="hljs-comment">// ...</span>
+
+<span class="hljs-keyword">if</span> (<span class="hljs-title function_">isRunningStandalone</span>()) {
+    <span class="hljs-title function_">gtag</span>(<span class="hljs-string">'event'</span>, <span class="hljs-string">'pwa_mode_detection'</span>, { <span class="hljs-attr">mode</span>: <span class="hljs-string">'Standalone'</span> });
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA 正在以独立应用模式运行，已发送事件 pwa_mode_detection: Standalone"</span>);
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-title function_">gtag</span>(<span class="hljs-string">'event'</span>, <span class="hljs-string">'pwa_mode_detection'</span>, { <span class="hljs-attr">mode</span>: <span class="hljs-string">'Browser'</span> });
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA 正在浏览器中运行，已发送事件 pwa_mode_detection: Browser"</span>);
+}
+
+<span class="hljs-comment">// 页面浏览跟踪</span>
+<span class="hljs-title function_">gtag</span>(<span class="hljs-string">'config'</span>, <span class="hljs-string">'YOUR_GOOGLE_ANALYTICS_TRACKING_ID'</span>);
+</span></code></div></pre>
+<p data-start="2720" data-end="2764">在分析工具的报告中，您可以利用“PWA 运行模式”这个自定义维度或用户属性进行数据分析：</p>
+<ul data-start="2765" data-end="2900">
+<li data-start="2765" data-end="2795">查看不同运行模式下的页面浏览量、用户行为、转化率等指标。</li>
+<li data-start="2796" data-end="2860">创建细分（Segments），只查看“PWA 运行模式”为“Standalone”的流量，从而分析 PWA 用户的特定行为。</li>
+<li data-start="2861" data-end="2900">比较“Standalone”和“Browser”两种模式下的用户行为差异。</li>
+</ul>
+<h4 data-start="2902" data-end="2943">方法二：使用不同的 URL 或 start_url（可选，可能不太灵活）</h4>
+<p data-start="2944" data-end="3197">您可以为 PWA 的 <code data-start="2955" data-end="2966">start_url</code>（在 <code data-start="2969" data-end="2984">manifest.json</code> 中定义）使用一个特定的 URL，与其他网站页面区分开。例如，您可以将 PWA 的 <code data-start="3026" data-end="3037">start_url</code> 设置为 <code data-start="3042" data-end="3055">/pwa-start/</code> 或 <code data-start="3058" data-end="3065">/app/</code>。或者，如果您的 PWA 内容与普通网站内容差异较大，也可以将 PWA 内容部署在不同的子域名或目录下。例如，主网站在 <code data-start="3125" data-end="3142">www.example.com</code>，PWA 内容可以放在 <code data-start="3154" data-end="3171">app.example.com</code> 或 <code data-start="3174" data-end="3196">www.example.com/app/</code>。</p>
+<p data-start="3199" data-end="3304">在分析工具中，通过分析 URL 路径或域名来区分 PWA 流量。例如，您可以筛选所有 URL 路径包含 <code data-start="3251" data-end="3264">/pwa-start/</code> 或域名为 <code data-start="3270" data-end="3287">app.example.com</code> 的流量，将其视为 PWA 流量。</p>
+<p data-start="3306" data-end="3315">这种方法的局限性：</p>
+<ul data-start="3316" data-end="3471">
+<li data-start="3316" data-end="3430"><strong data-start="3318" data-end="3327">不够精确：</strong> 用户即使通过浏览器访问了 <code data-start="3341" data-end="3352">start_url</code> 或 PWA 专用 URL，也可能被算作 PWA 流量，但实际上仍然是浏览器访问。客户端 JavaScript 检测方法更准确地判断是否以独立应用模式运行。</li>
+<li data-start="3431" data-end="3471"><strong data-start="3433" data-end="3446">URL 结构限制：</strong> 可能会对您的网站 URL 结构设计造成一定限制。</li>
+</ul>
+<h3 data-start="3473" data-end="3510">3. 服务器端 User-Agent 分析（不太推荐，可靠性较差）</h3>
+<p data-start="3511" data-end="3671">理论上，您可以尝试通过分析 HTTP 请求的 <code data-start="3534" data-end="3546">User-Agent</code> 头部来识别 PWA 流量。某些 PWA 应用启动时，<code data-start="3573" data-end="3585">User-Agent</code> 字符串可能包含一些特定的标识符。然而，<code data-start="3605" data-end="3617">User-Agent</code> 字符串容易被伪造和修改，不同浏览器和操作系统之间的差异也较大，因此这种方法不太可靠，精度较低，不推荐使用。</p>
+<h3 data-start="3673" data-end="3683">总结和建议：</h3>
+<p data-start="3684" data-end="3860">最推荐的方法是：<strong data-start="3692" data-end="3734">客户端 JavaScript 检测 + Web 分析工具自定义维度/用户属性</strong>。这种方法准确且灵活，能提供丰富的 PWA 流量分析数据。您可以在 PWA 应用的入口文件（如 <code data-start="3782" data-end="3792">index.js</code>, <code data-start="3794" data-end="3803">_app.js</code> 等）中添加客户端 JavaScript 检测代码，并确保在页面加载时尽早执行，以便早期设置自定义维度或用户属性。</p>
+<p data-start="3862" data-end="3953">在 Web 分析工具中，配置自定义维度或用户属性，并在报告中进行数据分析和细分。定期查看您的 PWA 流量数据，了解 PWA 的使用情况，并根据数据优化您的 PWA 应用和推广策略。</p>
+<p data-start="3955" data-end="4033" data-is-last-node="" data-is-only-node="">通过这些方法，您可以有效地跟踪 PWA 流量，了解有多少用户正在使用您的 PWA 应用，并深入分析 PWA 用户的行为，从而更好地评估和优化 PWA 项目。</p></div></div></div>
