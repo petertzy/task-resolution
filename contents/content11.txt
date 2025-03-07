@@ -1,0 +1,96 @@
+<div data-message-author-role="assistant" data-message-id="54b5a989-639b-48e6-b1cd-2303262958a9" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&]:mt-5" data-message-model-slug="gpt-4o-mini">
+  <div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]">
+    <div class="markdown prose w-full break-words dark:prose-invert light">
+      <p data-start="0" data-end="123">It is entirely feasible to determine whether users are using PWA (Progressive Web Apps) and track traffic from PWAs. This is crucial for understanding PWA adoption, user behavior, and assessing its effectiveness. Here are a few commonly used methods to help you detect whether users are using PWA and how to track PWA traffic:</p>
+      <h3 data-start="125" data-end="157">1. Client-side JavaScript Detection (Most Common and Recommended)</h3>
+      <p data-start="158" data-end="290">This is the most common and reliable method. Through client-side JavaScript code, you can detect if a PWA is running in "Standalone Mode." When a PWA is launched via an installed app icon, it usually runs in standalone mode, hiding the browser's address bar and UI elements, appearing more like a native app.</p>
+      <p data-start="292" data-end="406">You can use <code data-start="298" data-end="347">window.matchMedia('(display-mode: standalone)')</code> or <code data-start="350" data-end="372">navigator.standalone</code> JavaScript APIs to detect whether it's running in standalone mode.</p>
+      <ul data-start="408" data-end="470">
+        <li data-start="408" data-end="470"><strong data-start="410" data-end="461">window.matchMedia('(display-mode: standalone)')</strong> (More modern and recommended):</li>
+      </ul>
+      <pre class="!overflow-visible" data-start="472" data-end="752"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">function</span> <span class="hljs-title function_">isRunningStandalone</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">matchMedia</span>(<span class="hljs-string">'(display-mode: standalone)'</span>).<span class="hljs-property">matches</span>;
+}
+
+<span class="hljs-keyword">if</span> (<span class="hljs-title function_">isRunningStandalone</span>()) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA is running in standalone mode"</span>);
+    <span class="hljs-comment">// Execute tracking logic for standalone mode here</span>
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA is running in browser mode"</span>);
+    <span class="hljs-comment">// Execute tracking logic for browser mode here</span>
+}
+</span></code></div></pre>
+      <ul data-start="754" data-end="796">
+        <li data-start="754" data-end="796"><strong data-start="756" data-end="780">navigator.standalone</strong> (Older but still supported by some browsers):</li>
+      </ul>
+      <pre class="!overflow-visible" data-start="798" data-end="1006"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">if</span> (navigator.<span class="hljs-property">standalone</span> === <span class="hljs-literal">true</span>) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA is running in standalone mode (using navigator.standalone)"</span>);
+    <span class="hljs-comment">// ...</span>
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA is running in browser mode (using navigator.standalone)"</span>);
+    <span class="hljs-comment">// ...</span>
+}
+</span></code></div></pre>
+      <p data-start="1008" data-end="1036">Using these detection methods, you can distinguish between the two scenarios in your PWA code:</p>
+      <ul data-start="1037" data-end="1197">
+        <li data-start="1037" data-end="1097"><strong data-start="1039" data-end="1057">PWA running in standalone mode:</strong> This usually means the user launched the app through the installed PWA icon, and this can be considered PWA traffic.</li>
+        <li data-start="1098" data-end="1197"><strong data-start="1100" data-end="1116">PWA running in the browser:</strong> This typically means the user accessed it via a URL input in the browser's address bar, clicked a browser bookmark, or visited it through an external link (like a Google search result or Telegram link), which can be considered normal website traffic.</li>
+      </ul>
+      <h3 data-start="1199" data-end="1244">2. Integration of Web Analytics Tools (e.g., Google Analytics, Baidu Analytics, etc.)</h3>
+      <p data-start="1245" data-end="1363">You can integrate popular web analytics tools (like Google Analytics, Baidu Analytics, or other analytics tools used in your project) into your PWA. The key is to combine the above JavaScript detection methods in your analytics code to distinguish between PWA traffic and normal website traffic.</p>
+      <h4 data-start="1365" data-end="1422">Method 1: Using Custom Dimensions or User Properties</h4>
+      <p data-start="1423" data-end="1547">This is the recommended method because it is highly flexible and allows for easy data segmentation and filtering in analytics reports. Create a custom dimension or user property in the analytics tool, such as "PWA Running Mode" (or a similar name). The value of this dimension can be "Standalone" or "Browser".</p>
+      <p data-start="1549" data-end="1591">In your PWA code, combine the JavaScript detection code to set this custom dimension or user property.</p>
+      <p data-start="1593" data-end="1625">For example, using Google Analytics (gtag.js):</p>
+      <pre class="!overflow-visible" data-start="1627" data-end="2168"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">function</span> <span class="hljs-title function_">isRunningStandalone</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">matchMedia</span>(<span class="hljs-string">'(display-mode: standalone)'</span>).<span class="hljs-property">matches</span>;
+}
+
+<span class="hljs-comment">// Initialize Google Analytics (make sure GA code is properly configured)</span>
+<span class="hljs-comment">// ...</span>
+
+<span class="hljs-keyword">if</span> (<span class="hljs-title function_">isRunningStandalone</span>()) {
+    <span class="hljs-title function_">gtag</span>(<span class="hljs-string">'set'</span>, <span class="hljs-string">'user_properties'</span>, { <span class="hljs-attr">pwa_mode</span>: <span class="hljs-string">'Standalone'</span> });
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA is running in standalone mode, set GA custom dimension pwa_mode: Standalone"</span>);
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-title function_">gtag</span>(<span class="hljs-string">'set'</span>, <span class="hljs-string">'user_properties'</span>, { <span class="hljs-attr">pwa_mode</span>: <span class="hljs-string">'Browser'</span> });
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA is running in browser mode, set GA custom dimension pwa_mode: Browser"</span>);
+}
+
+<span class="hljs-comment">// Page view tracking (or other event tracking)</span>
+<span class="hljs-title function_">gtag</span>(<span class="hljs-string">'config'</span>, <span class="hljs-string">'YOUR_GOOGLE_ANALYTICS_TRACKING_ID'</span>);
+</span></code></div></pre>
+      <p data-start="2170" data-end="2192">Or use events (Events) with custom parameters:</p>
+      <pre class="!overflow-visible" data-start="2194" data-end="2718"><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre language-javascript"><span><span class="hljs-keyword">function</span> <span class="hljs-title function_">isRunningStandalone</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">matchMedia</span>(<span class="hljs-string">'(display-mode: standalone)'</span>).<span class="hljs-property">matches</span>;
+}
+
+<span class="hljs-comment">// Initialize Google Analytics</span>
+<span class="hljs-comment">// ...</span>
+
+<span class="hljs-keyword">if</span> (<span class="hljs-title function_">isRunningStandalone</span>()) {
+    <span class="hljs-title function_">gtag</span>(<span class="hljs-string">'event'</span>, <span class="hljs-string">'pwa_mode_detection'</span>, { <span class="hljs-attr">mode</span>: <span class="hljs-string">'Standalone'</span> });
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA is running in standalone mode, sent event pwa_mode_detection: Standalone"</span>);
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-title function_">gtag</span>(<span class="hljs-string">'event'</span>, <span class="hljs-string">'pwa_mode_detection'</span>, { <span class="hljs-attr">mode</span>: <span class="hljs-string">'Browser'</span> });
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"PWA is running in browser mode, sent event pwa_mode_detection: Browser"</span>);
+}
+
+<span class="hljs-comment">// Page view tracking</span>
+<span class="hljs-title function_">gtag</span>(<span class="hljs-string">'config'</span>, <span class="hljs-string">'YOUR_GOOGLE_ANALYTICS_TRACKING_ID'</span>);
+</span></code></div></pre>
+      <p data-start="2720" data-end="2764">In the analytics tool's report, you can use the "PWA Running Mode" custom dimension or user property for data analysis:</p>
+      <ul data-start="2765" data-end="2900">
+        <li data-start="2765" data-end="2900"><strong data-start="2767" data-end="2900">Standalone Mode:</strong> Traffic from users accessing the app in PWA standalone mode (installed app).</li>
+        <li data-start="2902" data-end="3022"><strong data-start="2904" data-end="3022">Browser Mode:</strong> Traffic from users accessing the app through a browser.</li>
+      </ul>
+      <p data-start="3024" data-end="3134">This method allows you to easily distinguish between PWA traffic and regular website traffic in your reports and analyze the usage patterns of both.</p>
+      <h3 data-start="3136" data-end="3169">3. Tracking via Server-Side Detection (User-Agent String, HTTP Headers)</h3>
+      <p data-start="3170" data-end="3254">Another method for distinguishing PWA traffic is through server-side detection, where you can examine the user-agent string or HTTP headers sent by the browser. While this method is not as accurate as client-side detection (since the user-agent string may not always explicitly indicate PWA traffic), it can provide some insight into whether the request is coming from a PWA.</p>
+      <ul data-start="3256" data-end="3370">
+        <li data-start="3256" data-end="3370"><strong data-start="3258" data-end="3280">User-Agent String:</strong> Look for specific patterns or keywords in the user-agent string that indicate PWA traffic, such as "wv" (which stands for WebView), "Chrome" (for Chrome-based PWAs), or "Standalone" (indicating the app is running in standalone mode). However, this method is prone to error because not all PWAs include these keywords in the user-agent string.</li>
+        <li data-start="3282" data-end="3370"><strong data-start="3284" data-end="3303">HTTP Headers:</strong> Inspect the "Referer" or "Origin" headers to see if the request came from a PWA or a regular web page. However, this method is also not always reliable.</li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div data-message-author-role="assistant" data-message-id="2e4e7fb0-3143-4684-a8dd-35ca195185c2" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&]:mt-5" data-message-model-slug="gpt-4o-mini">
+  <div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]">
+    <div class="markdown prose w-full break-words dark:prose-invert light">
+      <p data-start="0" data-end="133">iOS does have some limitations on full-screen support for PWAs (Progressive Web Apps), which differs from the experience on Android. The issue you mentioned regarding a single video page highlights some characteristics of iOS PWAs in video playback and full-screen display. Below is the full-screen support situation for iOS PWAs and its potential behavior:</p>
+      <h3 data-start="135" data-end="165">1. "Pseudo-fullscreen" and Address Bar Issue in iOS PWAs:</h3>
+      <p data-start="166" data-end="264">PWAs on iOS cannot achieve true full-screen experience, especially in browsers. To get close to a full-screen experience, users need to "Add to Home Screen," which can be done through the "Add to Home Screen" option in the Safari browser's Share menu.</p>
+      <ul data-start="266" data-end="593">
+        <li data-start="266" data-end="386"><strong data-start="268" data-end="278">Standalone App Mode</strong>: When the PWA is launched from the home screen icon, it runs in standalone app mode, hiding Safari's address bar and most browser interface elements, making it look more like a native app. However, even then, it does not achieve true full-screen, but more of a "pseudo-fullscreen" or "maximized window."</li>
+        <li data-start="387" data-end="506"><strong data-start="389" data-end="400">Address Bar Residue Issue</strong>: In some earlier iOS versions, even when the PWA is added to the home screen, there might still be a slight address bar or status bar visible at the top, preventing a fully immersive full-screen experience. Although newer iOS versions have made improvements, the address bar may briefly appear in certain cases (like page transitions).</li>
+        <li data-start="507" data-end="593"><strong data-start="509" data-end="530">Accessing PWA via Safari</strong>: If the PWA is opened through Safari or another in-app browser, the full browser interface, including the address bar and toolbar, will be visible, making full-screen impossible.</li>
+      </ul>
+      <h3 data-start="595" data-end="623">2. Single Video Page Behavior in iOS PWA:</h3>
+      <p data-start="624" data-end="669">Next, let's look at what the experience might be like when you open a single video page in an iOS PWA:</p>
+      <ul data-start="671" data-end="1016">
+        <li data-start="671" data-end="856">
+          <p data-start="673" data-end="707"><strong data-start="673" data-end="705">Case 1: PWA "Added to Home Screen" and Launched in Standalone App Mode</strong></p>
+          <ul data-start="710" data-end="856">
+            <li data-start="710" data-end="773">The video player occupies as much screen space as possible, providing a near full-screen playback experience. The video will be played using the iOS native video player and typically offers a full-screen button.</li>
+            <li data-start="776" data-end="856">Remaining limitations: Even in standalone mode, the status bar at the top (showing time, battery, signal, etc.) may still be visible and cannot be fully covered by the video player. Occasionally, the address bar may briefly flash.</li>
+          </ul>
+        </li>
+        <li data-start="858" data-end="1016">
+          <p data-start="860" data-end="899"><strong data-start="860" data-end="897">Case 2: Accessing via Safari or In-app Browser (Non-Standalone Mode)</strong></p>
+          <ul data-start="902" data-end="1016">
+            <li data-start="902" data-end="965">The video page will open in Safari or an in-app browser tab, where the browser's address bar, toolbar, and other interface elements will always be visible, preventing a full-screen immersive experience.</li>
+            <li data-start="968" data-end="1016">Even if the full-screen button in the video player is clicked, the video will only maximize to the browser window's boundary and will not cover the entire device screen.</li>
+          </ul>
+        </li>
+      </ul>
+      <h3 data-start="1018" data-end="1043">3. Key Point: "Add to Home Screen" and Launch Method:</h3>
+      <p data-start="1044" data-end="1181">Whether iOS PWAs can achieve a near full-screen video playback experience depends on whether the user has added the PWA to the home screen and launched it from the home screen icon. For the best video playback experience, it is recommended that iOS users add the PWA to the home screen and launch it from there. You can clearly inform users on the website that after installing the PWA, they can enjoy a more native-app-like full-screen experience.</p>
+      <p data-start="1183" data-end="1266">However, due to iOS system limitations, even PWAs added to the home screen cannot completely eliminate the address bar or status bar residue. Therefore, if a true full-screen experience is crucial, a native iOS app is still a better choice.</p>
+      <h3 data-start="1268" data-end="1280">4. Optimization Suggestions:</h3>
+      <ul data-start="1281" data-end="1600">
+        <li data-start="1281" data-end="1389"><strong data-start="1283" data-end="1299">UI Design in Full-Screen Mode</strong>: When designing video pages for PWAs, you can reduce visual interference from the status bar and other areas by using dark themes or immersive UI styles. At the same time, simplify video player controls to minimize surrounding UI elements and maximize the display space for the video content.</li>
+        <li data-start="1390" data-end="1525"><strong data-start="1392" data-end="1417">Try Web Fullscreen API</strong>: Although iOS's full-screen support for PWAs is limited, you can still try to use the Web Fullscreen API (requestFullscreen()) to make the video player go full screen, although this may not bypass iOS's "pseudo-fullscreen" limitation.</li>
+        <li data-start="1526" data-end="1600"><strong data-start="1528" data-end="1539">Clear User Guidance</strong>: Clearly inform iOS users on the PWA website on how to "Add to Home Screen" and guide them through the installation process to get a better video watching experience.</li>
+      </ul>
+      <h3 data-start="1602" data-end="1609">Summary:</h3>
+      <p data-start="1610" data-end="1846" data-is-last-node="" data-is-only-node="">PWAs on iOS cannot achieve true full-screen on the device screen. Even when added to the home screen, they can only achieve a "pseudo-fullscreen" effect, with some residual top status bar and address bar. To get the best video watching experience, users should launch the PWA from the home screen. As a developer, you can optimize the video playback experience to accommodate iOS PWA's "pseudo-fullscreen" characteristics. For applications that require an immersive full-screen experience, native iOS apps are still a better choice. PWAs on iOS strike a balance between functionality and convenience, offering features close to native apps even if the immersive full-screen experience is not fully realized.</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div data-message-author-role="assistant" data-message-id="0df25002-cce6-410a-aabe-056579138131" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini">
+  <div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]">
+    <div class="markdown prose w-full break-words dark:prose-invert light">
+      <p data-start="0" data-end="116">When a user clicks a link from Telegram to access your PWA (Progressive Web App), by default, the link will open in Telegram's in-app browser instead of directly launching the installed PWA app. To better understand this behavior, we need to break down a few key points:</p>
+      <h3 data-start="118" data-end="146">1. What is Telegram's in-app browser?</h3>
+      <p data-start="147" data-end="339">Telegram, like many other social media or messaging apps, has an in-app browser built in to optimize user experience.<br data-start="194" data-end="197">When you click an external link in Telegram, it doesn't open directly in your device's default browser (like Chrome, Safari), but rather opens a simplified browser interface inside the Telegram app.<br data-start="288" data-end="291">This in-app browser is designed to allow users to view web content without leaving Telegram.<br data-start="329" data-end="332"><strong data-start="332" data-end="339">Characteristics:</strong></p>
+      <ul data-start="340" data-end="414">
+        <li data-start="340" data-end="350">The address bar is usually visible.</li>
+        <li data-start="351" data-end="387">The functionality is more limited compared to full browsers (like Chrome or Safari).</li>
+        <li data-start="388" data-end="414">Users are still within the context of the Telegram app.</li>
+      </ul>
+      <h3 data-start="416" data-end="436">2. How are PWA links handled?</h3>
+      <h4 data-start="437" data-end="451">Uninstalled PWA:</h4>
+      <p data-start="452" data-end="574">If you've only created a PWA website using tools like Next.js, and the user has not "installed" it on their device (i.e., it hasn't been added to their home screen), clicking any link (including one from Telegram) will be treated like a regular website link. Typically, this results in the link opening in the in-app browser.</p>
+      <h4 data-start="576" data-end="590">Installed PWA:</h4>
+      <p data-start="591" data-end="690">If the user has installed your PWA on their device via the browser menu (such as "Add to Home Screen" in Chrome or Safari), the situation is different. However, this still does not mean that the link will open directly in the PWA app itself.</p>
+      <h3 data-start="692" data-end="727">3. Why does the link usually open in the in-app browser instead of the PWA app?</h3>
+      <h4 data-start="728" data-end="743">Default behavior for link handling:</h4>
+      <p data-start="744" data-end="821">The default behavior for most apps (including Telegram) when handling external links is to use their in-app browser. This is to keep users within the app experience, facilitate link click tracking, and consider potential security issues.</p>
+      <h4 data-start="823" data-end="842">Operating system and PWA registration:</h4>
+      <p data-start="843" data-end="964">The operating system (such as Android or iOS) needs to know which apps should handle which links. While PWAs can register links for specific domains, links from other apps, like Telegram, are typically handed over to the browser by default, where they are intercepted by Telegram's in-app browser.</p>
+      <h3 data-start="966" data-end="1005">4. How to increase the likelihood of opening the installed PWA app directly (though not guaranteed)?</h3>
+      <p data-start="1006" data-end="1107">While Telegram defaults to opening links in the in-app browser, you can try the following methods to increase the likelihood of the link opening directly in the installed PWA app. However, please note that this is not 100% reliable and depends on the operating system and Telegram's implementation:</p>
+      <h4 data-start="1109" data-end="1126">Ensure the PWA is properly installed:</h4>
+      <p data-start="1127" data-end="1192">The user must have installed the PWA on their device via the browser's "Add to Home Screen" feature. If the PWA is not installed, it will definitely open in the in-app browser.</p>
+      <h4 data-start="1194" data-end="1212">Use the correct PWA link:</h4>
+      <p data-start="1213" data-end="1275">Make sure the link you share in Telegram is the root domain link of the PWA or a deep link (Direct URL) that clearly points to PWA content.</p>
+      <h4 data-start="1277" data-end="1295">Consider deep link configuration (advanced):</h4>
+      <p data-start="1296" data-end="1479">For more complex requirements, you can configure deep linking for your PWA. Configure protocol_handlers or web_app_manifests in your PWA's manifest.json file (depending on platform and browser support). Through deep link configuration, you can allow the operating system to recognize which links should be handled by the PWA app. However, even with deep link configuration, links may still be intercepted by Telegram's in-app browser.</p>
+      <h4 data-start="1481" data-end="1501">Inform users about the benefits of installing the PWA:</h4>
+      <p data-start="1502" data-end="1575">The most direct and effective method is to encourage users to install your PWA. Once users install the PWA on their device, they are more likely to launch the app from the home screen icon, providing a more native app-like experience.</p>
+      <h3 data-start="1577" data-end="1587">Summary and Recommendations:</h3>
+      <ul data-start="1588" data-end="1854">
+        <li data-start="1588" data-end="1666"><strong data-start="1590" data-end="1599">Default situation:</strong> When users click a link from Telegram, it is most likely to open in Telegram's in-app browser, rather than directly launching the installed PWA app.</li>
+        <li data-start="1667" data-end="1768"><strong data-start="1669" data-end="1687">To get the PWA app experience:</strong> To get the best PWA experience, you should encourage users to install your PWA to their device's home screen. Once installed, the PWA will behave like a native app when launched from the home screen, without the browser address bar and interface.</li>
+        <li data-start="1769" data-end="1854"><strong data-start="1771" data-end="1786">Link behavior is not fully controllable:</strong> Link behavior from other apps, especially in-app browsers like Telegram, is influenced by various factors, and as a PWA developer, you may not be able to fully control it.</li>
+      </ul>
+      <h3 data-start="1856" data-end="1870">Suggestions from a user experience perspective:</h3>
+      <ul data-start="1871" data-end="2135">
+        <li data-start="1871" data-end="1939"><strong data-start="1873" data-end="1893">Guide users to install the PWA on your website:</strong> Provide clear guidance on how users can install the PWA to their device's home screen (for example, display an install prompt at the top or bottom of the page).</li>
+        <li data-start="1940" data-end="2011"><strong data-start="1942" data-end="1961">Clearly explain the advantages of installing the PWA:</strong> Let users know that by installing the PWA, they will get a faster, more convenient, and more native app-like experience, such as offline access, push notifications, and more.</li>
+        <li data-start="2012" data-end="2135"><strong data-start="2014" data-end="2038">Consider creating a Landing Page:</strong> If Telegram is an important traffic source for your PWA, you might consider creating a dedicated landing page to guide users to install the PWA when they access it through a Telegram link, explaining the benefits of installation.</li>
+      </ul>
+      <p data-start="2137" data-end="2226" data-is-last-node="" data-is-only-node="">In short, to get the best PWA experience, installation is key. While links from Telegram are likely to open in the in-app browser, once the PWA is installed, launching it from the home screen truly showcases the benefits of a PWA.</p>
+    </div>
+  </div>
+</div>

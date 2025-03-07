@@ -1,0 +1,90 @@
+<div data-message-author-role="assistant" data-message-id="23c48313-bb2f-41b3-a19e-68e79d465be0" dir="auto" class="min-h-8 text-message relative flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&amp;]:mt-5" data-message-model-slug="gpt-4o-mini">
+  <div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]">
+    <div class="markdown prose w-full break-words dark:prose-invert light">
+      <p data-start="0" data-end="59">
+        When a user clicks on a link in Signal (or other chat apps), whether it opens in a PWA (Progressive Web App) or a regular web browser depends on several factors:
+      </p>
+      <h3 data-start="61" data-end="84">1. It depends on Signal's default behavior</h3>
+      <p data-start="85" data-end="297">
+        Signal defaults to opening links in a browser.<br data-start="105" data-end="108">
+        Even if the user has installed the PWA, Signal will still use the system's default browser (like Chrome, Safari, etc.) to open the link rather than opening the PWA directly.<br data-start="179" data-end="182">
+        Currently, Signal does not support Android Instant Apps or PWA deep linking.<br data-start="228" data-end="231">
+        While some apps (like Telegram) support PWA deep linking, allowing PWA to open in supported browsers, Signal currently does not support this behavior.
+      </p>
+      <h3 data-start="299" data-end="325">2. It depends on whether the PWA supports URL handling</h3>
+      <p data-start="326" data-end="431">
+        PWAs can define their entry point through the `start_url` setting in the Web App Manifest, ensuring that when a user visits a link, the PWA can properly handle the URL.<br data-start="403" data-end="406">
+        📌 <strong data-start="409" data-end="415">Example</strong>: Ensure PWA correctly handles URLs
+      </p>
+      <pre class="!overflow-visible" data-start="432" data-end="562">
+        <div class="overflow-y-auto p-4" dir="ltr">
+          <code class="!whitespace-pre language-json">
+            {
+              "name": "My PWA",
+              "short_name": "PWA",
+              "start_url": "/index.html",
+              "scope": "/",
+              "display": "standalone"
+            }
+          </code>
+        </div>
+      </pre>
+      <p data-start="563" data-end="601">
+        However, Signal will still open the link in the browser rather than automatically redirecting to the PWA.
+      </p>
+      <h3 data-start="603" data-end="628">3. How to make Signal open the PWA?</h3>
+      <p data-start="629" data-end="676">
+        Currently, Signal does not support directly opening the PWA, but you can help users return to the PWA more easily:
+      </p>
+      <h4 data-start="678" data-end="710">✅ Method 1: Let the PWA handle the URL and guide the user to open it</h4>
+      <p data-start="711" data-end="781">
+        You can detect within the PWA if it is opened in a regular browser and then guide users to open the PWA.
+        📌 <strong data-start="752" data-end="758">Example</strong>: If the user is opening in a browser, prompt them to switch to the PWA
+      </p>
+      <pre class="!overflow-visible" data-start="782" data-end="936">
+        <div class="overflow-y-auto p-4" dir="ltr">
+          <code class="!whitespace-pre language-javascript">
+            if (window.matchMedia('(display-mode: standalone)').matches) {
+              console.log("Running in PWA mode");
+            } else {
+              alert("We recommend opening this link in the PWA for the best experience!");
+            }
+          </code>
+        </div>
+      </pre>
+      <p data-start="937" data-end="962">
+        You can also provide a button that users can click to open the PWA:
+      </p>
+      <pre class="!overflow-visible" data-start="963" data-end="1017">
+        <div class="overflow-y-auto p-4" dir="ltr">
+          <code class="!whitespace-pre language-html">
+            <a href="my-pwa://some-page">Open in PWA</a>
+          </code>
+        </div>
+      </pre>
+      <p data-start="1018" data-end="1041">
+        However, this only works on some Android devices.
+      </p>
+      <h4 data-start="1043" data-end="1078">✅ Method 2: Use "Add to Home Screen"</h4>
+      <p data-start="1079" data-end="1150">
+        Let the user install the PWA first, and then access Signal links from within the PWA instead of clicking the links in Signal.<br data-start="1132" data-end="1135">
+        This way, the user experience will be closer to a native app.
+      </p>
+      <h4 data-start="1152" data-end="1202">✅ Method 3: Use Android App Links (only for those with a native app)</h4>
+      <p data-start="1203" data-end="1391">
+        If your PWA also has a native Android version, you can configure <strong data-start="1234" data-end="1257">Digital Asset Links</strong> to allow Android to directly use the PWA to handle specific links.<br data-start="1286" data-end="1289">
+        Additionally, you can register your native Android app, allowing Signal to recognize your app and open it directly, rather than opening the link in the browser.<br data-start="1347" data-end="1350">
+        However, if there is no native Android app, Signal will still default to opening the link in the browser.
+      </p>
+      <h3 data-start="1393" data-end="1402">4. Conclusion</h3>
+      <ul data-start="1403" data-end="1555" data-is-last-node="" data-is-only-node="">
+        <li data-start="1403" data-end="1555" data-is-last-node="">
+          <strong data-start="1405" data-end="1413">Final recommendation</strong><br data-start="1413" data-end="1416">
+          Tell users: "Please access Signal links from within the PWA for a better experience!"<br data-start="1456" data-end="1459">
+          Detect within the PWA if it is being opened in a browser and prompt users to switch to the PWA.<br data-start="1494" data-end="1497">
+          If your PWA also has a native Android app, you can use Android App Links to enhance the user experience.
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
